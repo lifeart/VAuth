@@ -1,0 +1,259 @@
+				#vauth {
+				
+					float:left;
+					clear:left;
+					width:100%;
+					min-height:200px;
+					
+				}
+		
+				.hello {
+				
+					margin-left:20%;
+					text-align:left;
+					width:60%;
+					float:left;
+					clear:left;
+				}
+				
+				.radio_left, .radio_right {
+				
+					width:30px;
+					color:#444;
+					float:left;
+					display:block;
+					font-size:14pt;
+					margin-left:5px;
+					
+				}
+				
+				.settings_list .radioselect:last-child {
+				
+					margin-bottom:10px;
+				
+				}
+				
+				.radioselect {
+				
+					float:left;
+					clear:left;
+					width:180px;
+					height:30px;
+					padding:3px;
+					margin-top:5px;
+					margin-left:70px;
+					border-radius:5px;
+					padding-bottom:0px;
+					border:1px #666 solid;
+					background-color:#fff;
+					box-shadow:inset 0px 0px 5px #888;
+					
+				}
+				
+				.settings_input_radio {
+				
+					float:left;
+					width:40px;
+					
+				}
+				
+				.send_options {
+				
+					width:50%;
+					float:left;
+					clear:left;
+					height:40px;
+					font-size:16pt;
+					margin-left:25%;
+					margin-top:30px;
+					text-align:center;
+				
+				}
+				
+				.settings_list .settings_input:last-child {
+				
+					margin-bottom:10px;
+					
+				}
+				
+				
+				.settings {
+				
+					margin-left:5px;
+					
+				}
+				
+				.input_text:first-child {
+				
+					margin-top:10px;
+					
+				}
+				
+				.input_text {
+				
+					float:left;
+					clear:left;
+					color:#555;
+					width:300px;
+					font-size:12pt;
+					margin-top:10px;
+					min-height:10px;
+					margin-left:20px;
+					text-align:center;
+					
+				}
+				
+				.settings_input {
+				
+					color:#888;
+					clear:left;
+					float:left;
+					width:300px;
+					height:20px;
+					margin-top:5px;
+					font-size:14pt;
+					margin-left:20px;
+					border:1px solid #333;
+					box-shadow: 0px 0px 3px #6dcff6;
+					
+				}
+				
+				.settings_input:hover {
+				
+					color:#333;
+					box-shadow:inset 0px 0px 8px #6dcff6;
+					
+				}
+				
+				
+				.userlist {
+				
+					float:left;
+					margin:5px;
+					width:100px;
+				
+				}
+				
+				.userlist_list {
+				
+					float:left;
+					margin:5px;
+					width:200px;
+					padding-left:20px;
+					border-radius:3px;
+					background-color:#eeeeee;
+					padding:5px;
+				
+				}
+				
+				.vauth_menu {
+				
+					float:left;
+					clear:left;
+					width:100%;
+					height:40px;
+					
+				}
+				
+				.del_vauth_user {
+				
+					opacity:0.8;
+					margin-left:-4px;
+					z-index:5;
+					float:left;
+					clear:left;
+					width:14px;
+					height:14px;
+					background-color:#f9f9f9;
+					border-radius:7px;
+					border:1px solid #444;
+					color:#000;
+					position:relative;
+					text-align:center;
+				
+				}
+				
+				.del_vauth_user_list {
+				
+					opacity:0.8;
+					z-index:5;
+					float:right;
+					clear:right;
+					width:14px;
+					height:14px;
+					background-color:#ffa892;
+					border-radius:7px;
+					border:1px solid #444;
+					color:#000;
+					position:relative;
+					text-align:center;
+				
+				}				
+				
+				.del_vauth_user, .del_vauth_user_list a{
+				
+					color:#000;
+					text-decoration:none;
+					
+				}
+				
+				.del_vauth_user a:hover{
+				
+					opacity:0.1;
+					text-decoration:none;
+					
+				}
+				
+				.usercounter {
+				
+					float:left;
+					clear:left;
+					margin:5px;
+					
+				}
+				
+
+				
+				.settings_list {
+				
+					
+					float:left;
+					margin:5px;
+					width:350px;
+					min-height:10px;
+					margin-left:20px;
+					border-radius:5px;
+					box-shadow:0px 0px 3px #666;
+					
+				}
+				
+				.vauth_admin_userimage {
+				
+					position:relative;
+					margin-top:-10px;
+					float:left;
+					z-index:3;
+					border-radius:3px;width:100px;height:100px;
+					
+				}
+				
+				.vauth_admin_userimage:hover {
+					box-shadow:0px 0px 3px #666;
+				}
+				.settings_list:nth-child(3,6,9,12,15,18,21,24,27) {
+				
+					clear:left;
+					
+				}
+				
+				.settings_list:nth-child(odd) {
+				
+					background-color:#cdd6dc;
+					
+				}
+				
+				.settings_list:nth-child(even) {
+				
+					background-color:#a2c1d5;
+					
+				}

@@ -1,0 +1,181 @@
+			.account_link {
+			
+				margin-top:5px;
+				width:60px;
+				float:left;
+				height:16px;
+				display:block;
+				color:#ffffff;
+				min-width:10px;
+				margin-right:4px;
+				border-radius:3px;
+				text-align:center;
+				text-decoration:none;
+				padding:1px 5px 1px 5px;
+				border:1px #0072bc solid;
+				background-color:#7da7d9;
+				text-shadow:0px 0px 2px #0072bc;
+				
+			}
+			
+			.account_link:hover {
+			
+				opacity:0.8;
+				text-decoration:none;
+				
+			}
+			
+			.account_text {
+			
+				float:left;
+				display:block;
+				min-width:10px;
+				max-height:20px;
+				margin-right:4px;
+				background-color:$444;
+				
+			}
+			
+			.big {
+			
+				width:90px;
+				background-color:#acd373;
+				border:1px #8dc63f solid;
+				text-shadow:0px 0px 2px #8dc63f;
+				
+			}
+			
+			.vk_account {
+			
+				font-weight:bold;
+				border:1px #5c81ad solid;
+				text-shadow:0px 0px 1px #333;
+				background-color:#82a1c2 !important;
+				
+			}
+			
+			.tw_account {
+			
+				font-weight:bold;
+				border:1px #000 solid;
+				text-shadow:#060606 0px 0px 0px;
+				background-image: linear-gradient(bottom, rgb(37,37,37) 14%, rgb(60,60,60) 68%);
+				background-image: -o-linear-gradient(bottom, rgb(37,37,37) 14%, rgb(60,60,60) 68%);
+				background-image: -moz-linear-gradient(bottom, rgb(37,37,37) 14%, rgb(60,60,60) 68%);
+				background-image: -webkit-linear-gradient(bottom, rgb(37,37,37) 14%, rgb(60,60,60) 68%);
+				background-image: -ms-linear-gradient(bottom, rgb(37,37,37) 14%, rgb(60,60,60) 68%);
+				background-image: -webkit-gradient(
+					linear,
+					left bottom,
+					left top,
+					color-stop(0.14, rgb(37,37,37)),
+					color-stop(0.68, rgb(60,60,60))
+				);
+				
+			}
+			
+			.fb_account {
+			
+				font-weight:bold;
+				border:1px #3b5998 solid;
+				background-color:#4b67a1 !important;
+				
+			}
+			
+			.od_account {
+			
+				min-width:90px;
+				font-weight:bold;
+				color:#fff;
+				text-shadow:0px 0px 0px #444;
+				border:1px #ca6d0f solid;
+				background-color:#ff9933 !important;
+				
+			}
+			
+			.fs_account {
+			
+				min-width:70px;
+				font-weight:bold;
+				color:#fff;
+				text-shadow:0px 0px 2px #1b6cb5;
+				border:1px #3a7dda solid;
+				background-image: linear-gradient(bottom, rgb(62,159,208) 49%, rgb(62,159,208) 0%, rgb(88,184,232) 51%);
+				background-image: -o-linear-gradient(bottom, rgb(62,159,208) 49%, rgb(62,159,208) 0%, rgb(88,184,232) 51%);
+				background-image: -moz-linear-gradient(bottom, rgb(62,159,208) 49%, rgb(62,159,208) 0%, rgb(88,184,232) 51%);
+				background-image: -webkit-linear-gradient(bottom, rgb(62,159,208) 49%, rgb(62,159,208) 0%, rgb(88,184,232) 51%);
+				background-image: -ms-linear-gradient(bottom, rgb(62,159,208) 49%, rgb(62,159,208) 0%, rgb(88,184,232) 51%);
+
+				background-image: -webkit-gradient(
+					linear,
+					left bottom,
+					left top,
+					color-stop(0.49, rgb(62,159,208)),
+					color-stop(0, rgb(62,159,208)),
+					color-stop(0.51, rgb(88,184,232))
+				);
+				
+			}
+			
+			:root .go_account {background-color:#d25235;}
+			:root .gh_account {background-color:#f7f7f7;}
+			:root .ms_account {background-color:#b3e2f5;}
+			:root .fs_account {background-color:#58b8e8;}
+			:root .tw_account {background-color:#3c3c3c;}
+			:root .ma_account {background-color:#4478ab;}
+			:root .vk_account {background-color:#4478ab;width:70px;text-shadow:0px 0px 0px #000;}
+			
+			.go_account {
+				
+				text-shadow:0px 0px 0px #444;
+				border:1px #bf381d solid;font-weight:bold; color:#fff;
+				background-image: linear-gradient(bottom, rgb(185,48,21) 19%, rgb(228,106,76) 60%);
+				background-image: -o-linear-gradient(bottom, rgb(185,48,21) 19%, rgb(228,106,76) 60%);
+				background-image: -moz-linear-gradient(bottom, rgb(185,48,21) 19%, rgb(228,106,76) 60%);
+				background-image: -webkit-linear-gradient(bottom, rgb(185,48,21) 19%, rgb(228,106,76) 60%);
+				background-image: -ms-linear-gradient(bottom, rgb(185,48,21) 19%, rgb(228,106,76) 60%);
+
+				background-image: -webkit-gradient(
+					linear,
+					left bottom,
+					left top,
+					color-stop(0.19, rgb(185,48,21)),
+					color-stop(0.6, rgb(228,106,76))
+				);
+
+			
+			}
+			
+			.ms_account {
+			
+			width:80px;text-shadow:0px 0px 0px #000;
+			color: #000;font-family: "Segoe UI",Tahoma,Verdana,Arial;font-weight: normal;background-image: linear-gradient(bottom, rgb(194,231,247) 45%, rgb(159,219,243) 87%);background-image: -o-linear-gradient(bottom, rgb(194,231,247) 45%, rgb(159,219,243) 87%);background-image: -moz-linear-gradient(bottom, rgb(194,231,247) 45%, rgb(159,219,243) 87%);background-image: -webkit-linear-gradient(bottom, rgb(194,231,247) 45%, rgb(159,219,243) 87%);background-image: -ms-linear-gradient(bottom, rgb(194,231,247) 45%, rgb(159,219,243) 87%);background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.45, rgb(194,231,247)),color-stop(0.87, rgb(159,219,243)));
+
+			}
+			
+			.gh_account {
+				background-image: linear-gradient(bottom, rgb(235,235,235) 12%, rgb(248,248,248) 78%);background-image: -o-linear-gradient(bottom, rgb(235,235,235) 12%, rgb(248,248,248) 78%);background-image: -moz-linear-gradient(bottom, rgb(235,235,235) 12%, rgb(248,248,248) 78%);background-image: -webkit-linear-gradient(bottom, rgb(235,235,235) 12%, rgb(248,248,248) 78%);background-image: -ms-linear-gradient(bottom, rgb(235,235,235) 12%, rgb(248,248,248) 78%);background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.12, rgb(235,235,235)),color-stop(0.78, rgb(248,248,248)));
+				color:#0a0203;text-shadow:0px 0px 0px #000;
+			}
+			
+			.ma_account {
+				
+				font-family: "Arial";color:#fff;background-image: linear-gradient(bottom, rgb(22,86,150) 42%, rgb(84,131,178) 97%);background-image: -o-linear-gradient(bottom, rgb(22,86,150) 42%, rgb(84,131,178) 97%);background-image: -moz-linear-gradient(bottom, rgb(22,86,150) 42%, rgb(84,131,178) 97%);background-image: -webkit-linear-gradient(bottom, rgb(22,86,150) 42%, rgb(84,131,178) 97%);background-image: -ms-linear-gradient(bottom, rgb(22,86,150) 42%, rgb(84,131,178) 97%);background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.42, rgb(22,86,150)),color-stop(0.97, rgb(84,131,178)));
+			
+				color:#fff;text-shadow:0px 0px 0px #000;width:90px;
+			}
+			
+			.in_account {
+			
+				color:#e1e0df;
+				background-color:#333;
+				text-shadow:0px 0px 0px #000;
+				border:1px solid #222;
+			}
+			
+			#vauth_user_accounts {
+			
+			float:left;clear:left;width:100%;min-height:30px;
+			margin-bottom:20px;
+			
+			}

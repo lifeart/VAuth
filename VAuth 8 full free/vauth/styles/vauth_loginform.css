@@ -1,0 +1,389 @@
+.buttons_hover
+{
+	border: 1px #333 solid;
+	box-shadow: 0px 0px 0px #666;
+	moz-transition: all 0.5s ease-in;
+	ms-transition: all 0.5s ease-in;
+	o-transition: all 0.5s ease-in;
+	text-decoration: none;
+	webkit-transition: all 0.5s ease-in;
+}
+.buttons_hover:hover
+{
+	moz-transition: all 0.5s ease-in;
+	ms-transition: all 0.5s ease-in;
+	opacity: 1;
+	o-transition: all 0.5s ease-in;
+	text-decoration: none;
+	box-shadow: 0px 0px 3px #666;
+	webkit-transition: all 0.5s ease-in;
+}
+.google_dialog, .mail_dialog, .vkontakte_dialog, .microsoft_dialog, .odnoklassniki_dialog, .twitter_dialog, .facebook_dialog, .github_dialog, .instagram_dialog, .foursquare_dialog
+{
+	border-radius: 3px;
+	color: #fff;
+	float: left;
+	font: 14pt Tahoma, Helvetica, sans-serif;
+	height: 30px;
+	margin-left: 10px;
+	margin-top: 10px;
+	opacity: 1;
+	padding-top: 5px;
+	position: relative;
+	text-align: center;
+	width: 140px;
+}
+.mail_dialog
+{
+	background-image: linear-gradient(bottom, rgb(22,86,150) 42%, rgb(84,131,178) 97%);
+	background-image: -moz-linear-gradient(bottom, rgb(22,86,150) 42%, rgb(84,131,178) 97%);
+	background-image: -ms-linear-gradient(bottom, rgb(22,86,150) 42%, rgb(84,131,178) 97%);
+	background-image: -o-linear-gradient(bottom, rgb(22,86,150) 42%, rgb(84,131,178) 97%);
+	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.42, rgb(22,86,150)),color-stop(0.97, rgb(84,131,178)));
+	background-image: -webkit-linear-gradient(bottom, rgb(22,86,150) 42%, rgb(84,131,178) 97%);
+	color: #fff;
+	font-family: "Arial";
+}
+.microsoft_dialog
+{
+	background-image: linear-gradient(bottom, rgb(194,231,247) 45%, rgb(159,219,243) 87%);
+	background-image: -moz-linear-gradient(bottom, rgb(194,231,247) 45%, rgb(159,219,243) 87%);
+	background-image: -ms-linear-gradient(bottom, rgb(194,231,247) 45%, rgb(159,219,243) 87%);
+	background-image: -o-linear-gradient(bottom, rgb(194,231,247) 45%, rgb(159,219,243) 87%);
+	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.45, rgb(194,231,247)),color-stop(0.87, rgb(159,219,243)));
+	background-image: -webkit-linear-gradient(bottom, rgb(194,231,247) 45%, rgb(159,219,243) 87%);
+	color: #000;
+	font-family: "Segoe UI",Tahoma,Verdana,Arial;
+	font-weight: normal;
+}
+.vauthdialog
+{
+	background-image: linear-gradient(bottom, rgb(92,92,92) 13%, rgb(184,184,184) 81%);
+	background-image: -moz-linear-gradient(bottom, rgb(92,92,92) 13%, rgb(184,184,184) 81%);
+	background-image: -ms-linear-gradient(bottom, rgb(92,92,92) 13%, rgb(184,184,184) 81%);
+	background-image: -o-linear-gradient(bottom, rgb(92,92,92) 13%, rgb(184,184,184) 81%);
+	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.13, rgb(92,92,92)),color-stop(0.81, rgb(184,184,184)));
+	background-image: -webkit-linear-gradient(bottom, rgb(92,92,92) 13%, rgb(184,184,184) 81%);
+	border: 1px solid #616161;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px #444;
+	padding: 10px;
+}
+.vauthdialog_overlay
+{
+	background: #000;
+	filter: alpha(opacity=50);
+	height: 100%;
+	left: 0;
+	moz-opacity: 0.5;
+	opacity: 0.5;
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+.vauthdialog_header
+{
+	background-image: linear-gradient(bottom, rgb(51,51,51) 13%, rgb(84,84,84) 81%);
+	background-image: -moz-linear-gradient(bottom, rgb(51,51,51) 13%, rgb(84,84,84) 81%);
+	background-image: -ms-linear-gradient(bottom, rgb(51,51,51) 13%, rgb(84,84,84) 81%);
+	background-image: -o-linear-gradient(bottom, rgb(51,51,51) 13%, rgb(84,84,84) 81%);
+	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.13, rgb(51,51,51)),color-stop(0.81, rgb(84,84,84)));
+	background-image: -webkit-linear-gradient(bottom, rgb(51,51,51) 13%, rgb(84,84,84) 81%);
+	border-radius: 5px;
+	color: #fff;
+}
+:root .google_dialog
+{
+	background-color: #d25235;
+}
+:root .foursquare_dialog
+{
+	background-color: #58b8e8;
+}
+:root .github_dialog
+{
+	background-color: #f4f4f4;
+}
+:root .microsoft_dialog
+{
+	background-color: #ace0f5;
+}
+:root .mail_dialog
+{
+	background-color: #4075a9;
+}
+:root .twitter_dialog
+{
+	background-color: #3b3b3b;
+}
+.google_dialog
+{
+	background-image: linear-gradient(bottom, rgb(185,48,21) 19%, rgb(228,106,76) 60%);
+	background-image: -moz-linear-gradient(bottom, rgb(185,48,21) 19%, rgb(228,106,76) 60%);
+	background-image: -ms-linear-gradient(bottom, rgb(185,48,21) 19%, rgb(228,106,76) 60%);
+	background-image: -o-linear-gradient(bottom, rgb(185,48,21) 19%, rgb(228,106,76) 60%);
+	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.19, rgb(185,48,21)),color-stop(0.6, rgb(228,106,76)));
+	background-image: -webkit-linear-gradient(bottom, rgb(185,48,21) 19%, rgb(228,106,76) 60%);
+	color: #fff;
+	font-family: Catull;
+	font-size: 16pt;
+	font-weight: bold;
+	text-shadow: 0px 0px 3px #444;
+}
+.github_text_dialog
+{
+	clear: left;
+	color: #0a0203;
+	float: left;
+	font-family: Collegia;
+	font-size: 18pt;
+	font-weight: bold;
+	height: 30px;
+	margin-top: -4px;
+	text-align: center;
+	width: 140px;
+}
+.github_text_dialog:hover
+{
+	color: #388bc4;
+}
+.github_dialog
+{
+	background-image: linear-gradient(bottom, rgb(235,235,235) 12%, rgb(248,248,248) 78%);
+	background-image: -moz-linear-gradient(bottom, rgb(235,235,235) 12%, rgb(248,248,248) 78%);
+	background-image: -ms-linear-gradient(bottom, rgb(235,235,235) 12%, rgb(248,248,248) 78%);
+	background-image: -o-linear-gradient(bottom, rgb(235,235,235) 12%, rgb(248,248,248) 78%);
+	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.12, rgb(235,235,235)),color-stop(0.78, rgb(248,248,248)));
+	background-image: -webkit-linear-gradient(bottom, rgb(235,235,235) 12%, rgb(248,248,248) 78%);
+}
+.vkontakte_dialog
+{
+	background-color: #82a1c2 !important;
+	font-weight: bold;
+	text-shadow: 0px 0px 2px #2d4c6f;
+}
+.odnoklass
+{
+	float: left;
+	font-family: Arial;
+	font-size: 13pt;
+	font-weight: normal;
+	margin-left: 10px;
+	margin-top: 2px;
+	text-shadow: 0px 0px 1px #666;
+}
+.odnoklassniki_dialog
+{
+	background-color: #ff9933 !important;
+}
+.twitter_dialog
+{
+	background-image: linear-gradient(bottom, rgb(37,37,37) 14%, rgb(60,60,60) 68%);
+	background-image: -moz-linear-gradient(bottom, rgb(37,37,37) 14%, rgb(60,60,60) 68%);
+	background-image: -ms-linear-gradient(bottom, rgb(37,37,37) 14%, rgb(60,60,60) 68%);
+	background-image: -o-linear-gradient(bottom, rgb(37,37,37) 14%, rgb(60,60,60) 68%);
+	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.14, rgb(37,37,37)),color-stop(0.68, rgb(60,60,60)));
+	background-image: -webkit-linear-gradient(bottom, rgb(37,37,37) 14%, rgb(60,60,60) 68%);
+	font-family: Pico;
+	font-size: 17pt;
+	font-weight: bold;
+	text-shadow: #060606 0px 0px 0px;
+}
+.facebook_dialog
+{
+	background-color: #4b67a1 !important;
+	font-weight: bold;
+	text-shadow: 0px 0px 1px #ddd;
+}
+.instagram_dialog
+{
+	background: url(http://distillery.s3.amazonaws.com/static/images/headerBackgroundTall.png) repeat-x;
+}
+.foursquare_dialog
+{
+	background-image: linear-gradient(bottom, rgb(62,159,208) 49%, rgb(62,159,208) 0%, rgb(88,184,232) 51%);
+	background-image: -moz-linear-gradient(bottom, rgb(62,159,208) 49%, rgb(62,159,208) 0%, rgb(88,184,232) 51%);
+	background-image: -ms-linear-gradient(bottom, rgb(62,159,208) 49%, rgb(62,159,208) 0%, rgb(88,184,232) 51%);
+	background-image: -o-linear-gradient(bottom, rgb(62,159,208) 49%, rgb(62,159,208) 0%, rgb(88,184,232) 51%);
+	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.49, rgb(62,159,208)),color-stop(0, rgb(62,159,208)),color-stop(0.51, rgb(88,184,232)));
+	background-image: -webkit-linear-gradient(bottom, rgb(62,159,208) 49%, rgb(62,159,208) 0%, rgb(88,184,232) 51%);
+}
+.fs1_dialog
+{
+	color: #fff;
+	margin-left: 16px;
+}
+.fs2_dialog
+{
+	color: #e1ebbe;
+}
+.fs1_dialog, .fs2_dialog
+{
+	float: left;
+	font-family: NeutraText;
+	font-size: 18pt;
+	font-weight: bold;
+	margin-top: -4px;
+	text-shadow: 0px 0px 4px #0062ba;
+}
+.tw_text_dialog
+{
+	float: left;
+	margin-left: 14px;
+	width: 90px;
+}
+.instagr_dialog
+{
+	color: #e1e0df;
+	float: left;
+	font-family: Billabong;
+	font-size: 20pt;
+	margin-left: 10px;
+	margin-top: -5px;
+	text-align: center;
+	text-shadow: 0px 0px 2px #444;
+	width: 120px;
+}
+.loginform
+{
+	clear: left;
+	float: left;
+	height: 90px;
+	width: 300px;
+}
+.lfields
+{
+	clear: left;
+	float: left;
+	margin-left: 10px;
+}
+.loginform_vauth
+{
+	clear: left;
+	float: left;
+	margin-left: 5px;
+	margin-top: 10px;
+}
+.mybutton
+{
+	float: left;
+	margin-top: 10px;
+}
+.recower
+{
+	float: left;
+	margin: 10px;
+	width: 76px;
+}
+.register
+{
+	float: left;
+	margin: 10px;
+	margin-left: 15px;
+	width: 76px;
+}
+.vabutton {
+ -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; 
+ border: 0 none; background: none; cursor: pointer; 
+  text-shadow: 0 1px 0 #fff; font-size: 1.15em; margin-bottom: 2px; border: 1px solid #bcc5c9; width: 100px; height: 29px; color: #596368; padding: 2px 0 5px 0; background: #fff url("/engine/modules/vauth/styles/fbutton.png") repeat-x 0 100%; font-weight: bold; 
+			
+		-moz-box-shadow: 0 1px 4px -3px black;
+			-webkit-box-shadow: 0 1px 4px -3px black;
+			box-shadow: 0 1px 4px -3px black;
+
+}
+.vabutton:hover { background-position: 0 10px; }
+
+		
+button.vabutton span { cursor: pointer; display: block; padding-top: 2px; }
+
+.login_input
+{
+	border: 1px solid #ccdfe8;
+	border-radius: 3px;
+	box-shadow: inset 0px 0px 3px #ccdfe8;
+	color: #444;
+	float: left;
+	font-size: 14pt;
+	height: 20px;
+	margin: 10px;
+	padding: 3px;
+	text-align: center;
+	width: 124px;
+}
+.login_input:hover
+{
+	background-color: #e6e6e6;
+	border: 1px solid #444;
+	box-shadow: inset 0px 0px 3px #666;
+	color: #000;
+}
+
+.vauth
+{
+	moz-transition: all 0.5s ease-in;
+	ms-transition: all 0.5s ease-in;
+	o-transition: all 0.5s ease-in;
+	webkit-transition: all 0.5s ease-in;
+
+	text-decoration: none;
+	text-align:center;
+	font-size:12px;
+	display:block;
+	margin-top:10px;
+	width:120px;
+	height:16px;
+	border:0px solid #000;
+	padding:5px;
+	border-radius:5px;
+	box-shadow:inset 0px 0px 0px #fff;
+	background-color:#5eb0e5;
+	color:#fff;
+}
+.vauth:hover
+{
+	moz-transition: all 0.5s ease-in;
+	ms-transition: all 0.5s ease-in;
+	o-transition: all 0.5s ease-in;
+	webkit-transition: all 0.5s ease-in;
+	text-decoration:none;
+	box-shadow:0px 0px 3px #5eb0e5;
+}
+.bird img
+{
+	display: block;
+}
+.bird
+{
+	background-color: #fcfc;
+	display: block;
+	float: left;
+	height: 19px;
+	margin-left: -5px;
+	margin-top: 3px;
+	width: 23px;
+}
+
+@font-face{
+    font-family: Pico; /* ָלÿ רנטפעא */
+  src: url(/engine/modules/vauth/styles/Arista.ttf); /* ֿףעü ך פאיכף סמ רנטפעמל */
+   }
+@font-face{
+    font-family: Catull; /* ָלÿ רנטפעא */
+  src: url(/engine/modules/vauth/styles/QLM.TTF); /* ֿףעü ך פאיכף סמ רנטפעמל */
+   }
+   
+@font-face{
+    font-family: Billabong; /* ָלÿ רנטפעא */
+  src: url(/engine/modules/vauth/styles/Billabong.ttf); /* ֿףעü ך פאיכף סמ רנטפעמל */
+   }
+
+@font-face{
+    font-family: NeutraText; /* ָלÿ רנטפעא */
+  src: url(/engine/modules/vauth/styles/NeutraText-DemiItalic.ttf); /* ֿףעü ך פאיכף סמ רנטפעמל */
+   }
+   
+ @font-face{
+    font-family: Collegia; /* ָלÿ רנטפעא */
+  src: url(/engine/modules/vauth/styles/COLLEGIA.ttf); /* ֿףעü ך פאיכף סמ רנטפעמל */
+   }

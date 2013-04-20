@@ -1,0 +1,49 @@
+<script language="javascript" src="/engine/modules/vauth/styles/facebox.js"></script>
+
+<script language="javascript">
+	$(document).ready(function() {
+
+		$('a[rel*=facebox]').facebox();
+
+	})
+
+</script>
+
+<link rel="stylesheet" type="text/css" href="/engine/modules/vauth/styles/facebox.css" />
+
+<script language="javascript">
+	$(document).ready(function() {
+
+		$('a[rel*=facebox]').facebox();
+
+	})
+
+</script>
+<link media="screen" type="text/css" rel="stylesheet" href="/engine/modules/vauth/styles/vauth_loginform.css"></link>
+	
+<a class="vauth" href="#virtual_loginform" rel="facebox" >Вход / Регистрация</a>
+
+
+<div style="display:none;" id="virtual_loginform">
+<center style="color: #0085cf;font-family: georgia, serif;font-size: 14pt;padding:5px;">Войти на сайт при помощи:</center>
+<a class="vkontakte_dialog buttons_hover" onclick="ShowLoading('');" href="/engine/modules/vauth/auth.php?auth_site=vkontakte"><span class="vk_fl">В</span>контакте</a>
+<a class="facebook_dialog buttons_hover" onclick="ShowLoading('');" href="/engine/modules/vauth/auth.php?auth_site=facebook">facebook</a>
+<a class="odnoklassniki_dialog buttons_hover" onclick="ShowLoading('');" href="/engine/modules/vauth/auth.php?auth_site=odnoklassniki"><span class="odnoklass">одноклассники</span></a>
+<a class="twitter_dialog buttons_hover" onclick="ShowLoading('');" href="/engine/modules/vauth/auth.php?auth_site=twitter"><span class="tw_text_dialog">twitter</span><span class="bird"><img src="/engine/modules/vauth/styles/twitter_newbird_blue_small.png" /></span></a>
+<a class="google_dialog buttons_hover" onclick="ShowLoading('');" href="/engine/modules/vauth/auth.php?auth_site=google">Google<b>+</b></a>
+<a class="foursquare_dialog buttons_hover"  onclick="ShowLoading('');" href="/engine/modules/vauth/auth.php?auth_site=foursquare"><span class="fs1_dialog">four</span><span class="fs2_dialog">square</a></span>
+<a class="instagram_dialog buttons_hover" onclick="ShowLoading('');" href="/engine/modules/vauth/auth.php?auth_site=instagram"><span class="instagr_dialog">Instagram</span></a>
+<a class="github_dialog buttons_hover" onclick="ShowLoading('');" href="/engine/modules/vauth/auth.php?auth_site=github"><span class="github_text_dialog">github</span></a>
+<a class="microsoft_dialog buttons_hover" onclick="ShowLoading('');" href="/engine/modules/vauth/auth.php?auth_site=microsoft">Windows Live&trade;</a>
+<a class="mail_dialog buttons_hover" onclick="ShowLoading('');" href="/engine/modules/vauth/auth.php?auth_site=mail">мир<font color="#faa61a">@</font>mail<font color="#faa61a">.ru</font></a>
+<img style="float:right;display:block;width:113px;height:41px;margin-top:10px;" src="/engine/modules/vauth/styles/vauth_facebox.png" />
+
+
+<form action="" method="post" class="loginform_vauth">
+<input name="login" type="hidden" id="login" value="submit" />
+<input class="login_input" name="login_name" type="text" value="Логин" onFocus='if(this.value=="Логин")this.value="";' onBlur='if(this.value=="")this.value="Логин";'/>
+<input class="login_input" name="login_password" type="Password" value="Пароль" onFocus='if(this.value=="Пароль")this.value="";' onBlur='if(this.value=="")this.value="Пароль";'/>
+<div class="recower"><a href="{lostpassword-link}">Напомнить</a></div><button class="vabutton mybutton" onclick="submit();" type="submit" title="Войти"><span>Войти</span></button><div class="register"><a href="/index.php?do=register">Регистрация</a></div>
+</form>
+
+</div>

@@ -1,0 +1,140 @@
+# Регистрируем приложение vkontakte:
+
+ - http://vkontakte.ru/editapp?act=create&site=1 выбрать тип "Веб-сайт", следовать инструкциям.
+  Запомнить параметры "ID приложения" и "Защищённый ключ".
+
+# Регистрируем приложение facebook:
+
+  Зайдите на ваш аккаунт в facebook
+  Перейдите по ссылке https://developers.facebook.com/apps
+  Справа сверху найтиде кнопку "Создать новое приложение"
+   В появившемся окне укажите:
+    App Display Name: - Название вашего приложения
+    App Namespace: - Ваш домен латинецей (что-то типа домена приложения на фейсбуке > 7 символов)
+    Поставьте галочку в поле "I agree to the Facebook Platform Policies."
+    Нажмите на кнопку "Продолжить" и введите капчу.
+
+   Дальше появится новая страница.
+    Укажите ваш домен без "http://" в поле "App Domain" (лучше откуда-нибудь скопировать через буфер обмена)
+    Поставьте галочку напротив "Хочу, чтобы посетители авторизовались на моем сайте через Facebook."
+    И укажите "Site URL:" (адрес вашего сайта лучше скопировать из строки браузера)
+
+   скопируйте
+    App ID:  номер
+    App Secret: значение
+
+# Регистрируем приложение twitter:
+
+  Зайдите на https://dev.twitter.com/apps
+  Пройдите авторизацию
+  Перейдите на https://dev.twitter.com/apps/new (Create a new application)
+  Заполните все поля, в поле Callback URL:
+   напишите: http://адрес_сайта/engine/modules/vauth/callback.php
+  Поставьте галочку рядом с правилами использования
+  Введите капчу
+  Нажмите на кнопку "Create your Twitter application" (Синенькая круглая)
+  Установите в Settings -> Application Type -> параметр Access: Read only
+  Скопируйте "Consumer key" и "Consumer secret".
+
+# Регистрируем приложение Windows Live (MSDN):
+
+ - авторизируемся/регистрируемся, заходим на:
+  https://manage.dev.live.com/AddApplication.aspx
+  
+ - регистрируем приложение, записываем
+ 
+  Client ID: XXXX
+  Client secret: XXXX
+
+ - переходим на API Settings
+ - Redirect domain: адрес_сайта/engine/modules/vauth/callback.php
+ - Готово!
+
+# Регистрируем приложение Mail.Ru:
+
+ - авторизируемся в "моём мире", заходим на:
+  http://api.mail.ru/sites/my/add
+  
+  1. Заполняем данные о сайте
+  2. На предложение скачать _receiver.html отвечаем далее, потом пропустить
+  3. Записываем:
+  
+   ID:XXXX
+   Приватный ключ:XXXXX
+   Секретный ключ:XXXXX
+
+# Регистрируем приложение Instagram:
+
+  (регистрируемся если нужно)
+ - http://instagram.com/developer/clients/register/
+ - указываем данные, OAuth redirect_uri:  адрес_сайта/engine/modules/vauth/callback.php
+ - запоминаем CLIENT ID, CLIENT SECRET
+
+# Регистрируем приложение foursquare:
+
+ - ru.foursquare.com
+ - авторизируемся
+ - https://ru.foursquare.com/oauth/register (заполняем поля)
+ - CALLBACK URL:  адрес_сайта/engine/modules/vauth/callback.php
+ - запоминаем Client ID, Client Secret
+
+# Регистрируем приложение GitHub:
+
+ - Регистрируемся - https://github.com/signup
+ - https://github.com 
+ - авторизируемся
+ - https://github.com/settings/applications/new
+ - Callback URL:  адрес_сайта/engine/modules/vauth/callback.php
+ - запоминаем Client ID, Secret
+
+# Регистрация приложения Odnoklassniki:
+
+
+
+ - http://odnoklassniki.ru/
+ - регистрируемся
+ - http://dev.odnoklassniki.ru/wiki/pages/viewpage.action?pageId=13992188
+ - заполняем форму, получаем статус разработчика.
+ - ждём какое-то время, может сутки, проверяем почту, следуем инструкциям.
+ - создаём приложение после  http://www.odnoklassniki.ru/dk?st.cmd=appAdd&st._aid=Apps_Info_MyDev_AddApp
+ - если ссылка не открывается, идём сюда: "Моя страница" - "Игры" - "Мои загруженные" - "добавить"
+ - если и там ничего нет, то следуем этому FAQ: http://dev.odnoklassniki.ru/wiki/display/ok/How+to+add+application+on+site
+-  вне Одноклассников -> oAuth авторизация
+ - заполняем форму:
+ - заполняем все поля, ниже значения некоторых:
+ - тип приложения: EXTERNAL
+ - Ссылка на приложение: URL сайта
+ - Ссылка callback: адрес_сайта/engine/modules/vauth/callback.php
+ - Размер окна: 500x500 px; (например)
+ - Статус: PUBLIC
+ - Все требуемые права: Не ставим галочек!
+ - Сохраняемся
+ - Проверяем почту, запоминаем
+
+		Application ID: XXXXX
+		Публичный ключ приложения: XXXXXXXXXXXX
+		Секретный ключ приложения: XXXXXXXXXX
+
+		Не схватите лишних пробелов  в конце!
+		
+		
+# Регистрация приложения Google+
+
+ - любой ценой заходим сюда: https://code.google.com/apis/console/
+ - жмём на меню слева "Services"
+ - ставим переключатели в положение "On" напротив "Google+ API", "Google+ Hangouts API"
+ - далее слева в меню выбираем "API Access"
+ - нажимаем на кнопочку "Create another client ID..." или "Create an OAuth 2.0 client ID..."
+ - Выбираем тип приложения "Web application"
+ - Указываем ссылку на сайт
+ - нажимаем на "(more options)"
+ - В поле, рядом с надписью "Authorized Redirect URIs"
+ - Указываем ссылку вида: адрес_сайта/engine/modules/vauth/callback.php
+ - Нажимаем на "Create client ID"
+ - Записываем Client ID, Client secret
+ 
+ 
+# Регистрация приложения Dropbox
+
+ - https://www.dropbox.com/developers/apply?cont=/developers/apps
+ - https://www.dropbox.com/developers/apps/create
