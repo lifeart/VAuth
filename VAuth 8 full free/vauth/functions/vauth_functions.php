@@ -337,7 +337,7 @@ if( ! class_exists( 'VAuthFunctions' ) )	{
 		
 			global $dle_api;
 			
-			if ($dle_api->dle_config->charset == 'windows-1251') {
+			if ($dle_api->dle_config['charset'] == 'windows-1251') {
 		
 				$string = iconv("utf-8", "cp1251", $string);
 			
