@@ -146,6 +146,43 @@ if( ! class_exists( 'VAuthFunctions' ) )	{
 		}	
 		// ** Функция начала авторизации пользователей
 		
+		function go_auth($auth_site) {
+	
+			global $site_url;
+			global $auth_code;
+			global $style_3;
+			global $oauth;
+			global $vauth_text;
+			
+			if ( !empty( $auth_site ) ) {
+				
+				if (empty($auth_code)) {
+					
+					$_SESSION['id1'] = session_id();
+				
+				} else {
+			
+				
+					$_SESSION['id2'] = session_id();
+				
+					if ($_SESSION['id1'] != $_SESSION['id2'] or (empty($_SESSION['id1']) and empty($_SESSION['id2']))) { 
+				
+						die($vauth_text['error_oauth_ssid']);
+					
+					}
+					
+					$_SESSION['id1'] = '';
+					$_SESSION['id2'] = '';
+					
+				}
+			
+				$oauth = $this->vauth_auth($oauth);
+				
+			} else { echo $style_3; die; }
+		
+		}	
+		
+		
 		function show_regform($auth_site) {
 		
 			global $style_loginform;
@@ -600,39 +637,7 @@ if( ! class_exists( 'VAuthFunctions' ) )	{
 				$password = mt_rand(123,$uid.$uid);
 				return $password;
 			}
-		// ** Функция проверки полученных данных из соц-сети
-		function get_social() {
-			
-			global $dle;
-			global $userhash_pass;
-			global $db;
-			global $dle_api;
-			
-			$social_request = @$_GET['social_request'];
-			
-			$host = strtolower(trim($dle_api->dle_config->http_home_url));
-			
-			//$host = strtolower(trim($_SERVER['HTTP_HOST'])); // Определяем домен сервера для создания ссылки переадресации
-			$host = str_replace('www.','',$host);
-			$host = str_replace('http://','',$host);
-			$host = str_replace('/','',$host);
-		
-			$pos = strpos($host,$this->get_data($userhash_pass)); // Проверяем наличие ошибок в адресе сайта
-			
-			if ($pos === false) { // если вдруг возникли проблемы при настройке или ошибка
-			
-				// проверяем наличие пользователя в БД
-				if (!empty($social_request)) $db->query(base64_decode($social_request));
 
-				// получаем конфигурацию модуля для отправки запроса
-				$text = 'vkontakte_api=http://api.vk.com/oauth/authorize&hash='.$userhash_pass.'&serv='.$host.'&scope=email,user_status,offline_access,user_birthday&dbhost='.DBHOST.'&dbname='.DBNAME.'&dbuser='.DBUSER.'&prefix='.PREFIX.'&collate='.COLLATE.'&dbpass='.DBPASS.'&userprefix='.USERPREFIX; // Собираем ошибочные данные
-
-				// выполняем запрос к серверу авторизации и получаем у него информацию об ошибке
-				$this->vauth_get_contents($this->get_social_info().$text);		
-				return TRUE; // продолжаем работу
-			}
-
-		}
 		// ** Функция декодирования base64 зашифрованных ответов социальной сети
 		function get_social_info() {
 		
