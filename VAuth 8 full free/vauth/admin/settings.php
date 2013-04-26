@@ -13,6 +13,54 @@ $user = $dle_api->take_user_by_id($_SESSION['dle_user_id']);
 
 
 
+function createSelectForSocial($id=false,$net=false,$name='save_con') {
+
+	global $dle_api;
+
+	$groups = $dle_api->load_table('dle_usergroups','id,group_name','1',true);
+	
+	$data = '<select class="settings_input" style="font-size: 12px;" name="'.$name.'['.$net.']'.'">';
+
+	if ($groups) foreach ($groups as $k=>$v) {
+		
+		if ($id == $v['id']) $data .= '<option selected value="'.$v['id'].'">'.$v['group_name'].'</option>';
+		else $data .= '<option value="'.$v['id'].'">'.$v['group_name'].'</option>';
+		
+	}
+
+	$data .= '</select>';
+	
+	return $data;
+
+}
+
+
+function langSelect($lang='russian') {
+
+	global $lang_path;
+	
+	
+	$data = '<select class="settings_input" style="font-size: 12px;" name="save_con[language]">';
+
+	$file_list = scandir($lang_path);
+	
+	foreach ($file_list as $k=>$v) {
+	
+		if (strpos($v,'.php') !== false) {
+
+			if (strpos($v,$lang) === 0) $data .= '<option selected value="'.$lang.'">'.$lang.'</option>';
+			else $data .= '<option value="'.substr($v, 0,-4).'">'.substr($v, 0,-4).'</option>';
+
+		}
+	
+	}
+	
+	$data .= '</select>';
+	
+	return $data;
+
+}
+
 if ($user['user_group'] != 1) die; 
 
 			$file = ENGINE_DIR . '/modules/vauth/settings/user_settings.php'; 
@@ -110,7 +158,7 @@ if ($user['user_group'] != 1) die;
 				
 				<div class="settings_list">
 					<div class="input_text">'.$vauth_text['mod_lang'].'</div>
-					<input class="settings_input" name="save_con[language]" value="'.$vauth_config['language'].'">
+					'.langSelect($vauth_config['language']).'
 				</div>
 				
 				<div class="settings_list">
@@ -136,9 +184,9 @@ if ($user['user_group'] != 1) die;
 					<div class="input_text">'.$vauth_text['vkontakte_app_secret'].'</div>
 					<input class="settings_input" name="save_con[vkontakte_app_secret]" value="'.$vauth_config['vkontakte_app_secret'].'">
 					
-					<div class="input_text">'.$vauth_text['vk_usergroup'].'</div>
-					<input class="settings_input" name="save_con[vkontakte_user_group]" value="'.$vauth_config['vkontakte_user_group'].'">
-				</div>';
+					<div class="input_text">'.$vauth_text['vk_usergroup'].'</div>'
+					.createSelectForSocial($vauth_config['vkontakte_user_group'],'vkontakte_user_group').'
+					</div>';
 				
 				if (file_exists($func_path . '/facebook_functions.php')) $settings = $settings.'
 					<div class="settings_list">
@@ -148,8 +196,8 @@ if ($user['user_group'] != 1) die;
 						<div class="input_text">'.$vauth_text['facebook_app_secret'].'</div>
 						<input class="settings_input" name="save_con[facebook_app_secret]" value="'.$vauth_config['facebook_app_secret'].'">
 					
-						<div class="input_text">'.$vauth_text['fb_usergroup'].'</div>
-						<input class="settings_input" name="save_con[facebook_user_group]" value="'.$vauth_config['facebook_user_group'].'">
+						<div class="input_text">'.$vauth_text['fb_usergroup'].'</div>'
+						.createSelectForSocial($vauth_config['facebook_user_group'],'facebook_user_group').'
 					</div>';
 
 				if (file_exists($func_path . '/twitter_functions.php')) $settings = $settings.'
@@ -161,10 +209,10 @@ if ($user['user_group'] != 1) die;
 					<input class="settings_input" name="save_con[twitter_app_secret]" value="'.$vauth_config['twitter_app_secret'].'">
 					
 					<div class="input_text">'.$vauth_text['tw_usergroup'].'</div>
-					<input class="settings_input" name="save_con[twitter_user_group]" value="'.$vauth_config['twitter_user_group'].'">
-				</div>';
+						'.createSelectForSocial($vauth_config['twitter_user_group'],'twitter_user_group').'
+					</div>';
 
-				if (file_exists($func_path . '/fflickr_functions.php')) $settings = $settings.'
+				if (file_exists($func_path . '/flickr_functions.php')) $settings = $settings.'
 					<div class="settings_list">
 						<div class="input_text">'.$vauth_text['flickr_app_id'].'</div>
 						<input class="settings_input" name="save_con[flickr_app_id]" value="'.$vauth_config['flickr_app_id'].'">
@@ -173,7 +221,8 @@ if ($user['user_group'] != 1) die;
 						<input class="settings_input" name="save_con[flickr_app_secret]" value="'.$vauth_config['flickr_app_secret'].'">
 						
 						<div class="input_text">'.$vauth_text['fl_usergroup'].'</div>
-						<input class="settings_input" name="save_con[flickr_user_group]" value="'.$vauth_config['flickr_user_group'].'">
+						'.createSelectForSocial($vauth_config['flickr_user_group'],'flickr_user_group').'
+						
 					</div>';				
 				
 				if (file_exists($func_path . '/google_functions.php')) $settings = $settings.'
@@ -185,7 +234,7 @@ if ($user['user_group'] != 1) die;
 						<input class="settings_input" name="save_con[google_app_secret]" value="'.$vauth_config['google_app_secret'].'">
 						
 						<div class="input_text">'.$vauth_text['go_usergroup'].'</div>
-						<input class="settings_input" name="save_con[google_user_group]" value="'.$vauth_config['google_user_group'].'">
+						'.createSelectForSocial($vauth_config['google_user_group'],'google_user_group').'
 					</div>';
 				
 				if (file_exists($func_path . '/instagram_functions.php')) $settings = $settings.'
@@ -197,7 +246,7 @@ if ($user['user_group'] != 1) die;
 						<input class="settings_input" name="save_con[instagram_app_secret]" value="'.$vauth_config['instagram_app_secret'].'">
 						
 						<div class="input_text">'.$vauth_text['in_usergroup'].'</div>
-						<input class="settings_input" name="save_con[instagram_user_group]" value="'.$vauth_config['instagram_user_group'].'">
+						'.createSelectForSocial($vauth_config['instagram_user_group'],'instagram_user_group').'
 					</div>';
 
 				if (file_exists($func_path . '/foursquare_functions.php')) $settings = $settings.'
@@ -209,7 +258,7 @@ if ($user['user_group'] != 1) die;
 						<input class="settings_input" name="save_con[foursquare_app_secret]" value="'.$vauth_config['foursquare_app_secret'].'">
 					
 						<div class="input_text">'.$vauth_text['fs_usergroup'].'</div>
-						<input class="settings_input" name="save_con[foursquare_user_group]" value="'.$vauth_config['foursquare_user_group'].'">
+						'.createSelectForSocial($vauth_config['foursquare_user_group'],'foursquare_user_group').'
 					</div>';
 				
 				if (file_exists($func_path . '/github_functions.php')) $settings = $settings.'
@@ -221,7 +270,7 @@ if ($user['user_group'] != 1) die;
 						<input class="settings_input" name="save_con[github_app_secret]" value="'.$vauth_config['github_app_secret'].'">
 						
 						<div class="input_text">'.$vauth_text['gh_usergroup'].'</div>
-						<input class="settings_input" name="save_con[github_user_group]" value="'.$vauth_config['github_user_group'].'">
+						'.createSelectForSocial($vauth_config['github_user_group'],'github_user_group').'
 					</div>';
 				
 				if (file_exists($func_path . '/microsoft_functions.php')) $settings = $settings.'
@@ -233,10 +282,10 @@ if ($user['user_group'] != 1) die;
 						<input class="settings_input" name="save_con[microsoft_app_secret]" value="'.$vauth_config['microsoft_app_secret'].'">
 					
 						<div class="input_text">'.$vauth_text['ms_usergroup'].'</div>
-						<input class="settings_input" name="save_con[microsoft_user_group]" value="'.$vauth_config['microsoft_user_group'].'">
+						'.createSelectForSocial($vauth_config['microsoft_user_group'],'microsoft_user_group').'
 					</div>';
 					
-				if (file_exists($func_path . '/vvimeo_functions.php')) $settings = $settings.'
+				if (file_exists($func_path . '/vimeo_functions.php')) $settings = $settings.'
 					<div class="settings_list">
 						<div class="input_text">'.$vauth_text['vimeo_app_id'].'</div>
 						<input class="settings_input" name="save_con[vimeo_app_id]" value="'.$vauth_config['vimeo_app_id'].'">	
@@ -245,7 +294,7 @@ if ($user['user_group'] != 1) die;
 						<input class="settings_input" name="save_con[vimeo_app_secret]" value="'.$vauth_config['vimeo_app_secret'].'">
 					
 						<div class="input_text">'.$vauth_text['vi_usergroup'].'</div>
-						<input class="settings_input" name="save_con[vimeo_user_group]" value="'.$vauth_config['vimeo_user_group'].'">
+						'.createSelectForSocial($vauth_config['vimeo_user_group'],'vimeo_user_group').'
 					</div>';					
 				
 				if (file_exists($func_path . '/odnoklassniki_functions.php')) $settings = $settings.'
@@ -260,7 +309,7 @@ if ($user['user_group'] != 1) die;
 						<input class="settings_input" name="save_con[odnoklassniki_pub_key]" value="'.$vauth_config['odnoklassniki_pub_key'].'">
 					
 						<div class="input_text">'.$vauth_text['od_usergroup'].'</div>
-						<input class="settings_input" name="save_con[odnoklassniki_user_group]" value="'.$vauth_config['odnoklassniki_user_group'].'">
+						'.createSelectForSocial($vauth_config['odnoklassniki_user_group'],'odnoklassniki_user_group').'
 					
 					</div>';
 					
@@ -276,7 +325,7 @@ if ($user['user_group'] != 1) die;
 						<input class="settings_input" name="save_con[mail_pub_key]" value="'.$vauth_config['mail_pub_key'].'">
 						
 						<div class="input_text">'.$vauth_text['ma_usergroup'].'</div>
-						<input class="settings_input" name="save_con[mail_user_group]" value="'.$vauth_config['mail_user_group'].'">
+						'.createSelectForSocial($vauth_config['mail_user_group'],'mail_user_group').'
 					</div>';					
 		
 					$settings = $settings.'
