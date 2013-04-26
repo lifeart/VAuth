@@ -1,4 +1,4 @@
-VAuth 8 
+VAuth 8 (Virtual Auth)
 =======
 
 DataLife Engine autorization through social networks
