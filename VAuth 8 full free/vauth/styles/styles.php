@@ -13,7 +13,7 @@
 
 	$user_regform['head'] = '
 	
-		<html><head><meta http-equiv="Content-Type" content="text/html;charset=windows-1251" />
+		<html><head><meta http-equiv="Content-Type" content="text/html;charset='.$dle_api->dle_config['charset'].'" />
 		</head> ' . $style_loginform . ' <body><div id="wrap"><form method="post" action="/engine/modules/vauth/auth.php?auth_site=';
 		
 		$user_regform['head_2']= '">';
