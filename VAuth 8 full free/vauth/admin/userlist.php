@@ -259,8 +259,13 @@ while ( $row = $db->get_row( $connect_sql_login ) )	{
 	
 	if (empty($row['foto'])) $user_img_url = '/engine/modules/vauth/styles/noavatar.png';
 	
-	$row['name'] = iconv("cp1251", "utf-8", $row['name']);
-	$row['fullname'] = iconv("cp1251", "utf-8", $row['fullname']);
+	if ($dle_api->dle_config['charset'] != 'windows-1251') {
+		
+		$row['name'] = iconv("cp1251", "utf-8", $row['name']);
+		$row['fullname'] = iconv("cp1251", "utf-8", $row['fullname']);
+		
+	}
+	
 	
 	
 	if($_GET['style']=='list') $tag .= '<span class="userlist_list"><a class="del_vauth_user_list" title="'.$vauth_text['admin_user_del'].$row['fullname'].$vauth_text['admin_user_del_site'].'" href="'.$admin_php_name.'?mod=vauth&page=users&del_user='.$row['user_id'].'"><b>&#935;</b></a><a href="/user/'.urlencode($row['name']).'">'.$row['name'].'</a></span>';
