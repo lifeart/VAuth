@@ -25,14 +25,14 @@ if( ! class_exists( 'FbFunctions' ) )	{
 			$oauth['group']				=	$vauth_config['facebook_user_group'];
 
 			if (empty($oauth['group'])) $oauth['group'] = 4;
-			if (empty($oauth['app_id'])) die('Не указан идентификатор приложения Facebook');
-			if (empty($oauth['app_secret'])) die('Не указан секретный код приложения Facebook');
+			if (empty($oauth['app_id'])) die('РќРµ СѓРєР°Р·Р°РЅ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїСЂРёР»РѕР¶РµРЅРёСЏ Facebook');
+			if (empty($oauth['app_secret'])) die('РќРµ СѓРєР°Р·Р°РЅ СЃРµРєСЂРµС‚РЅС‹Р№ РєРѕРґ РїСЂРёР»РѕР¶РµРЅРёСЏ Facebook');
 			
 			return $oauth;
 			
 		}		
 	
-		// ** Функция получения друзей из facebook
+		// ** Р¤СѓРЅРєС†РёСЏ РїРѕР»СѓС‡РµРЅРёСЏ РґСЂСѓР·РµР№ РёР· facebook
 		function get_oauth_friends($oauth) {
 			
 			$oauth_friendlist='';
@@ -52,7 +52,7 @@ if( ! class_exists( 'FbFunctions' ) )	{
 
 		}	
 	
-		// ** Функция авторизации в Facebook
+		// ** Р¤СѓРЅРєС†РёСЏ Р°РІС‚РѕСЂРёР·Р°С†РёРё РІ Facebook
 		function vauth_auth($oauth) {
 		
 			global $auth_code;
@@ -76,20 +76,20 @@ if( ! class_exists( 'FbFunctions' ) )	{
 			
 		}
 	
-		// ** Функция получения информации пользователя из Facebook
+		// ** Р¤СѓРЅРєС†РёСЏ РїРѕР»СѓС‡РµРЅРёСЏ РёРЅС„РѕСЂРјР°С†РёРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР· Facebook
 		function get_oauth_info($oauth) {
 		
 			global $vauth_text;
 			global $db;
 			global $site_url;
 			
-			$oauth_info		=	json_decode($this->vauth_get_contents('https://graph.facebook.com/me?access_token='.$oauth['access_token']), FALSE); //Получаем информцию о пользователе
+			$oauth_info		=	json_decode($this->vauth_get_contents('https://graph.facebook.com/me?access_token='.$oauth['access_token']), FALSE); //РџРѕР»СѓС‡Р°РµРј РёРЅС„РѕСЂРјС†РёСЋ Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ
 			
 			$oauth['uid']		=	$this->conv_it($oauth_info->id);
 			if (!is_numeric($oauth['uid'])) { header('Location: '.$site_url); die(); }
-			$oauth['name']		=	$this->conv_it($oauth_info->name); //Имя и фамилия
-			$oauth['nick']		=	$this->conv_it($oauth_info->username); //Логин	
-			$oauth['birthday'] =	$this->conv_it($oauth_info->birthday); //Логин	
+			$oauth['name']		=	$this->conv_it($oauth_info->name); //РРјСЏ Рё С„Р°РјРёР»РёСЏ
+			$oauth['nick']		=	$this->conv_it($oauth_info->username); //Р›РѕРіРёРЅ	
+			$oauth['birthday'] =	$this->conv_it($oauth_info->birthday); //Р›РѕРіРёРЅ	
 			$oauth['birthday'] =	str_replace('/','.',$oauth['birthday']);
 			
 			if ( !empty($oauth['birthday']) ) {
@@ -104,20 +104,20 @@ if( ! class_exists( 'FbFunctions' ) )	{
 
 			$avatar 			=	$this->get_curl_headers('https://graph.facebook.com/'.$oauth['uid'].'/picture?type=large');
 			
-			
-			
 			preg_match("!https://(.*?).(?:jpe?g|png|gif)!Ui",$avatar,$avatar);
 			
 			$oauth['avatar'] 		=	$avatar[0];
-			$oauth['avatar'] 		=	$oauth['avatar'];
 			
-			$oauth['bio']			=	$this->conv_it($oauth_info->bio); //Био
-			$oauth['bio']			=		str_replace("\r\n","<br/>",$oauth['bio']);
-			$oauth['bio']			=		'<br/>'.$oauth['bio'];
-			$oauth['url']			=	$this->conv_it($oauth_info->link); //Адрес страницы
-			$oauth['bplace']		=	$this->conv_it($oauth_info->hometown->name); //Место рождения
-			$oauth['quotes']		=	$this->conv_it($oauth_info->quotes); //Цитаты
-			$oauth['gender']		=	$this->conv_it($oauth_info->gender); //Пол
+			if (isset($oauth_info->bio)) {
+				$oauth['bio'] =	$this->conv_it($oauth_info->bio); //Р‘РёРѕ
+				$oauth['bio']			=		str_replace("\r\n","<br/>",$oauth['bio']);
+				$oauth['bio']			=		'<br/>'.$oauth['bio'];
+				} else $oauth['bio'] = '';
+				
+				
+			if (isset($oauth_info->link)) $oauth['url'] =	$this->conv_it($oauth_info->link); //РђРґСЂРµСЃ СЃС‚СЂР°РЅРёС†С‹
+			if (isset($oauth_info->bplace)) $this->conv_it($oauth_info->hometown->name); //РњРµСЃС‚Рѕ СЂРѕР¶РґРµРЅРёСЏ
+			if (isset($oauth_info->quotes)) $this->conv_it($oauth_info->quotes); //Р¦РёС‚Р°С‚С‹
 			
 			switch(	$oauth['gender']	) {
 			
@@ -126,10 +126,10 @@ if( ! class_exists( 'FbFunctions' ) )	{
 			
 			}
 			
-			$oauth['location']		=	$this->conv_it($oauth_info->location->name); //Местоположение
-			$oauth['last_name']	=	$this->conv_it($oauth_info->last_name); //Фамилия
-			$oauth['first_name']	=	$this->conv_it($oauth_info->first_name); //Имя
-			$oauth['email']		=	$this->conv_it($oauth_info->email); //Мыло
+			$oauth['location']		=	$this->conv_it($oauth_info->location->name); //РњРµСЃС‚РѕРїРѕР»РѕР¶РµРЅРёРµ
+			$oauth['last_name']	=	$this->conv_it($oauth_info->last_name); //Р¤Р°РјРёР»РёСЏ
+			$oauth['first_name']	=	$this->conv_it($oauth_info->first_name); //РРјСЏ
+			$oauth['email']		=	$this->conv_it($oauth_info->email); //РњС‹Р»Рѕ
 						
 			$oauth['username']	=	$oauth['first_name']  . ' ' .  $oauth['last_name'];
 			$oauth['fullname']	=	$oauth['username'];
