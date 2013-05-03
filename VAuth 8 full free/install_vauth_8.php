@@ -1,7 +1,7 @@
 <html>
 
 <head>
-<meta http-equiv="content-type" content="text/html; charset=windows-1251" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<title>Установка VAuth 8 DLE</title>
 
 </head>
