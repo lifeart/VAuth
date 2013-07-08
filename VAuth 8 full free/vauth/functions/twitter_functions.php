@@ -87,6 +87,7 @@ if( ! class_exists( 'TwFunctions' ) )	{
 			$connection 	= 	new TwitterOAuth($oauth['app_id'], $oauth['app_secret'], $oauth['access_token']['oauth_token'], $oauth['access_token']['oauth_token_secret']);
 			$oauth_content	=	$connection->get('account/verify_credentials');	
 			
+
 			$oauth['uid']	=	$oauth_content->id; //ID
 			$oauth['loc']	=	$oauth_content->location; //Местоположение
 			$oauth['img']	=	$oauth_content->profile_image_url_https; //Аватар
@@ -107,31 +108,17 @@ if( ! class_exists( 'TwFunctions' ) )	{
 			$oauth['info']		=	$db->safesql( trim( htmlspecialchars( strip_tags( $oauth['info'] ) ) ) );	
 			$oauth['name']		=	$db->safesql( trim( htmlspecialchars( strip_tags( $oauth['name'] ) ) ) );
 			
-			$oauth['avatar']	=	$this->get_tw_avatar($oauth['nick']);
+			$oauth['avatar']	=	$oauth['img'];
 			
 			return $oauth;
 		}		
-		
-		// ** Функция получения аватарки пользователя из твиттера
-		function get_tw_avatar($oauth_nick) { //Ищем аватар пользователя
-			
-			$oauth_big_img_url		=	'http://api.twitter.com/1/users/profile_image/' . $oauth_nick . '.json?size=bigger';
-
-			$oauth_big_img = $this->get_curl_headers($oauth_big_img_url);
-			
-			preg_match("!http://(.*?).(?:jpe?g|png|gif)!Ui",$oauth_big_img,$oauth_big_img);
-
-			$oauth_big_img = $oauth_big_img[0];
-
-			return $oauth_big_img;
-		}
 
 		// ** Функция получения друзей из твиттера
 		function get_oauth_friends($oauth) {
 			
 			$oauth_friendlist='';
 
-			$oauth['friends']	=	json_decode($this->vauth_get_contents('https://api.twitter.com/1/followers/ids.json?user_id='.$oauth['uid']),FALSE);
+			$oauth['friends']	=	json_decode($this->vauth_get_contents('https://api.twitter.com/1.1/followers/ids.json?user_id='.$oauth['uid']),FALSE);
 
 			foreach($oauth['friends']->ids as $k=>$v) {
 			
