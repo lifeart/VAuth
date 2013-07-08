@@ -28,14 +28,14 @@ if( ! class_exists( 'TwFunctions' ) )	{
 			$oauth['group']				=	$vauth_config['twitter_user_group'];
 	
 			if (empty($oauth['group'])) $oauth['group'] = 4;
-			if (empty($oauth['app_id'])) die('Не указан идентификатор приложения instagram');
-			if (empty($oauth['app_secret'])) die('Не указан секретный код приложения instagram');
+			if (empty($oauth['app_id'])) die('РќРµ СѓРєР°Р·Р°РЅ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїСЂРёР»РѕР¶РµРЅРёСЏ instagram');
+			if (empty($oauth['app_secret'])) die('РќРµ СѓРєР°Р·Р°РЅ СЃРµРєСЂРµС‚РЅС‹Р№ РєРѕРґ РїСЂРёР»РѕР¶РµРЅРёСЏ instagram');
 		
 			return $oauth;
 		
 		}	
 
-		// ** Функция получения данных пользователя из твиттера
+		// ** Р¤СѓРЅРєС†РёСЏ РїРѕР»СѓС‡РµРЅРёСЏ РґР°РЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР· С‚РІРёС‚С‚РµСЂР°
 		function get_tw_content($oauth) {
 		
 			global $func_path;
@@ -48,7 +48,7 @@ if( ! class_exists( 'TwFunctions' ) )	{
 			return $oauth_content;
 		}
 
-		// ** Функция авторизации в Твиттера
+		// ** Р¤СѓРЅРєС†РёСЏ Р°РІС‚РѕСЂРёР·Р°С†РёРё РІ РўРІРёС‚С‚РµСЂР°
 		function vauth_auth($oauth) {
 			
 			$_SESSION['auth_from']	=	'twitter';
@@ -68,13 +68,13 @@ if( ! class_exists( 'TwFunctions' ) )	{
 						header('Location: ' . $url); die();
 						break;
 					default:
-						echo 'Не могу соединиться с сервером Twitter, попробуйте позднее.';
+						echo 'РќРµ РјРѕРіСѓ СЃРѕРµРґРёРЅРёС‚СЊСЃСЏ СЃ СЃРµСЂРІРµСЂРѕРј Twitter, РїРѕРїСЂРѕР±СѓР№С‚Рµ РїРѕР·РґРЅРµРµ.';
 				}
 			} else return $oauth;
 			
 		}
 
-		// ** Функция получения информации из Твиттера
+		// ** Р¤СѓРЅРєС†РёСЏ РїРѕР»СѓС‡РµРЅРёСЏ РёРЅС„РѕСЂРјР°С†РёРё РёР· РўРІРёС‚С‚РµСЂР°
 		function get_oauth_info($oauth) {
 			
 			global $db;
@@ -89,13 +89,13 @@ if( ! class_exists( 'TwFunctions' ) )	{
 			
 
 			$oauth['uid']	=	$oauth_content->id; //ID
-			$oauth['loc']	=	$oauth_content->location; //Местоположение
-			$oauth['img']	=	$oauth_content->profile_image_url_https; //Аватар
-			$oauth['url']	=	$oauth_content->url; //Сайт
-			$oauth['name']	=	$oauth_content->name; //Имя пользователя
-			$oauth['lang']	=	$oauth_content->lang; //Язык пользователя
-			$oauth['info']	=	$oauth_content->description; //Описание
-			$oauth['nick']	=	$oauth_content->screen_name; //Описание
+			$oauth['loc']	=	$oauth_content->location; //РњРµСЃС‚РѕРїРѕР»РѕР¶РµРЅРёРµ
+			$oauth['img']	=	$oauth_content->profile_image_url_https; //РђРІР°С‚Р°СЂ
+			$oauth['url']	=	$oauth_content->url; //РЎР°Р№С‚
+			$oauth['name']	=	$oauth_content->name; //РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+			$oauth['lang']	=	$oauth_content->lang; //РЇР·С‹Рє РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+			$oauth['info']	=	$oauth_content->description; //РћРїРёСЃР°РЅРёРµ
+			$oauth['nick']	=	$oauth_content->screen_name; //РћРїРёСЃР°РЅРёРµ
 			
 			$oauth['loc']	=	$this->conv_it($oauth['loc']);
 			$oauth['name']	=	$this->conv_it($oauth['name']);
@@ -113,7 +113,7 @@ if( ! class_exists( 'TwFunctions' ) )	{
 			return $oauth;
 		}		
 
-		// ** Функция получения друзей из твиттера
+		// ** Р¤СѓРЅРєС†РёСЏ РїРѕР»СѓС‡РµРЅРёСЏ РґСЂСѓР·РµР№ РёР· С‚РІРёС‚С‚РµСЂР°
 		function get_oauth_friends($oauth) {
 			
 			$oauth_friendlist='';
