@@ -19,35 +19,36 @@ if( ! class_exists( 'VkFunctions' ) )	{
 			$oauth['api_url']			=	'https://api.vk.com/method/';
 			$oauth['app_id']			=	$vauth_config['vkontakte_app_id'];		
 			$oauth['app_secret']		=	$vauth_config['vkontakte_app_secret'];
-			$oauth['auth_url']			=	'http://api.vk.com/oauth/authorize?client_id=' . $oauth['app_id'] .'&scope=friends,offline&redirect_uri='.$site_url.'/engine/modules/vauth/auth.php?auth_site=vkontakte&response_type=code';
+			$oauth['redirect_uri'] = $site_url.'/engine/modules/vauth/auth.php?auth_site=vkontakte';
+			$oauth['auth_url']			=	'https://oauth.vk.com/authorize?client_id=' . $oauth['app_id'] .'&scope=friends,offline&redirect_uri='.$oauth['redirect_uri'].'&response_type=code';
 			$oauth['group']				=	$vauth_config['vkontakte_user_group'];
+		
 			if (empty($oauth['group'])) $oauth['group'] = 4;
-			if (empty($oauth['app_id'])) die('Íå óêàçàí èäåíòèôèêàòîð ïðèëîæåíèÿ âêîíòàêòå');
-			if (empty($oauth['app_secret'])) die('Íå óêàçàí ñåêðåòíûé êîä ïðèëîæåíèÿ âêîíòàêòå');
+			if (empty($oauth['app_id'])) die('ÐÐµ ÑƒÐºÐ°Ð·Ð°Ð½ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€ Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ Ð²ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ðµ');
+			if (empty($oauth['app_secret'])) die('ÐÐµ ÑƒÐºÐ°Ð·Ð°Ð½ ÑÐµÐºÑ€ÐµÑ‚Ð½Ñ‹Ð¹ ÐºÐ¾Ð´ Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ Ð²ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ðµ');
 		
 			return $oauth;
 		
 		}
 	
-		// ** Ôóíêöèÿ àâòîðèçàöèè â Vkontakte
+		// ** Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð°Ð²Ñ‚Ð¾Ñ€Ð¸Ð·Ð°Ñ†Ð¸Ð¸ Ð² Vkontakte
 		function vauth_auth($oauth) {
 		
 			global $vauth_text;
 			global $auth_code;
-			global $site_url;
 		
 			$_SESSION['auth_from']	=	'vkontakte';
 		
 			if (empty($auth_code) and empty($oauth['access_token']) and empty($oauth['access_code'])) {
 				header('Location: '.$oauth['auth_url'].'&display=page');
-				die;
+				die();
 			}
 			
 			if ( !empty($auth_code) ) {
-			
-				$oauth_auth = 'https://api.vk.com/oauth/access_token?redirect_uri='.$site_url.'/engine/modules/vauth/auth.php?auth_site=vkontakte&client_id='.$oauth['app_id'].'&client_secret='.$oauth['app_secret'].'&code='.$auth_code;
-				
-				$userinfo = json_decode($this->vauth_get_contents($oauth_auth), FALSE); // * Ïëó÷àåì ñåêðåòíûé õýøêîä	
+
+				$oauth_auth = 'https://oauth.vk.com/access_token?client_id='.$oauth['app_id'].'&client_secret='.$oauth['app_secret'].'&code='.$auth_code.'&redirect_uri='.$oauth['redirect_uri'];
+	
+				$userinfo = json_decode($this->vauth_get_contents($oauth_auth), FALSE); // * ÐŸÐ»ÑƒÑ‡Ð°ÐµÐ¼ ÑÐµÐºÑ€ÐµÑ‚Ð½Ñ‹Ð¹ Ñ…ÑÑˆÐºÐ¾Ð´	
 				
 				if (	!empty($userinfo->access_token) ) {
 				
@@ -61,51 +62,63 @@ if( ! class_exists( 'VkFunctions' ) )	{
 					$oauth['access_token'] = $access_token;
 
 
-				} else if ($userinfo->error) {
-					
-					die($userinfo->error.' : '.$userinfo->error_description);
-					
-				}  else die($vauth_text['vk_token_error']);
-
+				} else die($vauth_text['vk_token_error']);
+			
 			}
 			
 			return $oauth;
 		}
 		
-		// ** Ôóíêöèÿ ïîëó÷åíèÿ èíôîðìàöèè èç Âêîíòàêòå
+		// ** Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð¿Ð¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ñ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ð¸ Ð¸Ð· Ð’ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ðµ
 		function get_oauth_info($oauth) {
 
 			global $vauth_text;
 			global $db;
 			
-			$oauth_info = json_decode($this->vauth_get_contents('https://api.vk.com/method/getProfiles?uids='.$oauth['uid'].'&fields=photo_big,nickname,bdate,city,sex,country,has_mobile,rate,contacts,education,online,counters,domain,lists,activity,screen_name&access_token='.$oauth['access_token']), FALSE);
+			$query_url = 'https://api.vk.com/method/users.get?uids='.$oauth['uid'].'&fields=photo_200,photo_200_orig,photo_max_orig,nickname,screen_name,sex,bdate,photo,contacts,activity,relation,activities,interests,movies,tv,books,games,about,quotes,connections,city,country,education&access_token='.$oauth['access_token'];
+			
+			$oauth_info = json_decode($this->vauth_get_contents($query_url), FALSE);
 
-			$oauth['email']		=	$oauth['uid'].'@vk.com';			
-			$oauth['avatar']		=	$this->get_vk_from_json($oauth_info,'photo_big');
+			if (!$this->get_vk_from_json($oauth_info,'email')) $oauth['email'] =	$oauth['uid'].'@vk.com';
+			else $oauth['email']		=	$this->get_vk_from_json($oauth_info,'email');
+						
+			$oauth['avatar']		=	$this->get_vk_from_json($oauth_info,'photo_200');
+			
+			
+			$oauth['avatars'][]  = $this->get_vk_from_json($oauth_info,'photo_200_orig');
+			$oauth['avatars'][]  = $this->get_vk_from_json($oauth_info,'photo_max_orig');
+			$oauth['avatars'][]  = $this->get_vk_from_json($oauth_info,'photo');
+			
 			$oauth['last_name']	=	$this->get_vk_from_json($oauth_info,'last_name');	
 			$oauth['first_name']	=	$this->get_vk_from_json($oauth_info,'first_name');
 			$oauth['screen_name'] 	=	$this->get_vk_from_json($oauth_info,'screen_name');
 			$oauth['nick']		 	=	$oauth['screen_name'];
-			$oauth['fullname']		=	$oauth['first_name'] . ' ' . $oauth['last_name']; // Äåëàåì ïîëíîå èìÿ
+			$oauth['fullname']		=	$oauth['first_name'] . ' ' . $oauth['last_name']; // Ð”ÐµÐ»Ð°ÐµÐ¼ Ð¿Ð¾Ð»Ð½Ð¾Ðµ Ð¸Ð¼Ñ
 			
 			$oauth['mobile_phone']	=	$this->get_vk_from_json($oauth_info,'mobile_phone');
 			
-			#ñòðàíà ïðîæèâàíèÿ ïîëüçîâàòåëÿ
+			#ÑÑ‚Ñ€Ð°Ð½Ð° Ð¿Ñ€Ð¾Ð¶Ð¸Ð²Ð°Ð½Ð¸Ñ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
 			$oauth['country']	=	$this->get_vk_from_json($oauth_info,'country');
 			$info_country	=	json_decode($this->vauth_get_contents('https://api.vk.com/method/places.getCountryById?cids='.$oauth['country'].'&access_token='.$oauth['access_token']),FALSE);
 			$oauth['country']	=	$this->get_vk_from_json($info_country,'name');
-			#ñòðàíà ïðîæèâàíèÿ ïîëüçîâàòåëÿ
+			#ÑÑ‚Ñ€Ð°Ð½Ð° Ð¿Ñ€Ð¾Ð¶Ð¸Ð²Ð°Ð½Ð¸Ñ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
 			
-			#ãîðîä ïëüçîâàòåëÿ
-			$oauth['city']		=	$this->get_vk_from_json($oauth_info,'city'); //Áåð¸ì ãîðîä ïîëüçîâàòåëÿ
-			$info_city		=	json_decode($this->vauth_get_contents('https://api.vk.com/method/places.getCityById?cids='.$oauth['city'].'&access_token='.$oauth['access_token']),FALSE); //Çàãðóæàåì èíôó ãîðîäà
-			$oauth['city']		=	$this->get_vk_from_json($info_city,'name'); //Çàïèñûâàåì èìÿ ãîðîäà â ïåðåìåííóþ
+			#Ð³Ð¾Ñ€Ð¾Ð´ Ð¿Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
+			$oauth['city']		=	$this->get_vk_from_json($oauth_info,'city'); //Ð‘ÐµÑ€Ñ‘Ð¼ Ð³Ð¾Ñ€Ð¾Ð´ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
+			$info_city		=	json_decode($this->vauth_get_contents('https://api.vk.com/method/places.getCityById?cids='.$oauth['city'].'&access_token='.$oauth['access_token']),FALSE); //Ð—Ð°Ð³Ñ€ÑƒÐ¶Ð°ÐµÐ¼ Ð¸Ð½Ñ„Ñƒ Ð³Ð¾Ñ€Ð¾Ð´Ð°
+			$oauth['city']		=	$this->get_vk_from_json($info_city,'name'); //Ð—Ð°Ð¿Ð¸ÑÑ‹Ð²Ð°ÐµÐ¼ Ð¸Ð¼Ñ Ð³Ð¾Ñ€Ð¾Ð´Ð° Ð² Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½ÑƒÑŽ
 			if (empty($oauth['city'])) $oauth['city'] = 'Silent Hill';
-			#ãîðîä ïëüçîâàòåëÿ
+			#Ð³Ð¾Ñ€Ð¾Ð´ Ð¿Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
 			
-			#ñòàòóñ ïîëüçîâàòåëÿ âêîíòàêòå
+			#ÑÑ‚Ð°Ñ‚ÑƒÑ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ Ð²ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ðµ
 			$oauth['activity']	=	$this->get_vk_from_json($oauth_info,'activity');
-			#ñòàòóñ ïîëüçîâàòåëÿ âêîíòàêòå
+			$oauth['skype']	=	$this->get_vk_from_json($oauth_info,'skype');
+			$oauth['facebook']	=	$this->get_vk_from_json($oauth_info,'facebook');
+			$oauth['facebook_name']	=	$this->get_vk_from_json($oauth_info,'facebook_name');
+			$oauth['twitter']	=	$this->get_vk_from_json($oauth_info,'twitter');
+			$oauth['livejournal']	=	$this->get_vk_from_json($oauth_info,'livejournal');
+			$oauth['university_name']	=	$this->get_vk_from_json($oauth_info,'university_name');
+			#ÑÑ‚Ð°Ñ‚ÑƒÑ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ Ð²ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ðµ
 			
 			$oauth['sex']		=	$this->get_vk_from_json($oauth_info,'sex');
 
@@ -117,26 +130,35 @@ if( ! class_exists( 'VkFunctions' ) )	{
 			
 			}
 			
-			#ïîëó÷àåì äàòó ðîæäåíèÿ ïîëüçîâàòåëÿ
-			$oauth['bdate']	=	$this->get_vk_from_json($oauth_info,'bdate');//Ïîëó÷àåì äàòó ðîæäåíèÿ
+			$oauth['quotes'] = $this->get_vk_from_json($oauth_info,'quotes');
+			$oauth['bio']			=	 $this->get_vk_from_json($oauth_info,'about');
+			$oauth['bio']			=		str_replace("\r\n","<br/>",$oauth['bio']);
+			$oauth['bio']			=		'<br/>'.$oauth['bio'];
+			
+			#Ð¿Ð¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ Ð´Ð°Ñ‚Ñƒ Ñ€Ð¾Ð¶Ð´ÐµÐ½Ð¸Ñ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
+			$oauth['bdate']	=	$this->get_vk_from_json($oauth_info,'bdate');//ÐŸÐ¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ Ð´Ð°Ñ‚Ñƒ Ñ€Ð¾Ð¶Ð´ÐµÐ½Ð¸Ñ
 			
 			$oauth['update_time']		=	time();
 			$oauth['mobile_phone']		=	$db->safesql( trim( htmlspecialchars( strip_tags( $oauth['mobile_phone'] ) ) ) );
 			$oauth['activity']			=	$db->safesql( trim( htmlspecialchars( strip_tags( $oauth['activity'] ) ) ) );
 			$oauth['fullname']			=	$db->safesql( trim( htmlspecialchars( strip_tags( $oauth['fullname'] ) ) ) );
 			$oauth['country']			=	$db->safesql( trim( htmlspecialchars( strip_tags( $oauth['country'] ) ) ) );
+			$oauth['quotes']			=	$db->safesql( trim( htmlspecialchars( strip_tags( $oauth['quotes'] ) ) ) );
+			$oauth['bio']			=	$db->safesql( trim( htmlspecialchars( strip_tags( $oauth['bio'] ) ) ) );
 			$oauth['city']				=	$db->safesql( trim( htmlspecialchars( strip_tags( $oauth['city'] ) ) ) );
 			
 			if (!empty($oauth['country']) and !empty($oauth['city'])) $oauth['land'] = $oauth['country'].', '.$oauth['city'];
 			if (empty($oauth['country']) or empty($oauth['city'])) $oauth['land'] = $oauth['country'].$oauth['city'];
+
 			
 			return $oauth;
 		}
 
-		// ** Ôóíêöèÿ ïîëó÷åíèÿ äðóçåé èç vkontakte
+		// ** Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð¿Ð¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ñ Ð´Ñ€ÑƒÐ·ÐµÐ¹ Ð¸Ð· vkontakte
 		function get_oauth_friends($oauth) {
 
 			$site_friends	=	json_decode($this->vauth_get_contents('https://api.vk.com/method/friends.getAppUsers?access_token='.$oauth['access_token']),FALSE); 					
+			
 			$site_friends	=	$site_friends->response;
 			
 			foreach($site_friends as $k=>$v) {
@@ -152,14 +174,11 @@ if( ! class_exists( 'VkFunctions' ) )	{
 			
 		}		
 
-		// ** Ôóíêöèÿ îáðàáîòêè JSON äàííûõ ïîëüçîâàòåëÿ èç Âêîíòàêòå
-		function get_vk_from_json($string,$value) { //Âûòÿãèâàíèå èíôîðìàöèè èç îòâåòà â ôîðìàòå json
-				
-				if (!isset($string->response[0])) return '';
-				if (!isset($string->response[0]->{$value})) return '';
-				$result = $string->response[0]->{$value};
-				$result = $this->conv_it($result);
-				return $result;
+		// ** Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐ¸ JSON Ð´Ð°Ð½Ð½Ñ‹Ñ… Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ Ð¸Ð· Ð’ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ðµ
+		function get_vk_from_json($string,$value) { //Ð’Ñ‹Ñ‚ÑÐ³Ð¸Ð²Ð°Ð½Ð¸Ðµ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ð¸ Ð¸Ð· Ð¾Ñ‚Ð²ÐµÑ‚Ð° Ð² Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚Ðµ json
+				if(isset( $string->response[0]->{$value})) {
+					return $this->conv_it($string->response[0]->{$value});
+				} else return false;
 			}	
 	}
 }
