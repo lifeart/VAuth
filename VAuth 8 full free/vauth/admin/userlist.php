@@ -268,7 +268,13 @@ while ( $row = $db->get_row( $connect_sql_login ) )	{
 	
 	
 	if($_GET['style']=='list') $tag .= '<span class="userlist_list"><a class="del_vauth_user_list" title="'.$vauth_text['admin_user_del'].$row['fullname'].$vauth_text['admin_user_del_site'].'" href="'.$admin_php_name.'?mod=vauth&page=users&del_user='.$row['user_id'].'"><b>&#935;</b></a><a href="/user/'.urlencode($row['name']).'">'.$row['name'].'</a></span>';
-		else $tag.= '<span class="userlist"><a class="del_vauth_user" title="'.$vauth_text['admin_user_del'].$row['fullname'].$vauth_text['admin_user_del_site'].'" href="'.$admin_php_name.'?mod=vauth&page=users&del_user='.$row['user_id'].'"><b>&#935;</b></a><a href="/user/'.urlencode($row['name']).'" title="'.$row['fullname'].'"><img class="vauth_admin_userimage" src="'.$user_img_url.'"/></a></span>';
+		else $tag.= '<span class="userlist">
+		<a class="del_vauth_user" title="'.$vauth_text['admin_user_del'].$row['fullname'].$vauth_text['admin_user_del_site'].'" href="'.$admin_php_name.'?mod=vauth&page=users&del_user='.$row['user_id'].'"><b>&#935;</b></a>
+		<a class="refresh_vauth_user" user_id="'.$row['user_id'].'" title="Обновить информацию о '.$row['fullname'].$vauth_text['admin_user_del_site'].'" ><b>0</b></a>
+		
+		<a href="/user/'.urlencode($row['name']).'" title="'.$row['fullname'].'">
+		
+		<img class="vauth_admin_userimage user_image_'.$row['user_id'].'" src="'.$user_img_url.'?'.time().'"/></a></span>';
 	
 	}
 echo $tag;	

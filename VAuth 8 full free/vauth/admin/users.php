@@ -56,6 +56,7 @@ if ($user['user_group'] != 1) die;
 			
 			
 			$vauth_search = '
+			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 			<script type="text/javascript" src="engine/skins/calendar.js"></script>
 			<link rel="stylesheet" type="text/css" media="all" href="engine/skins/calendar-blue.css" title="win2k-cold-1" />
 			<table width="100%" id="ap_fields">
@@ -219,6 +220,29 @@ if ($user['user_group'] != 1) die;
 		
 		</tr>
 				</table>
+				
+				
+				<script>
+				
+					$(document).ready(function(){
+						
+						$(document).on("click",".refresh_vauth_user", function(){
+				
+							var id = $(this).attr("user_id");
+							console.log(id);
+							$(this).css("backgound-color","red");
+
+							$.get("/engine/modules/vauth/reloader.php?rebuild="+id,function(data){
+								//alert("Информация о пользователе "+id+" обновлена!");
+								d = new Date();
+								$(".user_image_"+id).attr("src", "/uploads/fotos/foto_"+id+".jpg?"+d.getTime());
+							});
+						
+						});
+					
+					});
+				
+				</script>				
 			';
 
 			$page = $users;

@@ -173,6 +173,24 @@
 				
 				}
 				
+				.refresh_vauth_user {
+				
+					opacity: 0.8;
+					margin-left: 40px;
+					z-index: 5;
+					float: left;
+					clear: left;
+					width: 14px;
+					height: 14px;
+					background-color: #f9f9f9;
+					border-radius: 7px;
+					border: 1px solid #444;
+					color: #000;
+					position: relative;
+					text-align: center;
+				
+				}
+				
 				.del_vauth_user_list {
 				
 					opacity:0.8;
