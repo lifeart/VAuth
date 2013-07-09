@@ -89,10 +89,32 @@ if( ! class_exists( 'VAuthFunctions' ) )	{
 			return $data;
 		}
 		// ** Выбираем способ загрузки аватара пользователя
-		function upload_avatar($url,$id) {
+		function upload_avatar($url,$id,$arr=false) {
 			
 			global $get_image;
 			global $vauth_config;
+			
+			if ($arr != false) {
+			
+				if (file_get_contents($url) == false) {
+					
+					$url = $arr[1];
+					
+					if (file_get_contents($url) == false) {
+					
+						$url = $arr[0];
+				
+						if (file_get_contents($url) == false) {
+					
+							$url = $arr[2];
+						
+						}
+				
+					}
+				
+				}
+			
+			}
 			
 			if (empty($url)) $url = $vauth_config['site_url'].'/engine/modules/vauth/styles/photo.jpg';
 			
