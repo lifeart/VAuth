@@ -109,10 +109,14 @@ $tag = '';
 
 						case 'microsoft':
 							$where[] = 'ms_registered = \'1\'';
+						break;
+						
+						case 'steam':
+							$where[] = 'st_registered = \'1\'';
 						break;					
 					
 						default:
-							$where[] = ' ( fs_registered = \'1\' or go_registered = \'1\' or ma_registered = \'1\' or ms_registered = \'1\' or in_registered = \'1\' or gh_registered = \'1\' or od_registered = \'1\' or vk_registered = \'1\' or fb_registered = \'1\' or tw_registered = \'1\' ) ';
+							$where[] = ' ( fs_registered = \'1\' or go_registered = \'1\' or ma_registered = \'1\' or ms_registered = \'1\' or in_registered = \'1\' or gh_registered = \'1\' or od_registered = \'1\' or vk_registered = \'1\' or fb_registered = \'1\' or tw_registered = \'1\' or st_registered = \'1\' ) ';
 						break;
 					}
 
@@ -144,7 +148,7 @@ $tag = '';
 				}
 				if( ! empty( $_GET['connected']) and $_GET['connected']== 'all')  {	
 					$getparams[] = 'connected='.$_GET['connected'];
-					$where[] = '( fs_connected = \'1\' or go_connected = \'1\' or ma_connected = \'1\' or ms_connected = \'1\' or in_connected = \'1\' or gh_connected = \'1\' or od_connected = \'1\' or vk_connected = \'1\' or fb_connected = \'1\' or tw_connected = \'1\' )';
+					$where[] = '( fs_connected = \'1\' or go_connected = \'1\' or ma_connected = \'1\' or ms_connected = \'1\' or in_connected = \'1\' or gh_connected = \'1\' or od_connected = \'1\' or vk_connected = \'1\' or fb_connected = \'1\' or tw_connected = \'1\' or st_connected = \'1\' )';
 				}
 				if( ! empty( $_GET['reg'] ) ) {
 				
@@ -259,20 +263,16 @@ while ( $row = $db->get_row( $connect_sql_login ) )	{
 	
 	if (empty($row['foto'])) $user_img_url = '/engine/modules/vauth/styles/noavatar.png';
 	
-	if ($dle_api->dle_config['charset'] != 'windows-1251') {
-		
-		$row['name'] = iconv("cp1251", "utf-8", $row['name']);
-		$row['fullname'] = iconv("cp1251", "utf-8", $row['fullname']);
-		
-	}
+	// $row['name'] = iconv("cp1251", "utf-8", $row['name']);
+	// $row['fullname'] = iconv("cp1251", "utf-8", $row['fullname']);
 	
 	
-	if($_GET['style']=='list') $tag .= '<span class="userlist_list"><a class="del_vauth_user_list" title="'.$vauth_text['admin_user_del'].$row['fullname'].$vauth_text['admin_user_del_site'].'" href="'.$admin_php_name.'?mod=vauth&page=users&del_user='.$row['user_id'].'"><b>&#935;</b></a><a href="/user/'.urlencode($row['name']).'">'.$row['name'].'</a></span>';
+	if($_GET['style']=='list') $tag .= '<span class="userlist_list"><a class="del_vauth_user_list" title="'.$vauth_text['admin_user_del'].$row['fullname'].$vauth_text['admin_user_del_site'].'" href="" uri="'.$admin_php_name.'?mod=vauth&page=users&del_user='.$row['user_id'].'"><b>&#935;</b></a><a href="/user/'.urlencode($row['name']).'">'.$row['name'].'</a></span>';
 		else $tag.= '<span class="userlist">
-		<a class="del_vauth_user" title="'.$vauth_text['admin_user_del'].$row['fullname'].$vauth_text['admin_user_del_site'].'" href="'.$admin_php_name.'?mod=vauth&page=users&del_user='.$row['user_id'].'"><b>&#935;</b></a>
+		<a class="del_vauth_user" title="'.$vauth_text['admin_user_del'].$row['fullname'].$vauth_text['admin_user_del_site'].'" href="" uri="'.$admin_php_name.'?mod=vauth&page=users&del_user='.$row['user_id'].'"><b>&#935;</b></a>
 		<a class="refresh_vauth_user" user_id="'.$row['user_id'].'" title="Обновить информацию о '.$row['fullname'].$vauth_text['admin_user_del_site'].'" ><b>0</b></a>
 		
-		<a href="/user/'.urlencode($row['name']).'" title="'.$row['fullname'].'">
+		<a class="userlink" href="/user/'.urlencode($row['name']).'" title="'.$row['fullname'].'">
 		
 		<img class="vauth_admin_userimage user_image_'.$row['user_id'].'" src="'.$user_img_url.'?'.time().'"/></a></span>';
 	

@@ -5,6 +5,7 @@ session_start();
 include($_SERVER['DOCUMENT_ROOT']."/engine/api/api.class.php");
 include($_SERVER['DOCUMENT_ROOT']."/engine/modules/vauth/settings/script_settings.php");
 
+
 if (empty($_GET['page'])) die;
 if (empty($_SESSION['dle_user_id'])) die('<script>location.href="http://g.zeos.in/?q=%D0%9A%D0%B0%D0%BA%20%D1%81%D1%82%D0%B0%D1%82%D1%8C%20%D0%BA%D1%80%D1%83%D1%82%D1%8B%D0%BC%20%D1%85%D0%B0%D0%BA%D0%B5%D1%80%D0%BE%D0%BC"</script>');
 if (empty($_SESSION['dle_password'])) die('Fuck');
@@ -17,6 +18,7 @@ if ($user['user_group'] != 1) die;
 
 	$menus = 'users';
 	
+
 	// ** Функция удаления пользователя с сайта
 	if (!empty($_GET['del_user']) and is_numeric($_GET['del_user']) ) {
 		
@@ -53,6 +55,7 @@ if ($user['user_group'] != 1) die;
 			if (file_exists($func_path . '/github_functions.php')) $selectlist = $selectlist.'<option  value="github">github</option>';
 			if (file_exists($func_path . '/mail_functions.php')) $selectlist = $selectlist.'<option  value="mail">mail</option>';
 			if (file_exists($func_path . '/microsoft_functions.php')) $selectlist = $selectlist.'<option  value="microsoft">microsoft</option>';
+			if (file_exists($func_path . '/steam_functions.php')) $selectlist = $selectlist.'<option  value="steam">steam</option>';
 			
 			
 			$vauth_search = '
@@ -221,7 +224,6 @@ if ($user['user_group'] != 1) die;
 		</tr>
 				</table>
 				
-				
 				<script>
 				
 					$(document).ready(function(){
@@ -229,21 +231,78 @@ if ($user['user_group'] != 1) die;
 						$(document).on("click",".refresh_vauth_user", function(){
 				
 							var id = $(this).attr("user_id");
-							console.log(id);
-							$(this).css("backgound-color","red");
+							var refresh_div = $(this);
+							refresh_div.css("backgound-color","red");
+							refresh_div.hide();
+							
+							var main_div = $(this).parent(".userlist");
 
 							$.get("/engine/modules/vauth/reloader.php?rebuild="+id,function(data){
-								//alert("Информация о пользователе "+id+" обновлена!");
+								refresh_div.show();
+								if (data.name != null) main_div.children(".userlink").attr("href","/user/"+data.name);
 								d = new Date();
 								$(".user_image_"+id).attr("src", "/uploads/fotos/foto_"+id+".jpg?"+d.getTime());
-							});
+							},"json");
 						
+						});
+						
+						// Обработчик для привьюх
+						$(document).on("click",".del_vauth_user",function(){
+						
+							var result = confirm($(this).attr("title")+"?");
+							if (result) {
+							
+								var url = $(this).attr("uri");
+								var del_div = $(this).parent(".userlist");
+								
+								$(this).hide("slow");
+								
+								$.get(url,function(data){
+
+									del_div.hide("slow");
+								
+								});
+								
+							};
+
+							return false;
+							
+						});
+						
+						
+						// Обработчик для списка
+						
+						$(document).on("click",".del_vauth_user_list",function(){
+						
+							var result = confirm($(this).attr("title")+"?");
+							if (result) {
+							
+								var url = $(this).attr("uri");
+								var del_div = $(this).parent(".userlist_list");
+								
+								$(this).hide("slow");
+								
+								$.get(url,function(data){
+
+									del_div.hide("slow");
+								
+								});
+								
+							};
+
+							return false;
+							
 						});
 					
 					});
 				
-				</script>				
+				</script>
+				
+				
 			';
+			
+			
+			
 
 			$page = $users;
 ?>

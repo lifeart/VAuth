@@ -172,7 +172,7 @@
 					text-align:center;
 				
 				}
-				
+
 				.refresh_vauth_user {
 				
 					opacity: 0.8;
@@ -181,6 +181,7 @@
 					float: left;
 					clear: left;
 					width: 14px;
+					margin-top: -16px;
 					height: 14px;
 					background-color: #f9f9f9;
 					border-radius: 7px;
@@ -215,7 +216,7 @@
 					
 				}
 				
-				.del_vauth_user a:hover{
+				.del_vauth_user a b:hover{
 				
 					opacity:0.1;
 					text-decoration:none;
