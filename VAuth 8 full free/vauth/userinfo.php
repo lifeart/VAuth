@@ -97,7 +97,7 @@
 	if ($row['gh_connected'] == 1) { $accounts = $accounts . '<a class="account_link gh_account" href="https://github.com/' . $row['gh_username'] .'">'.$vauth_text['profile_gh'].'</a> '; }
 	if ($row['ma_connected'] == 1) { $accounts = $accounts . '<a class="account_link ma_account" href="'.$row['ma_link'].'">'.$vauth_text['profile_ma'].'</a> '; }
 	if ($row['ms_connected'] == 1) { $accounts = $accounts . '<a class="account_link ms_account" href="'.$row['ms_link'].'">'.$vauth_text['profile_ms'].'</a> '; }
-	if ($row['in_connected'] == 1) { $accounts = $accounts . '<a class="account_link in_account" href="http://web.stagram.com/n/'.$row['in_username'].'">'.$vauth_text['profile_in'].'</a> '; }
+	if ($row['in_connected'] == 1) { $accounts = $accounts . '<a class="account_link in_account" href="http://instagram.com/'.$row['in_username'].'">'.$vauth_text['profile_in'].'</a> '; }
 	
 	
 	if (!empty($friend_dle)) {
