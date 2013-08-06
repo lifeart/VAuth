@@ -19,7 +19,7 @@ $tag = '';
 
 
 
-			// ** Ôóíêöèÿ óäàëåíèÿ ïîëüçîâàòåëÿ ñ ñàéòà
+			// ** Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ ÑƒÐ´Ð°Ð»ÐµÐ½Ð¸Ñ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ Ñ ÑÐ°Ð¹Ñ‚Ð°
 			if (!empty($_GET['del_user']) and is_numeric($_GET['del_user']) ) {
 			
 				$id = $_GET['del_user'];
@@ -43,7 +43,7 @@ $tag = '';
 			}
 		
 		
-			// ** Óñòàíîâêà ëèìèòîâ çàïðîñîâ
+			// ** Ð£ÑÑ‚Ð°Ð½Ð¾Ð²ÐºÐ° Ð»Ð¸Ð¼Ð¸Ñ‚Ð¾Ð² Ð·Ð°Ð¿Ñ€Ð¾ÑÐ¾Ð²
 			if (empty($_GET['limit_from'])) $limit_from = 0;
 			elseif (!empty($_GET['limit_from']) and is_numeric($_GET['limit_from'])) $limit_from = $_GET['limit_from'];
 			else $limit_from = 0;
@@ -52,7 +52,7 @@ $tag = '';
 			elseif (!empty($_GET['limit_to']) and is_numeric($_GET['limit_to'])) $limit_to = $_GET['limit_to'];
 			else $limit_to = 50;
 			
-			// ** Ñîçäàäèì ìàñèèâ ñ ïàðàìåòðàìè äëÿ ïîñòðàíè÷íîãî ïîèñêà
+			// ** Ð¡Ð¾Ð·Ð´Ð°Ð´Ð¸Ð¼ Ð¼Ð°ÑÐ¸Ð¸Ð² Ñ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð°Ð¼Ð¸ Ð´Ð»Ñ Ð¿Ð¾ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ‡Ð½Ð¾Ð³Ð¾ Ð¿Ð¾Ð¸ÑÐºÐ°
 			$getparams = array ();
 
 			if (!empty($_GET['sort'])) $sort_type = "DESC"; else $sort_type = "ASC";
@@ -263,14 +263,18 @@ while ( $row = $db->get_row( $connect_sql_login ) )	{
 	
 	if (empty($row['foto'])) $user_img_url = '/engine/modules/vauth/styles/noavatar.png';
 	
-	// $row['name'] = iconv("cp1251", "utf-8", $row['name']);
-	// $row['fullname'] = iconv("cp1251", "utf-8", $row['fullname']);
+	if ($dle_api->dle_config['charset'] != 'windows-1251') {
+		
+		$row['name'] = iconv("cp1251", "utf-8", $row['name']);
+		$row['fullname'] = iconv("cp1251", "utf-8", $row['fullname']);
+		
+	}
 	
 	
 	if($_GET['style']=='list') $tag .= '<span class="userlist_list"><a class="del_vauth_user_list" title="'.$vauth_text['admin_user_del'].$row['fullname'].$vauth_text['admin_user_del_site'].'" href="" uri="'.$admin_php_name.'?mod=vauth&page=users&del_user='.$row['user_id'].'"><b>&#935;</b></a><a href="/user/'.urlencode($row['name']).'">'.$row['name'].'</a></span>';
 		else $tag.= '<span class="userlist">
 		<a class="del_vauth_user" title="'.$vauth_text['admin_user_del'].$row['fullname'].$vauth_text['admin_user_del_site'].'" href="" uri="'.$admin_php_name.'?mod=vauth&page=users&del_user='.$row['user_id'].'"><b>&#935;</b></a>
-		<a class="refresh_vauth_user" user_id="'.$row['user_id'].'" title="Îáíîâèòü èíôîðìàöèþ î '.$row['fullname'].$vauth_text['admin_user_del_site'].'" ><b>0</b></a>
+		<a class="refresh_vauth_user" user_id="'.$row['user_id'].'" title="ÐžÐ±Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð¾ '.$row['fullname'].$vauth_text['admin_user_del_site'].'" ><b>0</b></a>
 		
 		<a class="userlink" href="/user/'.urlencode($row['name']).'" title="'.$row['fullname'].'">
 		
