@@ -24,7 +24,8 @@
 		// ** Узнаём адрес сайта и сайт для авторизации
 		
 		$auth_site = @$_GET['auth_site'];
-		$site_url = trim(mb_strtolower($vauth_config['site_url']));
+		// $site_url = trim(mb_strtolower($vauth_config['site_url']));
+		$site_url = trim(mb_strtolower($dle_api->dle_config['http_home_url']));
 		if (substr($site_url, -1) == '/') $site_url = substr($site_url, 0, -1);
 		if (strpos($site_url,'http:') === false) $site_url = 'http://'.$site_url;
 		if (empty($site_url) and empty($_GET['mod'])) die('Для корректной работы модуля VAuth необходимо указать адрес сайта на котором он работает <br/> это можно сделать в админ-панели.');

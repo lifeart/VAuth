@@ -150,11 +150,6 @@ if ($user['user_group'] != 1) die;
 			<form action="/'.$admin_php_name.'?mod=vauth&page=settings" method="post" >
 			
 			<div class="settings">
-			
-				<div class="settings_list">
-					<div class="input_text">'.$vauth_text['site_url'].'</div>
-					<input class="settings_input" name="save_con[site_url]" value="'.$vauth_config['site_url'].'">
-				</div>
 				
 				<div class="settings_list">
 					<div class="input_text">'.$vauth_text['mod_lang'].'</div>
