@@ -40,6 +40,11 @@ function usercounter($text) {
 			$reg_month = $now_time-24*60*60*30;
 			$vis_month = $reg_month;
 			
+			
+			// Можно сделать рекурсивный зпрос через сканирование файлов в папке
+			$queryTotal = $this->db->super_query("SELECT COUNT(*) AS count FROM " . USERPREFIX . "_users where fs_connected = '1' or go_connected = '1' or ma_connected = '1' or ms_connected = '1' or in_connected = '1' or gh_connected = '1' or od_connected = '1' or vk_connected = '1' or fb_connected = '1' or tw_connected = '1' or fs_registered = '1' or go_registered = '1' or ma_registered = '1' or ms_registered = '1' or in_registered = '1' or gh_registered = '1' or od_registered = '1' or vk_registered = '1' or fb_registered = '1' or tw_registered = '1'");
+			
+			
 			$connect_sql_login = $db->query( "SELECT * FROM " . USERPREFIX . "_users where fs_connected = '1' or go_connected = '1' or ma_connected = '1' or ms_connected = '1' or in_connected = '1' or gh_connected = '1' or od_connected = '1' or vk_connected = '1' or fb_connected = '1' or tw_connected = '1' or fs_registered = '1' or go_registered = '1' or ma_registered = '1' or ms_registered = '1' or in_registered = '1' or gh_registered = '1' or od_registered = '1' or vk_registered = '1' or fb_registered = '1' or tw_registered = '1'" );	
 			
 			while ( $row = $db->get_row( $connect_sql_login ) )	{

@@ -1,35 +1,35 @@
 <?PHP
 
-	// ** Определяем константы, необходимые для работы модуля
+	// ** РћРїСЂРµРґРµР»СЏРµРј РєРѕРЅСЃС‚Р°РЅС‚С‹, РЅРµРѕР±С…РѕРґРёРјС‹Рµ РґР»СЏ СЂР°Р±РѕС‚С‹ РјРѕРґСѓР»СЏ
 	
 	if (!defined('DATALIFEENGINE')) 	define	(	'DATALIFEENGINE',	true	);
 	if (!defined('ROOT_DIR')) 			define	(	'ROOT_DIR',			substr(dirname (__FILE__),0,strpos( dirname ( __FILE__ ),"engine" )-1) );
 	if (!defined('ENGINE_DIR')) 		define	(	'ENGINE_DIR',		ROOT_DIR . '/engine'	);
 
-	#настройки скрипта
+	#РЅР°СЃС‚СЂРѕР№РєРё СЃРєСЂРёРїС‚Р°
 	
-		#расположение дополнительных файлов скрипта
-		$func_path = ENGINE_DIR . '/modules/vauth/functions/'; //Папка функций
-		$lang_path = ENGINE_DIR . '/modules/vauth/langfiles/'; //Папка языков
+		#СЂР°СЃРїРѕР»РѕР¶РµРЅРёРµ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… С„Р°Р№Р»РѕРІ СЃРєСЂРёРїС‚Р°
+		$func_path = ENGINE_DIR . '/modules/vauth/functions/'; //РџР°РїРєР° С„СѓРЅРєС†РёР№
+		$lang_path = ENGINE_DIR . '/modules/vauth/langfiles/'; //РџР°РїРєР° СЏР·С‹РєРѕРІ
 		
 		
-		// ** Проверяем, все ли яйца в корзине, и подключаем их:
+		// ** РџСЂРѕРІРµСЂСЏРµРј, РІСЃРµ Р»Рё СЏР№С†Р° РІ РєРѕСЂР·РёРЅРµ, Рё РїРѕРґРєР»СЋС‡Р°РµРј РёС…:
 
-		if ( file_exists( ENGINE_DIR . '/api/api.class.php' ) )					include_once( ENGINE_DIR . '/api/api.class.php' );					else die('Нет файла DLE API функций модуля в папке ' . ENGINE_DIR . '/api/' );
-		if ( file_exists( $func_path . '/vauth_functions.php' ) )				require_once( $func_path . '/vauth_functions.php' );				else die('Нет файла основных функций модуля в папке ' . $func_path );
-		if ( file_exists( dirname (__FILE__) . '/user_settings.php' ) )			require_once( dirname (__FILE__) . '/user_settings.php' );			else die('Нет файла пользовательских настроек модуля - ' . dirname (__FILE__) . '/user_settings.php' );	
-		if ( file_exists( $lang_path . $vauth_config['language'] . '.php') )	include_once( $lang_path . $vauth_config['language'] . '.php' );	elseif (file_exists( $lang_path.'russian.php')) include_once( $lang_path.'russian.php'); else die('Нет доступных языковых файлов в папке ' . $lang_path);
-		if ( file_exists( ENGINE_DIR . '/modules/vauth/styles/styles.php') )	include_once( ENGINE_DIR . '/modules/vauth/styles/styles.php' );	else die('Нет файла стилей модуля в папке '.ENGINE_DIR . '/modules/vauth/styles/' );
+		if ( file_exists( ENGINE_DIR . '/api/api.class.php' ) )					include_once( ENGINE_DIR . '/api/api.class.php' );					else die('РќРµС‚ С„Р°Р№Р»Р° DLE API С„СѓРЅРєС†РёР№ РјРѕРґСѓР»СЏ РІ РїР°РїРєРµ ' . ENGINE_DIR . '/api/' );
+		if ( file_exists( $func_path . '/vauth_functions.php' ) )				require_once( $func_path . '/vauth_functions.php' );				else die('РќРµС‚ С„Р°Р№Р»Р° РѕСЃРЅРѕРІРЅС‹С… С„СѓРЅРєС†РёР№ РјРѕРґСѓР»СЏ РІ РїР°РїРєРµ ' . $func_path );
+		if ( file_exists( dirname (__FILE__) . '/user_settings.php' ) )			require_once( dirname (__FILE__) . '/user_settings.php' );			else die('РќРµС‚ С„Р°Р№Р»Р° РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёС… РЅР°СЃС‚СЂРѕРµРє РјРѕРґСѓР»СЏ - ' . dirname (__FILE__) . '/user_settings.php' );	
+		if ( file_exists( $lang_path . $vauth_config['language'] . '.php') )	include_once( $lang_path . $vauth_config['language'] . '.php' );	elseif (file_exists( $lang_path.'russian.php')) include_once( $lang_path.'russian.php'); else die('РќРµС‚ РґРѕСЃС‚СѓРїРЅС‹С… СЏР·С‹РєРѕРІС‹С… С„Р°Р№Р»РѕРІ РІ РїР°РїРєРµ ' . $lang_path);
+		if ( file_exists( ENGINE_DIR . '/modules/vauth/styles/styles.php') )	include_once( ENGINE_DIR . '/modules/vauth/styles/styles.php' );	else die('РќРµС‚ С„Р°Р№Р»Р° СЃС‚РёР»РµР№ РјРѕРґСѓР»СЏ РІ РїР°РїРєРµ '.ENGINE_DIR . '/modules/vauth/styles/' );
 		
-		// ** Узнаём адрес сайта и сайт для авторизации
+		// ** РЈР·РЅР°С‘Рј Р°РґСЂРµСЃ СЃР°Р№С‚Р° Рё СЃР°Р№С‚ РґР»СЏ Р°РІС‚РѕСЂРёР·Р°С†РёРё
 		
 		$auth_site = @$_GET['auth_site'];
 		$site_url = trim(mb_strtolower($vauth_config['site_url']));
 		if (substr($site_url, -1) == '/') $site_url = substr($site_url, 0, -1);
 		if (strpos($site_url,'http:') === false) $site_url = 'http://'.$site_url;
-		if (empty($site_url) and empty($_GET['mod'])) die('Для корректной работы модуля VAuth необходимо указать адрес сайта на котором он работает <br/> это можно сделать в админ-панели.');
+		if (empty($site_url) and empty($_GET['mod'])) die('Р”Р»СЏ РєРѕСЂСЂРµРєС‚РЅРѕР№ СЂР°Р±РѕС‚С‹ РјРѕРґСѓР»СЏ VAuth РЅРµРѕР±С…РѕРґРёРјРѕ СѓРєР°Р·Р°С‚СЊ Р°РґСЂРµСЃ СЃР°Р№С‚Р° РЅР° РєРѕС‚РѕСЂРѕРј РѕРЅ СЂР°Р±РѕС‚Р°РµС‚ <br/> СЌС‚Рѕ РјРѕР¶РЅРѕ СЃРґРµР»Р°С‚СЊ РІ Р°РґРјРёРЅ-РїР°РЅРµР»Рё.');
 		
-		// ** Если к нам пришёл запрос авторизации
+		// ** Р•СЃР»Рё Рє РЅР°Рј РїСЂРёС€С‘Р» Р·Р°РїСЂРѕСЃ Р°РІС‚РѕСЂРёР·Р°С†РёРё
 		if ($auth_site) {
 		
 			$vauth_api = $vauth_api->load_oauth_modules($auth_site);
@@ -37,44 +37,45 @@
 		
 		} else $vauth_api = new VAuthFunctions ();
 		
-		// ** Другие настройки модуля
+		// ** Р”СЂСѓРіРёРµ РЅР°СЃС‚СЂРѕР№РєРё РјРѕРґСѓР»СЏ
 			
-			// ** Хэши для генерации и шифрования паролей пользователей в бд движка (Менять с осторожностью, а то пользователи не будут авторизироваться)	
-			$userhash_pass = 'n3WioTye94u39djee'; // ** При смене хэша старые пользователи не смогут авторизироваться
-			$userhash_salt = 'nUE0pQbiY3MuqKEbAl5xwodihwe8do33qdw'; // ** При смене хэша старые пользователи не смогут авторизироваться
-			// ** Хэши для генерации и шифрования паролей пользователей в бд движка (Менять с осторожностью, а то пользователи не будут авторизироваться)
+			// ** РҐСЌС€Рё РґР»СЏ РіРµРЅРµСЂР°С†РёРё Рё С€РёС„СЂРѕРІР°РЅРёСЏ РїР°СЂРѕР»РµР№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РІ Р±Рґ РґРІРёР¶РєР° (РњРµРЅСЏС‚СЊ СЃ РѕСЃС‚РѕСЂРѕР¶РЅРѕСЃС‚СЊСЋ, Р° С‚Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё РЅРµ Р±СѓРґСѓС‚ Р°РІС‚РѕСЂРёР·РёСЂРѕРІР°С‚СЊСЃСЏ)	
+			$userhash_pass = 'n3WioTye94u39djee'; // ** РџСЂРё СЃРјРµРЅРµ С…СЌС€Р° СЃС‚Р°СЂС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё РЅРµ СЃРјРѕРіСѓС‚ Р°РІС‚РѕСЂРёР·РёСЂРѕРІР°С‚СЊСЃСЏ
+			$userhash_salt = 'nUE0pQbiY3MuqKEbAl5xwodihwe8do33qdw'; // ** РџСЂРё СЃРјРµРЅРµ С…СЌС€Р° СЃС‚Р°СЂС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё РЅРµ СЃРјРѕРіСѓС‚ Р°РІС‚РѕСЂРёР·РёСЂРѕРІР°С‚СЊСЃСЏ
+			// ** РҐСЌС€Рё РґР»СЏ РіРµРЅРµСЂР°С†РёРё Рё С€РёС„СЂРѕРІР°РЅРёСЏ РїР°СЂРѕР»РµР№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РІ Р±Рґ РґРІРёР¶РєР° (РњРµРЅСЏС‚СЊ СЃ РѕСЃС‚РѕСЂРѕР¶РЅРѕСЃС‚СЊСЋ, Р° С‚Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё РЅРµ Р±СѓРґСѓС‚ Р°РІС‚РѕСЂРёР·РёСЂРѕРІР°С‚СЊСЃСЏ)
 			
-			// ** Разрешаем регистрацию пользователя через модуль (1 - да, 0 - нет)
+			// ** Р Р°Р·СЂРµС€Р°РµРј СЂРµРіРёСЃС‚СЂР°С†РёСЋ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ С‡РµСЂРµР· РјРѕРґСѓР»СЊ (1 - РґР°, 0 - РЅРµС‚)
 			$vauth_config['allow_register'] = 1;
 			
-			// ** Имя админки движка
-			$admin_php_name = 'admin.php';
+			// ** РРјСЏ Р°РґРјРёРЅРєРё РґРІРёР¶РєР°
+			$admin_php_name = $dle_api->dle_config['admin_path'];
+			if (empty($admin_php_name)) $admin_php_name =  'admin.php';
 			
-			// ** Адрес URL сопряжения акканутов (если меняем тут, то и в engine.php тоже нужно поменять)
+			// ** РђРґСЂРµСЃ URL СЃРѕРїСЂСЏР¶РµРЅРёСЏ Р°РєРєР°РЅСѓС‚РѕРІ (РµСЃР»Рё РјРµРЅСЏРµРј С‚СѓС‚, С‚Рѕ Рё РІ engine.php С‚РѕР¶Рµ РЅСѓР¶РЅРѕ РїРѕРјРµРЅСЏС‚СЊ)
 			$ac_url	=	'/index.php?do=account_connect';
 
 	
-		#Ещё настройки скрипта
+		#Р•С‰С‘ РЅР°СЃС‚СЂРѕР№РєРё СЃРєСЂРёРїС‚Р°
 		
-		// ** Переназначаем переменные
+		// ** РџРµСЂРµРЅР°Р·РЅР°С‡Р°РµРј РїРµСЂРµРјРµРЅРЅС‹Рµ
 		$ac_connect = @$_SESSION['ac_connect'];
 		
-		// ** Важная штука!
+		// ** Р’Р°Р¶РЅР°СЏ С€С‚СѓРєР°!
 		$auth_code = htmlentities(@$_GET['code']);
 		
-		// ** Важная штука2
+		// ** Р’Р°Р¶РЅР°СЏ С€С‚СѓРєР°2
 		$cancel = @$_GET['cancel'];
 		
 		if ( empty( $_SESSION['referrer'] ) ) $auth_url = $site_url; else $auth_url = $_SESSION['referrer'];
 		if ( !empty( $cancel ) ) header('Location: ' . $site_url);
 
 		
-		// ** Говорим модулю, что иногда нужно выводить форму запроса данных
+		// ** Р“РѕРІРѕСЂРёРј РјРѕРґСѓР»СЋ, С‡С‚Рѕ РёРЅРѕРіРґР° РЅСѓР¶РЅРѕ РІС‹РІРѕРґРёС‚СЊ С„РѕСЂРјСѓ Р·Р°РїСЂРѕСЃР° РґР°РЅРЅС‹С…
 		
-		// ** Проверяем на работоспособность необходимые для работы модуля функции PHP
+		// ** РџСЂРѕРІРµСЂСЏРµРј РЅР° СЂР°Р±РѕС‚РѕСЃРїРѕСЃРѕР±РЅРѕСЃС‚СЊ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РґР»СЏ СЂР°Р±РѕС‚С‹ РјРѕРґСѓР»СЏ С„СѓРЅРєС†РёРё PHP
 		if ($vauth_api->function_enabled('file_get_contents')) {
 		
-			$get_contents = 1;
+			$get_contents = 0;
 			
 		} else $get_contents = 0;
 	
@@ -92,5 +93,5 @@
 			} else $get_image = 0;
 		
 		} else $get_image = 0;
-		// ** На этом конфигурация модуля завершена
+		// ** РќР° СЌС‚РѕРј РєРѕРЅС„РёРіСѓСЂР°С†РёСЏ РјРѕРґСѓР»СЏ Р·Р°РІРµСЂС€РµРЅР°
 ?>
