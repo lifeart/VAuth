@@ -17,7 +17,7 @@ function createSelectForSocial($id=false,$net=false,$name='save_con') {
 
 	global $dle_api;
 
-	$groups = $dle_api->load_table('dle_usergroups','id,group_name','1',true);
+	$groups = $dle_api->load_table(USERPREFIX.'_usergroups','id,group_name','1',true);
 	
 	$data = '<select class="settings_input" style="font-size: 12px;" name="'.$name.'['.$net.']'.'">';
 
@@ -70,9 +70,8 @@ if ($user['user_group'] != 1) die;
 			
 			if (!empty($_POST)) {
 
-				if( $member_id['user_group'] != 1 ) {
-					msg( "error", $lang['opt_denied'], $lang['opt_denied'] );
-					die();
+				if(!isset($member_id['user_group']) || $member_id['user_group'] != 1 ) {
+					die( "Hacking attempt!" );
 				}
 				
 				if( !defined( 'DATALIFEENGINE' ) OR !defined( 'LOGGED_IN' ) ) {
