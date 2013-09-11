@@ -94,7 +94,7 @@
 					'.$user_avatar.'
 					<span class="rcols"><h5>'.$friend['fullname'] .'</h5>
 					'.$vauth_text['group'].': '.$groupinfo['group_prefix'].$groupinfo['group_name'].$groupinfo['group_suffix'].'<br>
-					<em>'.$vauth_text['registration'].': '.date("d.m.Y",$friend['reg_date').'</em>
+					<em>'.$vauth_text['registration'].': '.date("d.m.Y",$friend['reg_date']).'</em>
 					</span>
 					</a>
 					';	
