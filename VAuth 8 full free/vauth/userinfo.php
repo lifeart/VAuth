@@ -24,11 +24,11 @@
 		$vk_friends = ''; $fb_friends = ''; $tw_friends = '';
 		
 		if ($row['vk_connected'] == 1) {
+
 			$vauth_api = new VkFunctions ();
 			$oauth = $vauth_api->oauth_data();
 			$oauth['access_token']	= $row['vk_hash_auth'];	
 			$vk_friends = $vauth_api->get_oauth_friends($oauth);
-			
 			if ( strlen($vk_friends) < strlen($row['vk_user_friends']) and $row['vk_user_friends']!='Пока никого нет..' ) $vk_friends = $row['vk_user_friends'];
 		}
 		
@@ -64,6 +64,7 @@
 		$tw_friends2 = $tw_friends;
 		$fs_friends2 = $fs_friends;
 
+		
 		$vk_friends = str_replace("&"," OR vk_user_id = ",$vk_friends);
 		$fb_friends = str_replace("&"," OR fb_user_id = ",$fb_friends);
 		$tw_friends = str_replace("&"," OR tw_user_id = ",$tw_friends);
@@ -75,13 +76,13 @@
 		if (strlen($fs_friends)<4) $fs_friends = 00001;
 	
 		$friendlist = $db->query( "SELECT * FROM " . USERPREFIX . "_users where fs_user_id = $fs_friends OR vk_user_id = $vk_friends OR fb_user_id = $fb_friends OR tw_user_id = $tw_friends" );
-
+		
 		$_show = false;
 		
 		while ( $friend = $db->get_row( $friendlist ) )	{
-			
+
 			if ($_show == true) {
-			
+
 				$user_avatar = $friend['foto'];
 				if (empty($friend['foto'])) $user_avatar = '<img src="/engine/modules/vauth/styles/noavatar.png"></img>';
 				else $user_avatar  = '<img src="/uploads/fotos/'.$user_avatar.'"></img>';
