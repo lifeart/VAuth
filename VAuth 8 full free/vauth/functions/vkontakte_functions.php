@@ -161,12 +161,16 @@ if( ! class_exists( 'VkFunctions' ) )	{
 			
 			$site_friends	=	$site_friends->response;
 			
-			foreach($site_friends as $k=>$v) {
-				if (is_numeric($v)) {
-					$v = sprintf("%.0f",$v);
-					$oauth_friendlist	= @$oauth_friendlist.'&'.$v;
+			if (is_array($site_friends)) {
+			
+				foreach($site_friends as $k=>$v) {
+					if (is_numeric($v)) {
+						$v = sprintf("%.0f",$v);
+						$oauth_friendlist	= @$oauth_friendlist.'&'.$v;
+					}
 				}
-			}
+			
+			} else $oauth_friendlist = '';
 			
 			$oauth['friends']	= substr($oauth_friendlist,1);
 			
