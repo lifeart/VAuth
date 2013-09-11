@@ -83,8 +83,8 @@
 			if ($_show == true) {
 			
 				$user_avatar = $friend['foto'];
-				if (empty($friend['foto'])) $user_avatar = '/engine/modules/vauth/styles/noavatar.png';
-				$user_avatar  = '<img src="'.$user_avatar.'"></img>';
+				if (empty($friend['foto'])) $user_avatar = '<img src="/engine/modules/vauth/styles/noavatar.png"></img>';
+				else $user_avatar  = '<img src="/uploads/fotos/'.$user_avatar.'"></img>';
 				
 				$groupinfo = $dle_api->load_table (PREFIX."_usergroups", "*", "id = '$friend[user_group]'");
 				
