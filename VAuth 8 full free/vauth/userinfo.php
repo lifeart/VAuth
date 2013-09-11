@@ -1,6 +1,6 @@
 <?php
 
-	include_once("settings/script_settings.php"); //Ïîëó÷àåì ñèñòåìíûå íàñòðîéêè
+	include_once("settings/script_settings.php"); //ÐŸÐ¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ ÑÐ¸ÑÑ‚ÐµÐ¼Ð½Ñ‹Ðµ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸
 	
 			if ( file_exists($func_path . '/twitter_functions.php')) require_once($func_path . '/twitter_functions.php');
 			if ( file_exists($func_path . '/facebook_functions.php')) require_once($func_path . '/facebook_functions.php');
@@ -9,7 +9,7 @@
 
 	
 
-	if (empty($tpl)) die('Íå íóæíî òàê çàõîäèòü íà ýòó ñòðàíèöó');
+	if (empty($tpl)) die('ÐÐµ Ð½ÑƒÐ¶Ð½Ð¾ Ñ‚Ð°Ðº Ð·Ð°Ñ…Ð¾Ð´Ð¸Ñ‚ÑŒ Ð½Ð° ÑÑ‚Ñƒ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ');
 
 	if (empty($row['updtime'])) $row['updtime'] = 999;
 	
@@ -29,7 +29,7 @@
 			$oauth['access_token']	= $row['vk_hash_auth'];	
 			$vk_friends = $vauth_api->get_oauth_friends($oauth);
 			
-			if ( strlen($vk_friends) < strlen($row['vk_user_friends']) and $row['vk_user_friends']!='Ïîêà íèêîãî íåò..' ) $vk_friends = $row['vk_user_friends'];
+			if ( strlen($vk_friends) < strlen($row['vk_user_friends']) and $row['vk_user_friends']!='ÐŸÐ¾ÐºÐ° Ð½Ð¸ÐºÐ¾Ð³Ð¾ Ð½ÐµÑ‚..' ) $vk_friends = $row['vk_user_friends'];
 		}
 		
 		if ($row['fb_connected'] == 1) {
@@ -76,7 +76,35 @@
 	
 		$friendlist = $db->query( "SELECT * FROM " . USERPREFIX . "_users where fs_user_id = $fs_friends OR vk_user_id = $vk_friends OR fb_user_id = $fb_friends OR tw_user_id = $tw_friends" );
 
+		$_show = false;
+		
 		while ( $friend = $db->get_row( $friendlist ) )	{
+			
+			if ($_show == true) {
+			
+				$user_avatar = $friend['foto'];
+				if (empty($friend['foto'])) $user_avatar = '/engine/modules/vauth/styles/noavatar.png';
+				$user_avatar  = '<img src="'.$user_avatar.'"></img>';
+				
+				$groupinfo = $dle_api->load_table (PREFIX."_usergroups", "*", "id = '$friend[user_group]'");
+				
+				if ($groupinfo) {
+				
+					$body = '<a href="/user/' . urlencode($friend['name']) . '">
+					'.$user_avatar.'
+					<span class="rcols"><h5>'.$friend['fullname'] .'</h5>
+					'.$vauth_text['group'].': '.$groupinfo['group_prefix'].$groupinfo['group_name'].$groupinfo['group_suffix'].'<br>
+					<em>'.$vauth_text['registration'].': '.date("d.m.Y",$friend['reg_date').'</em>
+					</span>
+					</a>
+					';	
+					
+					$friend_dle.='<a classs="vauth_userfriend_link" href="/user/' . urlencode($friend['name']) . '">'.$body.'</a>';
+			
+				}
+			
+			}
+			else 
 			$friend_dle = $friend_dle . '<a class="userfriend" href="/user/' . urlencode($friend['name']) . '">' . $friend['fullname'] . '</a>, ';
 		}
 		
