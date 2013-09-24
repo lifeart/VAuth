@@ -22,7 +22,7 @@ $tag = '';
 			// ** Функция удаления пользователя с сайта
 			if (!empty($_GET['del_user']) and is_numeric($_GET['del_user']) ) {
 			
-				$id = $_GET['del_user'];
+				$id = abs(intval($_GET['del_user']));
 	
 				$row_deluser = $db->super_query( "SELECT user_id, user_group, name, foto FROM " . USERPREFIX . "_users WHERE user_id='$id'" );
 
@@ -274,7 +274,7 @@ while ( $row = $db->get_row( $connect_sql_login ) )	{
 	if($_GET['style']=='list') $tag .= '<span class="userlist_list"><a class="del_vauth_user_list" title="'.$vauth_text['admin_user_del'].$row['fullname'].$vauth_text['admin_user_del_site'].'" href="" uri="'.$admin_php_name.'?mod=vauth&page=users&del_user='.$row['user_id'].'"><b>&#935;</b></a><a href="/user/'.urlencode($row['name']).'">'.$row['name'].'</a></span>';
 		else $tag.= '<span class="userlist">
 		<a class="del_vauth_user" title="'.$vauth_text['admin_user_del'].$row['fullname'].$vauth_text['admin_user_del_site'].'" href="" uri="'.$admin_php_name.'?mod=vauth&page=users&del_user='.$row['user_id'].'"><b>&#935;</b></a>
-		<a class="refresh_vauth_user" user_id="'.$row['user_id'].'" title="Обновить информацию о '.$row['fullname'].$vauth_text['admin_user_del_site'].'" ><b>0</b></a>
+		<a class="refresh_vauth_user" user_id="'.$row['user_id'].'" title="'.$vauth_text['admin_update_info'].$row['fullname'].$vauth_text['admin_user_del_site'].'" ><b>0</b></a>
 		
 		<a class="userlink" href="/user/'.urlencode($row['name']).'" title="'.$row['fullname'].'">
 		
