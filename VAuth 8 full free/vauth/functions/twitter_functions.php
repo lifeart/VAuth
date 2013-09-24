@@ -28,8 +28,8 @@ if( ! class_exists( 'TwFunctions' ) )	{
 			$oauth['group']				=	$vauth_config['twitter_user_group'];
 	
 			if (empty($oauth['group'])) $oauth['group'] = 4;
-			if (empty($oauth['app_id'])) die('Не указан идентификатор приложения instagram');
-			if (empty($oauth['app_secret'])) die('Не указан секретный код приложения instagram');
+			if (empty($oauth['app_id'])) die('Не указан идентификатор приложения Twitter');
+			if (empty($oauth['app_secret'])) die('Не указан секретный код приложения Twitter');
 		
 			return $oauth;
 		

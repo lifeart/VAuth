@@ -23,8 +23,8 @@ if( ! class_exists( 'OdFunctions' ) )	{
 			$oauth['group']				=	$vauth_config['odnoklassniki_user_group'];
 
 			if (empty($oauth['group'])) $oauth['group'] = 4;
-			if (empty($oauth['app_id'])) die('Не указан идентификатор приложения instagram');
-			if (empty($oauth['app_secret'])) die('Не указан секретный код приложения instagram');
+			if (empty($oauth['app_id'])) die('Не указан идентификатор приложения Odnoklassniki');
+			if (empty($oauth['app_secret'])) die('Не указан секретный код приложения Odnoklassniki');
 			
 			return $oauth;
 			

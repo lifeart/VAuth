@@ -22,8 +22,8 @@ if( ! class_exists( 'GhFunctions' ) )	{
 			$oauth['group']				=	$vauth_config['github_user_group'];
 
 			if (empty($oauth['group'])) $oauth['group'] = 4;
-			if (empty($oauth['app_id'])) die('Не указан идентификатор приложения Google');
-			if (empty($oauth['app_secret'])) die('Не указан секретный код приложения Google');
+			if (empty($oauth['app_id'])) die('Не указан идентификатор приложения Github');
+			if (empty($oauth['app_secret'])) die('Не указан секретный код приложения Github');
 			
 			return $oauth;
 			

@@ -24,8 +24,8 @@ if( ! class_exists( 'VkFunctions' ) )	{
 			$oauth['group']				=	$vauth_config['vkontakte_user_group'];
 		
 			if (empty($oauth['group'])) $oauth['group'] = 4;
-			if (empty($oauth['app_id'])) die('Не указан идентификатор приложения вконтакте');
-			if (empty($oauth['app_secret'])) die('Не указан секретный код приложения вконтакте');
+			if (empty($oauth['app_id'])) die('Не указан идентификатор приложения VK');
+			if (empty($oauth['app_secret'])) die('Не указан секретный код приложения VK');
 		
 			return $oauth;
 		

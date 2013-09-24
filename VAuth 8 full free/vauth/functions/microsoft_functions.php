@@ -25,8 +25,8 @@ if( ! class_exists( 'MsFunctions' ) )	{
 			$oauth['group']				=	$vauth_config['microsoft_user_group'];
 
 			if (empty($oauth['group'])) $oauth['group'] = 4;
-			if (empty($oauth['app_id'])) die('Не указан идентификатор приложения Facebook');
-			if (empty($oauth['app_secret'])) die('Не указан секретный код приложения Facebook');
+			if (empty($oauth['app_id'])) die('Не указан идентификатор приложения Microsoft Live');
+			if (empty($oauth['app_secret'])) die('Не указан секретный код приложения  Microsoft Live');
 			
 			return $oauth;
 			
