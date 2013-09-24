@@ -15,16 +15,16 @@ $user = $dle_api->take_user_by_id($_SESSION['dle_user_id']);
 
 if ($user['user_group'] != 1) die; 
 
-	// ** Ôóíêöèÿ óäàëåíèÿ ïîëüçîâàòåëÿ ñ ñàéòà
+	// ** Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ ÑƒÐ´Ð°Ð»ÐµÐ½Ð¸Ñ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ Ñ ÑÐ°Ð¹Ñ‚Ð°
 	if (!empty($_GET['del_user']) and is_numeric($_GET['del_user']) ) {
 	
-		$id = $_GET['del_user'];
+		$id = abs(intval($_GET['del_user']));
 		
 		$row_deluser = $db->super_query( "SELECT user_id, user_group, name, foto FROM " . USERPREFIX . "_users WHERE user_id='$id'" );
 
 		if( ! $row_deluser['user_id'] ) die( "User not found" );
 
-		if ($row_deluser['user_group'] <= 1 ) die( $lang['user_undel'] );
+		if ($row_deluser['user_group'] <= 1 ) die();
 
 		$db->query( "DELETE FROM " . USERPREFIX . "_pm WHERE user_from = '{$row_deluser['name']}' AND folder = 'outbox'" );
 		
