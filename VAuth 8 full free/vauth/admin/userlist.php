@@ -271,15 +271,19 @@ while ( $row = $db->get_row( $connect_sql_login ) )	{
 	}
 	
 	
-	if($_GET['style']=='list') $tag .= '<span class="userlist_list"><a class="del_vauth_user_list" title="'.$vauth_text['admin_user_del'].$row['fullname'].$vauth_text['admin_user_del_site'].'" href="" uri="'.$admin_php_name.'?mod=vauth&page=users&del_user='.$row['user_id'].'"><b>&#935;</b></a><a href="/user/'.urlencode($row['name']).'">'.$row['name'].'</a></span>';
+	$row['fullname'] = htmlspecialchars( $row['fullname'], ENT_QUOTES, $dle_api->dle_config['charset']);
+	
+	if($_GET['style']=='list') $tag .= '<span class="userlist_list"><a class="del_vauth_user_list" title="'.$vauth_text['admin_user_del'].$row['fullname'].$vauth_text['admin_user_del_site'].'" href="" uri="'.$admin_php_name.'?mod=vauth&page=users&del_user='.$row['user_id'].'"><b>&#935;</b></a><a href="/user/'.urlencode($row['name']).'/">'.$row['name'].'</a></span>';
 		else $tag.= '<span class="userlist">
 		<a class="del_vauth_user" title="'.$vauth_text['admin_user_del'].$row['fullname'].$vauth_text['admin_user_del_site'].'" href="" uri="'.$admin_php_name.'?mod=vauth&page=users&del_user='.$row['user_id'].'"><b>&#935;</b></a>
 		<a class="refresh_vauth_user" user_id="'.$row['user_id'].'" title="'.$vauth_text['admin_update_info'].$row['fullname'].$vauth_text['admin_user_del_site'].'" ><b>0</b></a>
 		
-		<a class="userlink" href="/user/'.urlencode($row['name']).'" title="'.$row['fullname'].'">
+		<a class="userlink" href="/user/'.urlencode($row['name']).'/" title="'.$row['fullname'].'">
 		
 		<img class="vauth_admin_userimage user_image_'.$row['user_id'].'" src="'.$user_img_url.'?'.time().'"/></a></span>';
 	
 	}
+	
+@header( "Content-type: text/html; charset=" . $dle_api->dle_config['charset']);
 echo $tag;	
 ?>
