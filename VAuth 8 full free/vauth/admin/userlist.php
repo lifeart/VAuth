@@ -11,13 +11,9 @@ if (empty($_SESSION['dle_password'])) die('Fuck');
 
 $user = $dle_api->take_user_by_id($_SESSION['dle_user_id']);
 
-
-
 if ($user['user_group'] != 1) die; 
 
 $tag = '';
-
-
 
 			// ** Функция удаления пользователя с сайта
 			if (!empty($_GET['del_user']) and is_numeric($_GET['del_user']) ) {
@@ -57,7 +53,6 @@ $tag = '';
 
 			if (!empty($_GET['sort'])) $sort_type = "DESC"; else $sort_type = "ASC";
 			
-			
 			if (!empty($_GET['style'])) { $getparams[] = 'style='.$_GET['style']; }
 
 			$now_time = time();
@@ -71,49 +66,17 @@ $tag = '';
 					
 					switch($sitelist) {
 					
-						case 'vkontakte':
-							$where[] = 'vk_registered = \'1\'';
-						break;
-						
-						case 'facebook':
-							$where[] = 'fb_registered = \'1\'';
-						break;
-						
-						case 'twitter':
-							$where[] = 'tw_registered = \'1\'';
-						break;				
-					
-						case 'odnoklassniki':
-							$where[] = 'od_registered = \'1\'';
-						break;
-
-						case 'instagram':
-							$where[] = 'in_registered = \'1\'';
-						break;
-						
-						case 'foursquare':
-							$where[] = 'fs_registered = \'1\'';
-						break;
-						
-						case 'google':
-							$where[] = 'go_registered = \'1\'';
-						break;
-						
-						case 'github':
-							$where[] = 'gh_registered = \'1\'';
-						break;
-						
-						case 'mail':
-							$where[] = 'ma_registered = \'1\'';
-						break;
-
-						case 'microsoft':
-							$where[] = 'ms_registered = \'1\'';
-						break;
-						
-						case 'steam':
-							$where[] = 'st_registered = \'1\'';
-						break;					
+						case 'mail':				$where[] = 'ma_registered = \'1\'';break;
+						case 'github':				$where[] = 'gh_registered = \'1\'';break;
+						case 'twitter':				$where[] = 'tw_registered = \'1\'';break;
+						case 'steam':				$where[] = 'st_registered = \'1\'';break;					
+						case 'google':			$where[] = 'go_registered = \'1\'';break;
+						case 'microsoft':		$where[] = 'ms_registered = \'1\'';break;
+						case 'facebook':		$where[] = 'fb_registered = \'1\'';break;
+						case 'vkontakte':		$where[] = 'vk_registered = \'1\'';break;
+						case 'instagram':		$where[] = 'in_registered = \'1\'';break;
+						case 'foursquare':		$where[] = 'fs_registered = \'1\'';break;
+						case 'odnoklassniki':	$where[] = 'od_registered = \'1\'';break;
 					
 						default:
 							$where[] = ' ( fs_registered = \'1\' or go_registered = \'1\' or ma_registered = \'1\' or ms_registered = \'1\' or in_registered = \'1\' or gh_registered = \'1\' or od_registered = \'1\' or vk_registered = \'1\' or fb_registered = \'1\' or tw_registered = \'1\' or st_registered = \'1\' ) ';
