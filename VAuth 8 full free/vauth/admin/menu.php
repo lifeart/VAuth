@@ -1,5 +1,4 @@
 <?PHP
-
 $vauth_menu = '<table width="100%"><tr>
 				<td width="50%">
 			
@@ -47,5 +46,4 @@ $vauth_menu = '<table width="100%"><tr>
 			
 			</tr>
 			</table>
-			';		
-?>
+			';
