@@ -40,12 +40,34 @@ function usercounter($text) {
 			$reg_month = $now_time-24*60*60*30;
 			$vis_month = $reg_month;
 			
-			
-			// Можно сделать рекурсивный зпрос через сканирование файлов в папке
 			$queryTotal = $db->super_query("SELECT COUNT(*) AS count FROM " . USERPREFIX . "_users where fs_connected = '1' or go_connected = '1' or ma_connected = '1' or ms_connected = '1' or in_connected = '1' or gh_connected = '1' or od_connected = '1' or vk_connected = '1' or fb_connected = '1' or tw_connected = '1' or fs_registered = '1' or go_registered = '1' or ma_registered = '1' or ms_registered = '1' or in_registered = '1' or gh_registered = '1' or od_registered = '1' or vk_registered = '1' or fb_registered = '1' or tw_registered = '1'");
 			
+			$queryTotal = $queryTotal['count'];
 			
-			$connect_sql_login = $db->query( "SELECT * FROM " . USERPREFIX . "_users where fs_connected = '1' or go_connected = '1' or ma_connected = '1' or ms_connected = '1' or in_connected = '1' or gh_connected = '1' or od_connected = '1' or vk_connected = '1' or fb_connected = '1' or tw_connected = '1' or fs_registered = '1' or go_registered = '1' or ma_registered = '1' or ms_registered = '1' or in_registered = '1' or gh_registered = '1' or od_registered = '1' or vk_registered = '1' or fb_registered = '1' or tw_registered = '1'" );	
+			$queryRegistered = $db->super_query("SELECT COUNT(*) AS count FROM " . USERPREFIX . "_users where fs_registered = '1' or go_registered = '1' or ma_registered = '1' or ms_registered = '1' or in_registered = '1' or gh_registered = '1' or od_registered = '1' or vk_registered = '1' or fb_registered = '1' or tw_registered = '1'");
+			
+			$queryRegistered = $queryRegistered['count'];
+			
+			$connect_sql_login = $db->query( "SELECT reg_date,lastdate,name,fullname,userfriends,sex FROM " . USERPREFIX . "_users where fs_connected = 1 or go_connected = 1 or ma_connected = 1 or ms_connected = 1 or in_connected = 1 or gh_connected = 1 or od_connected = 1 or vk_connected = 1 or fb_connected = 1 or tw_connected = 1 or fs_registered = '1' or go_registered = '1' or ma_registered = '1' or ms_registered = '1' or in_registered = '1' or gh_registered = '1' or od_registered = '1' or vk_registered = '1' or fb_registered = '1' or tw_registered = '1' or st_registered = '1' or st_registered = '1'" );	
+			
+			function getSocialStats($prefix='') {
+			
+				global $db;
+				$count = $db->super_query("SELECT COUNT(*) AS count FROM " . USERPREFIX . "_users where ".$prefix."_registered = '1'");
+				return $count['count'];
+			}
+			
+			$vk_registered_count = getSocialStats('vk');
+			$fb_registered_count = getSocialStats('fb');
+			$tw_registered_count = getSocialStats('tw');
+			$go_registered_count = getSocialStats('go');
+			$in_registered_count = getSocialStats('in');
+			$fs_registered_count = getSocialStats('fs');
+			$od_registered_count = getSocialStats('od');
+			$gh_registered_count = getSocialStats('gh');
+			$ma_registered_count = getSocialStats('ma');
+			$ms_registered_count = getSocialStats('ms');
+			$st_registered_count = getSocialStats('st');
 			
 			while ( $row = $db->get_row( $connect_sql_login ) )	{
 			
@@ -66,58 +88,14 @@ function usercounter($text) {
 				
 				if (!empty($row['userfriends'])) $userfriends++;
 				
-				if ($row['vk_registered'] == 1) $vk_registered_count++;
-				if ($row['fb_registered'] == 1) $fb_registered_count++;
-				if ($row['tw_registered'] == 1) $tw_registered_count++;
-				if ($row['go_registered'] == 1) $go_registered_count++;
-				if ($row['in_registered'] == 1) $in_registered_count++;
-				if ($row['fs_registered'] == 1) $fs_registered_count++;
-				if ($row['od_registered'] == 1) $od_registered_count++;
-				if ($row['fl_registered'] == 1) $fl_registered_count++;
-				if ($row['gh_registered'] == 1) $gh_registered_count++;
-				if ($row['ma_registered'] == 1) $ma_registered_count++;
-				if ($row['ms_registered'] == 1) $ms_registered_count++;
-				
 				switch($row['sex']) {
-				
-					case $vauth_text[4]:
-							$maile++;
-						break;
-					
-					case $vauth_text[5]:
-							$femaile++;
-						break;
-				
+					case $vauth_text[4]:$maile++;break;
+					case $vauth_text[5]:$femaile++;break;
 				}
 				
-				if (
-						$row['vk_connected'] == 1 or 
-						$row['tw_connected'] == 1 or
-						$row['fb_connected'] == 1 or
-						$row['in_connected'] == 1 or
-						$row['fs_connected'] == 1 or
-						$row['go_connected'] == 1 or
-						$row['od_connected'] == 1 or
-						$row['fl_connected'] == 1 or
-						$row['gh_connected'] == 1 or
-						$row['ms_connected'] == 1 or
-						$row['ma_connected'] == 1
-						
-					) $all_acc_count++;
-					
-					if ($row['vk_registered'] == 1 or 
-						$row['tw_registered'] == 1 or
-						$row['fb_registered'] == 1 or
-						$row['in_registered'] == 1 or
-						$row['fs_registered'] == 1 or
-						$row['go_registered'] == 1 or
-						$row['od_registered'] == 1 or
-						$row['fl_registered'] == 1 or
-						$row['gh_registered'] == 1 or
-						$row['ms_registered'] == 1 or
-						$row['ma_registered'] == 1
-						
-					) $user_counter++;
+		
+				$all_acc_count = $queryTotal-$queryRegistered;			
+				$user_counter = $queryRegistered;
 			
 			}
 			
@@ -126,17 +104,7 @@ function usercounter($text) {
 			
 				global $admin_php_name;
 				
-				if (empty($name) and empty ($site)) {
-				
-					$like = '';
-					$and = '';
-					
-				} else {
-				
-					$like = '=';
-					$and = '&';
-				
-				}
+				if (empty($name) and empty ($site)) {$like = '';$and = '';} else {$like = '=';$and = '&';}
 			
 				if( ! $data ) $data = 0;
 				else $data = '<a title="'.$vauth_text['admin_user_profile'].'" href="'.$admin_php_name.'?mod=vauth&page=users&'.$name.$like.$site.$and.'sort=1&limit_to='.$data.'">'.$data.'</a>';
@@ -163,6 +131,7 @@ function usercounter($text) {
 			$in_registered_count = $vauth_text['all_in_reg'].if_no_user($in_registered_count,'site','instagram');
 			$fs_registered_count = $vauth_text['all_fs_reg'].if_no_user($fs_registered_count,'site','foursquare');
 			$od_registered_count = $vauth_text['all_od_reg'].if_no_user($od_registered_count,'site','odnoklassniki');
+			// $st_registered_count = $vauth_text['all_st_reg'].if_no_user($st_registered_count,'site','steam');
 			
 			$userfriends = $vauth_text['all_with_friends'].if_no_user($userfriends,'friends','yes');
 			
@@ -180,6 +149,7 @@ function usercounter($text) {
 				if (file_exists($func_path . '/instagram_functions.php')) $page = $page.usercounter($in_registered_count);
 				if (file_exists($func_path . '/foursquare_functions.php')) $page = $page.usercounter($fs_registered_count);
 				if (file_exists($func_path . '/mail_functions.php')) $page = $page.usercounter($ma_registered_count);
+				// if (file_exists($func_path . '/steam_functions.php')) $page = $page.usercounter($st_registered_count);
 				if (file_exists($func_path . '/microsoft_functions.php')) $page = $page.usercounter($ms_registered_count);
 				if (file_exists($func_path . '/odnoklassniki_functions.php')) $page = $page.usercounter($od_registered_count);
 
