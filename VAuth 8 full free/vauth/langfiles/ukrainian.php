@@ -6,13 +6,13 @@
 		$vauth_text['admin_menu_users'] = 'Користувачі';
 		$vauth_text['admin_menu_settings'] = 'Налаштування';
 		$vauth_text['all_connected'] = 'Всього підключили соціальні мережі: ';
-		$vauth_text['male_count'] = 'Число чоловіків: ';
-		$vauth_text['female_count'] = 'Число жінок: ';
+		$vauth_text['male_count'] = 'Кількість чоловіків: ';
+		$vauth_text['female_count'] = 'Кількість жінок: ';
 		$vauth_text['all_vauth_reg'] = 'Зареєстровано через VAuth (всього): ';
-		$vauth_text['all_vk_reg'] = 'Зареєстровано через Вконтакте: ';
+		$vauth_text['all_vk_reg'] = 'Зареєстровано через Вконтакті: ';
 		$vauth_text['all_fb_reg'] = 'Зареєстровано через Facebook: ';
 		$vauth_text['all_tw_reg'] = 'Зареєстровано через Twitter: ';
-		$vauth_text['all_with_friends'] = 'Мають друзів на сайті : ';
+		$vauth_text['all_with_friends'] = 'Мають друзів на сайті: ';
 		
 		// ** Конфігурація модулю
 		$vauth_text['site_url'] = 'Адреса сайту:';
@@ -42,15 +42,15 @@
 		$vauth_text['update_settings'] = 'Оновити налаштування';
 		$vauth_text['support_group'] = 'Спільнота підтримки модуля Вконтакте.';
 		$vauth_text['hellopage'] = '
-			аскаво просимо в Адмін-панель модулю <b>VAuth 8</b>, <br/>
-			скористайтеся меню зверху для отримання інформації, яка вас цікавить та налаштування модулю.
+			Ласкаво просимо в Адмін-панель модулю <b>VAuth 8</b>, <br/>
+			скористайтеся меню зверху для отримання інформації, яка вас цікавить, та налаштування модулю.
 			<br/><br/>
 			<b>VirtualAuth</b> - новий проект авторизації користувачів чрез соціальні мережі в популярних CMS.</br>
 			На даний момент VAuth підтримує авторизацію через такі соціальні мережі, як:</br>
-			<b>vkontakte, facebook, twitter, odnoklassniki, foursquare, instagram, google+, мир@mail.ru, github, windows live</b></br>
+			<b>vkontakte, facebook, twitter, odnoklassniki, foursquare, instagram, google+, світ@mail.ru, github, windows live</b></br>
 			Цей список постійно розширюється, так як ведеться активне просування модулю в мережі.
 			<br/><br/>
-			Я щиро сподіваюся, що використання даного модуля адміністраторами сайтів допоможе<br/>
+			Я щиро сподіваюся, що використання даного модулю адміністраторами сайтів допоможе<br/>
 			підвищити безпеку авторизації, збільшити її швидкість і залучити нових користувачів на ресурс.<br/>
 			';
 	
@@ -64,7 +64,7 @@
 		$vauth_text['all_fl_reg'] = 'Зареєстровано через Flickr: ';		
 		$vauth_text['all_gh_reg'] = 'Зареєстровано через Github: ';	
 		$vauth_text['all_ms_reg'] = 'Зареєстровано через Windows Live: ';	
-		$vauth_text['all_ma_reg'] = 'Зареєстровано через Мир@mail.ru: ';	
+		$vauth_text['all_ma_reg'] = 'Зареєстровано через світ@mail.ru: ';	
 		
 		$vauth_text['reg_24_users'] = 'Зареєстровано за 24 години: ';		
 		$vauth_text['vis_24_users'] = 'Заходили протягом доби: ';
@@ -75,8 +75,8 @@
 		$vauth_text['reg_month'] = 'Зареєстровано за місяць: ';		
 		$vauth_text['vis_month'] = 'Заходили протягом місяця: ';		
 		
-		$vauth_text['od_usergroup'] = 'Группа для odnoklassniki:';
-		$vauth_text['fs_usergroup'] = 'Группа для foursquare:';
+		$vauth_text['od_usergroup'] = 'Група для odnoklassniki:';
+		$vauth_text['fs_usergroup'] = 'Група для foursquare:';
 		$vauth_text['go_usergroup'] = 'Група користувачів з google:';
 		$vauth_text['in_usergroup'] = 'Група користувачів з instagram:';
 		$vauth_text['fl_usergroup'] = 'Група користувачів з flickr:';
@@ -196,11 +196,11 @@
 		$vauth_text[20]	='Anonym, Please Login first!';
 		$vauth_text[21]	='Невідомо';
 
-		$vauth_text[22]	='Введіть бажаний нік, або залишіть поле пустим, для встановлення ніка із ';
+		$vauth_text[22]	='Введіть бажаний нік, або залишіть поле пустим, для встановлення ніку з ';
 		$vauth_text[23]	='Продовжити';
 		$vauth_text[24]	='Реєстрація на сайті, Ваш новий пароль.';
 		$vauth_text[25]	=', <br /> для успішної авторизації через соціальні мережі рекомендовано його не змінювати.';
-		$vauth_text[26]	='Ввійти';
+		$vauth_text[26]	='Увійти';
 		$vauth_text[27]	='назад';
 		$vauth_text[28]	='Такий користувач з FB вже зареєстрований на нашому сайті';
 		$vauth_text[29]	='FB info Error, that sucks!';
@@ -229,18 +229,18 @@
 		$vauth_text['in_user_reg_errore']	='Такий користувач з instagram вже зареєстрований на нашому сайті <br/> <a href="/"><b>Повернутися назад</b></a>';
 		$vauth_text['go_user_reg_errore']	='Такий користувач з google+ вже зареєстрований на нашому сайті <br/> <a href="/"><b>Повернутися назад</b></a>';
 		$vauth_text['ms_user_reg_errore']	='Такий користувач з Windows Live вже зареєстрований на нашому сайті <br/> <a href="/"><b>Повернутися назад</b></a>';
-		$vauth_text['ma_user_reg_errore']	='Такий користувач з мир@mail.ru вже зареєстрований на нашому сайті <br/> <a href="/"><b>Повернутися назад</b></a>';
+		$vauth_text['ma_user_reg_errore']	='Такий користувач з світ@mail.ru вже зареєстрований на нашому сайті <br/> <a href="/"><b>Повернутися назад</b></a>';
 		$vauth_text['gh_user_reg_errore']	='Такий користувач з github вже зареєстрований на нашому сайті <br/> <a href="/"><b>Повернутися назад</b></a>';
 		$vauth_text['profile_go'] = 'google+';
 		$vauth_text['profile_in'] = 'instagram';
 		$vauth_text['profile_fs'] = 'foursquare';
 		$vauth_text['profile_od'] = 'odnoklassniki';
-		$vauth_text['profile_ma'] = 'мир<font color="#faa61a">@</font>mail<font color="#faa61a">.ru</font>';
+		$vauth_text['profile_ma'] = 'світ<font color="#faa61a">@</font>mail<font color="#faa61a">.ru</font>';
 		$vauth_text['profile_ms'] = 'Windows Live';
 		$vauth_text['profile_gh'] = 'github';
 		$vauth_text['en_go']='Підключити google+';
 		$vauth_text['en_gh']='Підключити github';
-		$vauth_text['en_ma']='Підключити мир@mail.ru';
+		$vauth_text['en_ma']='Підключити світ@mail.ru';
 		$vauth_text['en_ms']='Підключити Windows Live';
 		$vauth_text['en_in']='Підключити instagram';
 		$vauth_text['en_fs']='Підключити foursquare';
@@ -250,7 +250,7 @@
 		$vauth_text['di_fs']='Відключити foursquare';
 		$vauth_text['di_od']='Відключити odnoklassniki';
 		$vauth_text['di_gh']='Відключити github';
-		$vauth_text['di_ma']='Відключити мир@mail.ru';
+		$vauth_text['di_ma']='Відключити світ@mail.ru';
 		$vauth_text['di_ms']='Відключити Windows Live';
 		$vauth_text['email_error']='
 									 - Email allready exists, try to login with anower email </br>
@@ -270,7 +270,7 @@
 		$vauth_text['in_token_error'] = 'Не вдається отримати ключ авторизації instagram, можливо ви використовуєте застарілі дані <br/> <a href="/"><b>Повернутися назад</b></a>';
 		$vauth_text['gh_token_error'] = 'Не вдається отримати ключ авторизації github, можливо ви використовуєте застарілі дані <br/> <a href="/"><b>Повернутися назад</b></a>';
 		$vauth_text['ms_token_error'] = 'Не вдається отримати ключ авторизації Windows Live, можливо ви використовуєте застарілі дані <br/> <a href="/"><b>Повернутися назад</b></a>';
-		$vauth_text['ma_token_error'] = 'Не вдається отримати ключ авторизації мир@mail.ru, можливо ви використовуєте застарілі дані <br/> <a href="/"><b>Повернутися назад</b></a>';
+		$vauth_text['ma_token_error'] = 'Не вдається отримати ключ авторизації світ@mail.ru, можливо ви використовуєте застарілі дані <br/> <a href="/"><b>Повернутися назад</b></a>';
 		$vauth_text['def_user'] = 'Merlin Monro ';
 		$vauth_text['def_login'] = 'user ';
 		$vauth_text['def_email'] = '@fakemail.com';
