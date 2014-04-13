@@ -653,10 +653,10 @@ if( ! class_exists( 'VAuthFunctions' ) )	{
 		}
 		// ** Функция генерации пароля пользователя
 		function create_userpass($uid) { //Генерация пароля
-		
-				if (empty($uid)) $uid = mt_rand(123,939073423);
-		
-				$password = mt_rand(123,$uid.$uid);
+	
+				if (empty($uid)) $uid = mt_rand(123,939073);
+				$uid = abs(intval($uid.$uid))+1230;
+				$password = mt_rand(123,$uid);
 				return $password;
 			}
 
