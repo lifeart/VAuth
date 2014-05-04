@@ -19,7 +19,7 @@ if ($user['user_group'] != 1) die;
 	$menus = 'users';
 	
 
-	// ** Функция удаления пользователя с сайта
+	// ** Р¤СѓРЅРєС†РёСЏ СѓРґР°Р»РµРЅРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃ СЃР°Р№С‚Р°
 	if (!empty($_GET['del_user']) and is_numeric($_GET['del_user']) ) {
 		
 	$id = $_GET['del_user'];
@@ -60,8 +60,8 @@ if ($user['user_group'] != 1) die;
 			
 			$vauth_search = '
 			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-			<script type="text/javascript" src="engine/skins/calendar.js"></script>
-			<link rel="stylesheet" type="text/css" media="all" href="engine/skins/calendar-blue.css" title="win2k-cold-1" />
+			<script type="text/javascript" src="engine/skins/v_calendar.js"></script>
+			<link rel="stylesheet" type="text/css" media="all" href="engine/skins/v_calendar-blue.css" title="win2k-cold-1" />
 			<table width="100%" id="ap_fields">
 			<tr>
 			<td width="140" style="padding:2px;">'.$vauth_text['admin_searchform_login'].'</td>
@@ -69,7 +69,7 @@ if ($user['user_group'] != 1) die;
 			<td style="padding-left:5px;">'.$vauth_text['admin_searchform_regdate'].'</td>
 			<td style="padding-left:5px;">'.$vauth_text['admin_searchform_from'].'</td>
 			<td><input type="text" name="fromregdate" id="fromregdate" size="17" maxlength="16" class="edit bk" value="'.$_GET['fromregdate'].'">
-			<img src="engine/skins/images/img.gif"  align="absmiddle" id="f_trigger_reg" style="cursor: pointer; border: 0" title="'.$vauth_text['admin_searchform_date_pick'].'"/>
+			<img src="engine/skins/v_images/img.gif"  align="absmiddle" id="f_trigger_reg" style="cursor: pointer; border: 0" title="'.$vauth_text['admin_searchform_date_pick'].'"/>
 			<script type="text/javascript">
 				Calendar.setup({
 				  inputField     :    "fromregdate",     // id of the input field
@@ -84,7 +84,7 @@ if ($user['user_group'] != 1) die;
 			</script></td>
 			<td style="padding-left:5px;">'.$vauth_text['admin_searchform_to'].'</td>
 			<td><input type="text" name="toregdate" id="toregdate" size="17" maxlength="16" class="edit bk" value="'.$_GET['toregdate'].'">
-			<img src="engine/skins/images/img.gif"  align="absmiddle" id="t_trigger_reg" style="cursor: pointer; border: 0" title="'.$vauth_text['admin_searchform_date_pick'].'"/>
+			<img src="engine/skins/v_images/img.gif"  align="absmiddle" id="t_trigger_reg" style="cursor: pointer; border: 0" title="'.$vauth_text['admin_searchform_date_pick'].'"/>
 			<script type="text/javascript">
 				Calendar.setup({
 				  inputField     :    "toregdate",     // id of the input field
@@ -106,7 +106,7 @@ if ($user['user_group'] != 1) die;
 			<td style="padding-left:5px;">'.$vauth_text['admin_searchform_lastdate'].'</td>
 			<td style="padding-left:5px;">'.$vauth_text['admin_searchform_from'].'</td>
 			<td><input type="text" name="fromentdate" id="fromentdate" size="17" maxlength="16" class="edit bk" value="'.$_GET['fromentdate'].'">
-			<img src="engine/skins/images/img.gif"  align="absmiddle" id="f_trigger_ent" style="cursor: pointer; border: 0" title="'.$vauth_text['admin_searchform_date_pick'].'"/>
+			<img src="engine/skins/v_images/img.gif"  align="absmiddle" id="f_trigger_ent" style="cursor: pointer; border: 0" title="'.$vauth_text['admin_searchform_date_pick'].'"/>
 			<script type="text/javascript">
 				Calendar.setup({
 				  inputField     :    "fromentdate",     // id of the input field
@@ -121,7 +121,7 @@ if ($user['user_group'] != 1) die;
 			</script></td>
 			<td style="padding-left:5px;">'.$vauth_text['admin_searchform_to'].'</td>
 			<td><input type="text" name="toentdate" id="toentdate" size="17" maxlength="16" class="edit bk" value="'.$_GET['toentdate'].'">
-			<img src="engine/skins/images/img.gif"  align="absmiddle" id="t_trigger_ent" style="cursor: pointer; border: 0" title="'.$vauth_text['admin_searchform_date_pick'].'"/>
+			<img src="engine/skins/v_images/img.gif"  align="absmiddle" id="t_trigger_ent" style="cursor: pointer; border: 0" title="'.$vauth_text['admin_searchform_date_pick'].'"/>
 			<script type="text/javascript">
 				Calendar.setup({
 				  inputField     :    "toentdate",     // id of the input field
@@ -141,9 +141,9 @@ if ($user['user_group'] != 1) die;
 				<td><input type="checkbox" name="search_banned" id="search_banned" value="yes" ></td>
 				<td style="padding-left:5px;">'.$vauth_text['admin_searchform_pubnum'].'</td>
 				<td style="padding-left:5px;">'.$vauth_text['admin_searchform_from'].'</td>
-				<td><input class="edit bk" type="text" name="search_news_f" id="search_news_f" size="8" maxlength="7" value="'.$_GET['search_news_f'].'"><a href="#" class="hintanchor" onMouseover="showhint(\'Введите количество новостей для поиска.\', this, event, \'300px\')">[?]</a></td>
+				<td><input class="edit bk" type="text" name="search_news_f" id="search_news_f" size="8" maxlength="7" value="'.$_GET['search_news_f'].'"><a href="#" class="hintanchor" onMouseover="showhint(\'Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ РЅРѕРІРѕСЃС‚РµР№ РґР»СЏ РїРѕРёСЃРєР°.\', this, event, \'300px\')">[?]</a></td>
 				<td style="padding-left:5px;">'.$vauth_text['admin_searchform_to'].'</td>
-				<td><input class="edit bk" type="text" name="search_news_t" id="search_news_t" size="8" maxlength="7" value="'.$_GET['search_news_t'].'"><a href="#" class="hintanchor" onMouseover="showhint(\'Введите количество новостей для поиска.\', this, event, \'300px\')">[?]</a></td>
+				<td><input class="edit bk" type="text" name="search_news_t" id="search_news_t" size="8" maxlength="7" value="'.$_GET['search_news_t'].'"><a href="#" class="hintanchor" onMouseover="showhint(\'Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ РЅРѕРІРѕСЃС‚РµР№ РґР»СЏ РїРѕРёСЃРєР°.\', this, event, \'300px\')">[?]</a></td>
 				</tr>
 				<tr>
 				<td style="padding:2px;">'.$vauth_text['admin_searchform_group'].'</td>
@@ -154,9 +154,9 @@ if ($user['user_group'] != 1) die;
 				</td>
 				<td style="padding-left:5px;">'.$vauth_text['admin_searchform_comnum'].'</td>
 				<td style="padding-left:5px;">'.$vauth_text['admin_searchform_from'].'</td>
-				<td><input class="edit bk" type="text" name="search_coms_f" id="search_coms_f" size="8" maxlength="7" value="'.$_GET['search_coms_f'].'"><a href="#" class="hintanchor" onMouseover="showhint(\'Введите количество комментариев для поиска.\', this, event, \'300px\')">[?]</a></td>
+				<td><input class="edit bk" type="text" name="search_coms_f" id="search_coms_f" size="8" maxlength="7" value="'.$_GET['search_coms_f'].'"><a href="#" class="hintanchor" onMouseover="showhint(\'Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ РґР»СЏ РїРѕРёСЃРєР°.\', this, event, \'300px\')">[?]</a></td>
 				<td style="padding-left:5px;">'.$vauth_text['admin_searchform_to'].'</td>
-				<td><input class="edit bk" type="text" name="search_coms_t" id="search_coms_t" size="8" maxlength="7" value="'.$_GET['search_coms_t'].'"><a href="#" class="hintanchor" onMouseover="showhint(\'Введите количество комментариев для поиска.\', this, event, \'300px\')">[?]</a></td>
+				<td><input class="edit bk" type="text" name="search_coms_t" id="search_coms_t" size="8" maxlength="7" value="'.$_GET['search_coms_t'].'"><a href="#" class="hintanchor" onMouseover="showhint(\'Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ РґР»СЏ РїРѕРёСЃРєР°.\', this, event, \'300px\')">[?]</a></td>
 
 				</tr>
 				<tr>
@@ -246,7 +246,7 @@ if ($user['user_group'] != 1) die;
 						
 						});
 						
-						// Обработчик для привьюх
+						// РћР±СЂР°Р±РѕС‚С‡РёРє РґР»СЏ РїСЂРёРІСЊСЋС…
 						$(document).on("click",".del_vauth_user",function(){
 						
 							var result = confirm($(this).attr("title")+"?");
@@ -270,7 +270,7 @@ if ($user['user_group'] != 1) die;
 						});
 						
 						
-						// Обработчик для списка
+						// РћР±СЂР°Р±РѕС‚С‡РёРє РґР»СЏ СЃРїРёСЃРєР°
 						
 						$(document).on("click",".del_vauth_user_list",function(){
 						

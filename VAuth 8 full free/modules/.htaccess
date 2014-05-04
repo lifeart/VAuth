@@ -1,0 +1,4 @@
+<FilesMatch "auth\.php|vauth_admin\.css">
+Order deny,allow
+Allow from all
+</FilesMatch>

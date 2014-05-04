@@ -102,6 +102,7 @@
 
 1.	Запустите из корня сайта файл install_vauth_8.php
 		( находится в присланной папке vauth_8, сначала скиньте его в корень сайта )
+		для win1251 версии движка вам нужен install_vauth_8_1251.php
 
 2.	После установки полей, удалите install_vauth_8.php с сайта
 	
@@ -189,12 +190,16 @@
 		################### ВАЖНО! #################################################
 	
 		выставляем для /engine/modules/vauth/settings/user_settings.php права 666 (CHMOD 0666)
+		копируем /modules/.htaccess в соотв. папку на сайте, заменить при необходимости (dle 10+)
 
 		################### ВАЖНО! #################################################
 
 
 	- Кидаем файл vauth.php из папки /engine/inc/ в /engine/inc/ на сервере.
-	- Кидаем картинку vauth.png из папки /engine/skins/images в /engine/skins/images на сервере.
+	- Кидаем папку engine/skins/v_images в соответствующую папку на сервере (dle 10+)
+	- Кидаем v_calendar-blue.css из папки /engine/skins в /engine/skins на сервере.
+	- Кидаем v_calendar.js из папки /engine/skins в /engine/skins на сервере.
+	- Кидаем картинку vauth.png из папки /engine/skins в /engine/skins на сервере.
 
 10.	- Дополнительная информация о пользователе выводится через userinfo.tpl:
 		
