@@ -927,7 +927,7 @@ if( ! class_exists( 'VAuthFunctions' ) )	{
 			if (empty($member_id['fullname'])) {
 			
 				if (!empty($oauth['fullname'])) {
-					$fullname = $oauth['fullname'];
+					$fullname = addslashes($oauth['fullname']);
 				} else $fullname = '';
 				
 			} else $fullname = $member_id['fullname'];
@@ -1103,22 +1103,22 @@ if( ! class_exists( 'VAuthFunctions' ) )	{
 			
 			if ($this->ifIs($oauth['fullname'])) {
 			
-				$fullname = $oauth['fullname'];
+				$fullname = addslashes($oauth['fullname']);
 				$fullname = 'fullname=\''.$fullname.'\', ';
 
 			} else $fullname = '';
 			
 			if ($this->ifIs($oauth['bio'])) {
 				
-				$info = 'info=\''.$oauth['bio'].'\', ';
+				$info = 'info=\''.addslashes($oauth['bio']).'\', ';
 				
 			} elseif ($this->ifIs($oauth['info'])) {
 				
-				$info = 'info=\''.$oauth['info'].'\', ';
+				$info = 'info=\''.addslashes($oauth['info']).'\', ';
 				
 			} elseif ($this->ifIs($oauth['activity'])) {
 			
-				$info = 'info=\''.$oauth['activity'].'\', ';
+				$info = 'info=\''.addslashes($oauth['activity']).'\', ';
 
 			} else	$info = '';
 		
