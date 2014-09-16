@@ -25,7 +25,7 @@
 
 # Регистрируем приложение twitter:
 
-  Зайдите на https://dev.twitter.com/apps
+  Зайдите на https://apps.twitter.com/app/new
   Пройдите авторизацию
   Перейдите на https://dev.twitter.com/apps/new (Create a new application)
   Заполните все поля, в поле Callback URL:
@@ -106,6 +106,7 @@
  - Ссылка на приложение: URL сайта
  - Ссылка callback: адрес_сайта/engine/modules/vauth/callback.php
  - Размер окна: 500x500 px; (например)
+ - Клиентская OAuth авторизацияРазрешить клиентскую OAuth авторизацию (ставим галку)
  - Статус: PUBLIC
  - Все требуемые права: Не ставим галочек!
  - Сохраняемся

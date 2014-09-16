@@ -30,6 +30,8 @@
 		if (strpos($site_url,'http:') === false) $site_url = 'http://'.$site_url;
 		if (empty($site_url) and empty($_GET['mod'])) die('Для корректной работы модуля VAuth необходимо указать адрес сайта на котором он работает <br/> это можно сделать в админ-панели.');
 		
+		if ( file_exists( $func_path . '/ibcurlemu.inc.php' ) ) require_once($func_path . '/libcurlemu.inc.php');
+		
 		// ** Если к нам пришёл запрос авторизации
 		if ($auth_site) {
 		
