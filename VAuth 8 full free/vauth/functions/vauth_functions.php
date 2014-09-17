@@ -557,6 +557,7 @@ if( ! class_exists( 'VAuthFunctions' ) )	{
 				
 				function if_is($data,$datalink) {
 					
+					if (!isset($data[$datalink])) return '';
 					if (!empty($data[$datalink])) return $data[$datalink];
 					else return '';
 				
