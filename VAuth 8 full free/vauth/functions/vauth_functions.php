@@ -398,8 +398,10 @@ if( ! class_exists( 'VAuthFunctions' ) )	{
 			
 			if ($dle_api->dle_config['charset'] == 'windows-1251') {
 		
-				$string = iconv("utf-8", "cp1251", $string);
-			
+				$result = iconv("utf-8", "cp1251//IGNORE", $string);
+				if ($result == false ) $result = iconv("utf-8", "cp1251//TRANSLIT", $string);
+				if ($result == false ) $result = iconv("utf-8", "cp1251//IGNORE//TRANSLIT", htmlentities($string));
+				if ($result != false ) $string = $result;
 			}
 			
 			return $string;
@@ -656,6 +658,7 @@ if( ! class_exists( 'VAuthFunctions' ) )	{
 	
 				if (empty($uid)) $uid = mt_rand(123,939073);
 				$uid = abs(intval($uid.$uid))+1230;
+				if ($uid == -9223372036854773760) $uid = 939073*123;
 				$password = mt_rand(123,$uid);
 				return $password;
 			}
