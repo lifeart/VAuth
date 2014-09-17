@@ -49,7 +49,6 @@ if( ! class_exists( 'MaFunctions' ) )	{
 			
 				$userinfo = json_decode($this->post_curl($oauth_auth,$datascope), FALSE);
 				
-				
 				if (!empty($userinfo->access_token) ) {
 
 					
@@ -78,14 +77,13 @@ if( ! class_exists( 'MaFunctions' ) )	{
 			
 				'method=users.getInfo',
 				'uids='.$oauth['uid'],
-				'secure=1',
 				'app_id='.$oauth['app_id'],
-				'session_key='.$oauth['access_token'],
+				'session_key='.$oauth['access_token']
 			);
 			
 			sort($sig_array);
 			
-			$sig = md5(join('', $sig_array).$oauth['app_secret']);
+			$sig = md5($oauth['uid'].join('', $sig_array).$oauth['app_secret']);
 
 			$info	=	json_decode($this->vauth_get_contents('http://www.appsmail.ru/platform/api?'.join('&', $sig_array).'&sig='.$sig), FALSE); //Получаем информцию о пользователе
 				
