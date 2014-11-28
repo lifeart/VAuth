@@ -16,6 +16,7 @@
 				[/not-group]
 			</ul>
 		</div>
+		
 		<div class="rcol">
 			<ul>
 				<li><span class="grey">Полное имя:</span> <b>{fullname}</b></li>

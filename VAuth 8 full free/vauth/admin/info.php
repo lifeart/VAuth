@@ -114,6 +114,8 @@ function usercounter($text) {
 			
 			}
 			
+
+			
 			$user_counter = $vauth_text['all_vauth_reg'].if_no_user($user_counter);
 			$all_acc_count = $vauth_text['all_connected'].if_no_user($all_acc_count,'connected','all');
 			$reg_24_users = $vauth_text['reg_24_users'].if_no_user($reg_24_users,'reg','24');

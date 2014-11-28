@@ -9,6 +9,7 @@
 	$tpl->load_template( 'acc_connect.tpl' );	
 	$tpl->set( '{header}', $vauth_text[8]);
 	
+	
 	if ($is_logged == true) {
 	
 		if (empty($member_id['userpassword_hash'])) {

@@ -225,10 +225,10 @@ if ($user['user_group'] != 1) die;
 					<div class="input_text">teddyid APP_ID</div>
 					<input class="settings_input" name="save_con[teddyid_app_id]" value="'.$vauth_config['teddyid_app_id'].'">
 
-					<div class="input_text">teddyid_app_secret</div>
+					<div class="input_text">teddyid app_secret</div>
 					<input class="settings_input" name="save_con[teddyid_app_secret]" value="'.$vauth_config['teddyid_app_secret'].'">
 					
-					<div class="input_text">teddyid_usergroup</div>
+					<div class="input_text">teddyid usergroup</div>
 						'.createSelectForSocial($vauth_config['teddyid_user_group'],'teddyid_user_group').'
 					</div>';
 

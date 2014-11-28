@@ -18,7 +18,6 @@
 			{gh_link}
 			{ms_link}
 			{ma_link}
-			
 		</div>
 		</div>
 		<div id="right_userinfo">

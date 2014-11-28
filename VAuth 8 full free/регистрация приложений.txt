@@ -12,6 +12,7 @@ function calculateToken($node_id, $secret_key)
   return sha1("from=".$node_id.";to=1;".$secret_key);
 }
 
+
 # вставляем необходимые поля в настройки
 
 # Регистрируем приложение vkontakte:

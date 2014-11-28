@@ -21,7 +21,6 @@
 	
 	}
 	
-
 	// ** Регистрация нового пользователя ** //
 	$vauth_api->go_register($auth_site,$new_user);
 	

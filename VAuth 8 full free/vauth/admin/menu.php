@@ -43,7 +43,7 @@ $vauth_menu = '<table width="100%"><tr>
 						</tr>
 					</table>
 				</td>
-			
+	
 			</tr>
 			</table>
 			';

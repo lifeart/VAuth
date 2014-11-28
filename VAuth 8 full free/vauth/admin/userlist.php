@@ -99,6 +99,7 @@ $tag = '';
 					$vis24 = $now_time - $vis24;
 					$where[] = 'lastdate >= \''.$vis24.'\'';
 				}
+				
 				if( ! empty( $_GET['connected']) and $_GET['connected']== 'all')  {	
 					$getparams[] = 'connected='.$_GET['connected'];
 					$where[] = '( td_connected = \'1\' or fs_connected = \'1\' or go_connected = \'1\' or ma_connected = \'1\' or ms_connected = \'1\' or in_connected = \'1\' or gh_connected = \'1\' or od_connected = \'1\' or vk_connected = \'1\' or fb_connected = \'1\' or tw_connected = \'1\' or st_connected = \'1\' )';
