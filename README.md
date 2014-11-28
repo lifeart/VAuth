@@ -38,8 +38,15 @@ Supported Networks:
 - facebook.com
 - google+
 - mail.ru
-- odnoklassniki.ru,
+- instagram.com
+- foursquare.com
+- odnoklassniki.ru
+- teddyid.com
+- steampowered.com
 - twitter.com
+- github.com
+- live.com 
+
 
 Authorization methods:
 - OAuth 1.0
@@ -51,7 +58,7 @@ Info:
 - vauth8.dream-notes.ru
 
 Charset:
-- win1251
+- utf-8
 
 Совместимость версий DLE:
 - 8.3 - 10.0 (будущие версии совместимы)
