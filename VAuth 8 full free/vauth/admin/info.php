@@ -68,6 +68,7 @@ function usercounter($text) {
 			$ma_registered_count = getSocialStats('ma');
 			$ms_registered_count = getSocialStats('ms');
 			$st_registered_count = getSocialStats('st');
+			$td_registered_count = getSocialStats('td');
 			
 			while ( $row = $db->get_row( $connect_sql_login ) )	{
 			
@@ -131,7 +132,8 @@ function usercounter($text) {
 			$in_registered_count = $vauth_text['all_in_reg'].if_no_user($in_registered_count,'site','instagram');
 			$fs_registered_count = $vauth_text['all_fs_reg'].if_no_user($fs_registered_count,'site','foursquare');
 			$od_registered_count = $vauth_text['all_od_reg'].if_no_user($od_registered_count,'site','odnoklassniki');
-			// $st_registered_count = $vauth_text['all_st_reg'].if_no_user($st_registered_count,'site','steam');
+			$st_registered_count = $vauth_text['all_st_reg'].if_no_user($st_registered_count,'site','steam');
+			$td_registered_count = $vauth_text['all_st_reg'].if_no_user($st_registered_count,'site','teddyid');
 			
 			$userfriends = $vauth_text['all_with_friends'].if_no_user($userfriends,'friends','yes');
 			
@@ -149,7 +151,8 @@ function usercounter($text) {
 				if (file_exists($func_path . '/instagram_functions.php')) $page = $page.usercounter($in_registered_count);
 				if (file_exists($func_path . '/foursquare_functions.php')) $page = $page.usercounter($fs_registered_count);
 				if (file_exists($func_path . '/mail_functions.php')) $page = $page.usercounter($ma_registered_count);
-				// if (file_exists($func_path . '/steam_functions.php')) $page = $page.usercounter($st_registered_count);
+				if (file_exists($func_path . '/steam_functions.php')) $page = $page.usercounter($st_registered_count);
+				if (file_exists($func_path . '/teddyid_functions.php')) $page = $page.usercounter($td_registered_count);
 				if (file_exists($func_path . '/microsoft_functions.php')) $page = $page.usercounter($ms_registered_count);
 				if (file_exists($func_path . '/odnoklassniki_functions.php')) $page = $page.usercounter($od_registered_count);
 

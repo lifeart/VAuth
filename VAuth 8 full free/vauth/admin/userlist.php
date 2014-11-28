@@ -64,7 +64,8 @@ $tag = '';
 						case 'mail':				$where[] = 'ma_registered = \'1\'';break;
 						case 'github':				$where[] = 'gh_registered = \'1\'';break;
 						case 'twitter':				$where[] = 'tw_registered = \'1\'';break;
-						case 'steam':				$where[] = 'st_registered = \'1\'';break;					
+						case 'steam':				$where[] = 'st_registered = \'1\'';break;	
+						case 'teddyid':				$where[] = 'td_registered = \'1\'';break;					
 						case 'google':			$where[] = 'go_registered = \'1\'';break;
 						case 'microsoft':		$where[] = 'ms_registered = \'1\'';break;
 						case 'facebook':		$where[] = 'fb_registered = \'1\'';break;
@@ -74,7 +75,7 @@ $tag = '';
 						case 'odnoklassniki':	$where[] = 'od_registered = \'1\'';break;
 					
 						default:
-							$where[] = ' ( fs_registered = \'1\' or go_registered = \'1\' or ma_registered = \'1\' or ms_registered = \'1\' or in_registered = \'1\' or gh_registered = \'1\' or od_registered = \'1\' or vk_registered = \'1\' or fb_registered = \'1\' or tw_registered = \'1\' or st_registered = \'1\' ) ';
+							$where[] = ' ( td_registered = \'1\' or fs_registered = \'1\' or go_registered = \'1\' or ma_registered = \'1\' or ms_registered = \'1\' or in_registered = \'1\' or gh_registered = \'1\' or od_registered = \'1\' or vk_registered = \'1\' or fb_registered = \'1\' or tw_registered = \'1\' or st_registered = \'1\' ) ';
 						break;
 					}
 
@@ -100,7 +101,7 @@ $tag = '';
 				}
 				if( ! empty( $_GET['connected']) and $_GET['connected']== 'all')  {	
 					$getparams[] = 'connected='.$_GET['connected'];
-					$where[] = '( fs_connected = \'1\' or go_connected = \'1\' or ma_connected = \'1\' or ms_connected = \'1\' or in_connected = \'1\' or gh_connected = \'1\' or od_connected = \'1\' or vk_connected = \'1\' or fb_connected = \'1\' or tw_connected = \'1\' or st_connected = \'1\' )';
+					$where[] = '( td_connected = \'1\' or fs_connected = \'1\' or go_connected = \'1\' or ma_connected = \'1\' or ms_connected = \'1\' or in_connected = \'1\' or gh_connected = \'1\' or od_connected = \'1\' or vk_connected = \'1\' or fb_connected = \'1\' or tw_connected = \'1\' or st_connected = \'1\' )';
 				}
 				if( ! empty( $_GET['reg'] ) ) {
 					$getparams[] = 'reg='.$_GET['reg'];

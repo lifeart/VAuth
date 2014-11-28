@@ -1,8 +1,8 @@
 {userifo-style}
 
 <div class="pheading">
-	<h2 class="lcol">Пользователь: <span>{usertitle}</span></h2>
-	<div class="ratebox"><div class="rate">{rate}</div><span>Рейтинг:</span></div>
+	<h2 class="lcol">РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ: <span>{usertitle}</span></h2>
+	<div class="ratebox"><div class="rate">{rate}</div><span>Р РµР№С‚РёРЅРі:</span></div>
 	<div class="clr"></div>
 </div>
 <div class="basecont"><div class="dpad">
@@ -18,25 +18,25 @@
 		</div>
 		<div class="rcol">
 			<ul>
-				<li><span class="grey">Полное имя:</span> <b>{fullname}</b></li>
-				[vauth-bdate]<li><span class="grey">Дата рождения:</span> {bdate}</li>[/vauth-bdate]
-				[vauth-sex]<li><span class="grey">Пол:</span> {sex}</li>[/vauth-sex]
-				[vauth-mobile_phone]<li><span class="grey">Телефон:</span> {mobile_phone}</li>[/vauth-mobile_phone]
-				<li><span class="grey">Группа:</span> {status} [time_limit]&nbsp;В группе до: {time_limit}[/time_limit]</li>
-				[vauth-friends]<li><span class="grey">Друзья:</span> {friends}</li>[/vauth-friends]
-				[vauth]<br/><li><span class="grey">{accounts} [not-logged]<a class="account_link big" href="/index.php?do=account_connect">&#8594; управление</a>[/not-logged]</span> </li>
+				<li><span class="grey">РџРѕР»РЅРѕРµ РёРјСЏ:</span> <b>{fullname}</b></li>
+				[vauth-bdate]<li><span class="grey">Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ:</span> {bdate}</li>[/vauth-bdate]
+				[vauth-sex]<li><span class="grey">РџРѕР»:</span> {sex}</li>[/vauth-sex]
+				[vauth-mobile_phone]<li><span class="grey">РўРµР»РµС„РѕРЅ:</span> {mobile_phone}</li>[/vauth-mobile_phone]
+				<li><span class="grey">Р“СЂСѓРїРїР°:</span> {status} [time_limit]&nbsp;Р’ РіСЂСѓРїРїРµ РґРѕ: {time_limit}[/time_limit]</li>
+				[vauth-friends]<li><span class="grey">Р”СЂСѓР·СЊСЏ:</span> {friends}</li>[/vauth-friends]
+				[vauth]<br/><li><span class="grey">{accounts} [not-logged]<a class="account_link big" href="/index.php?do=account_connect">&#8594; СѓРїСЂР°РІР»РµРЅРёРµ</a>[/not-logged]</span> </li>
 				<br/>
 				[/vauth]
 			</ul>
 			<ul class="ussep" style="clear:left important!;">
-				<li><span class="grey">Количество публикаций:</span> <b>{news-num}</b> [{news}][rss]<img src="{THEME}/images/rss.png" alt="rss" style="vertical-align: middle; margin-left: 5px;" />[/rss]</li>
-				<li><span class="grey">Количество комментариев:</span> <b>{comm-num}</b> [{comments}]</li>
-				<li><span class="grey">Дата регистрации:</span> {registration}</li>
-				<li><span class="grey">Последнее посещение:</span> {lastdate}</li>
+				<li><span class="grey">РљРѕР»РёС‡РµСЃС‚РІРѕ РїСѓР±Р»РёРєР°С†РёР№:</span> <b>{news-num}</b> [{news}][rss]<img src="{THEME}/images/rss.png" alt="rss" style="vertical-align: middle; margin-left: 5px;" />[/rss]</li>
+				<li><span class="grey">РљРѕР»РёС‡РµСЃС‚РІРѕ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ:</span> <b>{comm-num}</b> [{comments}]</li>
+				<li><span class="grey">Р”Р°С‚Р° СЂРµРіРёСЃС‚СЂР°С†РёРё:</span> {registration}</li>
+				<li><span class="grey">РџРѕСЃР»РµРґРЅРµРµ РїРѕСЃРµС‰РµРЅРёРµ:</span> {lastdate}</li>
 			</ul>
 			<ul class="ussep">
-				<li><span class="grey">Место жительства:</span> {land}</li>
-				<li><span class="grey">Немного о себе:</span> {info}</li>
+				<li><span class="grey">РњРµСЃС‚Рѕ Р¶РёС‚РµР»СЊСЃС‚РІР°:</span> {land}</li>
+				<li><span class="grey">РќРµРјРЅРѕРіРѕ Рѕ СЃРµР±Рµ:</span> {info}</li>
 			</ul>
 			<span class="small">{edituser}</span>
 		</div>
@@ -47,76 +47,76 @@
 <div id="options" style="display:none;">
 	<br /><br />
 
-	<div class="pheading"><h2>Редактирование профиля</h2></div>
+	<div class="pheading"><h2>Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРѕС„РёР»СЏ</h2></div>
 	<div class="baseform">
 		<table class="tableform">
 			<tr>
-				<td class="label">Ваше Имя:</td>
+				<td class="label">Р’Р°С€Рµ РРјСЏ:</td>
 				<td><input type="text" name="fullname" value="{fullname}" class="f_input" /></td>
 			</tr>
 			<tr>
-				<td class="label">Ваш E-Mail:</td>
+				<td class="label">Р’Р°С€ E-Mail:</td>
 				<td><input type="text" name="email" value="{editmail}" class="f_input" /><br />
 				<div class="checkbox">{hidemail}</div>
-				<div class="checkbox"><input type="checkbox" id="subscribe" name="subscribe" value="1" /> <label for="subscribe">Отписаться от подписанных новостей</label></div></td>
+				<div class="checkbox"><input type="checkbox" id="subscribe" name="subscribe" value="1" /> <label for="subscribe">РћС‚РїРёСЃР°С‚СЊСЃСЏ РѕС‚ РїРѕРґРїРёСЃР°РЅРЅС‹С… РЅРѕРІРѕСЃС‚РµР№</label></div></td>
 			</tr>
 			<tr>
-				<td class="label">Место жительства:</td>
+				<td class="label">РњРµСЃС‚Рѕ Р¶РёС‚РµР»СЊСЃС‚РІР°:</td>
 				<td><input type="text" name="land" value="{land}" class="f_input" /></td>
 			</tr>
 			<tr>
-				<td class="label">Список игнорируемых пользователей:</td>
+				<td class="label">РЎРїРёСЃРѕРє РёРіРЅРѕСЂРёСЂСѓРµРјС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№:</td>
 				<td>{ignore-list}</td>
 			</tr>
 			<tr>
-				<td class="label">Номер ICQ:</td>
+				<td class="label">РќРѕРјРµСЂ ICQ:</td>
 				<td><input type="text" name="icq" value="{icq}" class="f_input" /></td>
 			</tr>
 			<tr>
-				<td class="label">Старый пароль:</td>
+				<td class="label">РЎС‚Р°СЂС‹Р№ РїР°СЂРѕР»СЊ:</td>
 				<td><input type="password" name="altpass" class="f_input" /></td>
 			</tr>
 			<tr>
-				<td class="label">Новый пароль:</td>
+				<td class="label">РќРѕРІС‹Р№ РїР°СЂРѕР»СЊ:</td>
 				<td><input type="password" name="password1" class="f_input" /></td>
 			</tr>
 			<tr>
-				<td class="label">Повторите:</td>
+				<td class="label">РџРѕРІС‚РѕСЂРёС‚Рµ:</td>
 				<td><input type="password" name="password2" class="f_input" /></td>
 			</tr>
 			<tr>
-				<td class="label" valign="top">Блокировка по IP:<br />Ваш IP: {ip}</td>
+				<td class="label" valign="top">Р‘Р»РѕРєРёСЂРѕРІРєР° РїРѕ IP:<br />Р’Р°С€ IP: {ip}</td>
 				<td>
 				<div><textarea name="allowed_ip" style="width:98%;" rows="5" class="f_textarea">{allowed-ip}</textarea></div>
 				<div>
 					<span class="small" style="color:red;">
-					* Внимание! Будьте бдительны при изменении данной настройки.
-					Доступ к Вашему аккаунту будет доступен только с того IP-адреса или подсети, который Вы укажете.
-					Вы можете указать несколько IP адресов, по одному адресу на каждую строчку.
+					* Р’РЅРёРјР°РЅРёРµ! Р‘СѓРґСЊС‚Рµ Р±РґРёС‚РµР»СЊРЅС‹ РїСЂРё РёР·РјРµРЅРµРЅРёРё РґР°РЅРЅРѕР№ РЅР°СЃС‚СЂРѕР№РєРё.
+					Р”РѕСЃС‚СѓРї Рє Р’Р°С€РµРјСѓ Р°РєРєР°СѓРЅС‚Сѓ Р±СѓРґРµС‚ РґРѕСЃС‚СѓРїРµРЅ С‚РѕР»СЊРєРѕ СЃ С‚РѕРіРѕ IP-Р°РґСЂРµСЃР° РёР»Рё РїРѕРґСЃРµС‚Рё, РєРѕС‚РѕСЂС‹Р№ Р’С‹ СѓРєР°Р¶РµС‚Рµ.
+					Р’С‹ РјРѕР¶РµС‚Рµ СѓРєР°Р·Р°С‚СЊ РЅРµСЃРєРѕР»СЊРєРѕ IP Р°РґСЂРµСЃРѕРІ, РїРѕ РѕРґРЅРѕРјСѓ Р°РґСЂРµСЃСѓ РЅР° РєР°Р¶РґСѓСЋ СЃС‚СЂРѕС‡РєСѓ.
 					<br />
-					Пример: 192.48.25.71 или 129.42.*.*</span>
+					РџСЂРёРјРµСЂ: 192.48.25.71 РёР»Рё 129.42.*.*</span>
 				</div>
 				</td>
 			</tr>
 			<tr>
-				<td class="label">Аватар:</td>
+				<td class="label">РђРІР°С‚Р°СЂ:</td>
 				<td>
 				<input type="file" name="image" class="f_input" /><br />
-				<div class="checkbox"><input type="checkbox" name="del_foto" id="del_foto" value="yes" /> <label for="del_foto">Удалить фотографию</label></div>
+				<div class="checkbox"><input type="checkbox" name="del_foto" id="del_foto" value="yes" />В <label for="del_foto">РЈРґР°Р»РёС‚СЊ С„РѕС‚РѕРіСЂР°С„РёСЋ</label></div>
 				</td>
 			</tr>
 			<tr>
-				<td class="label">О себе:</td>
+				<td class="label">Рћ СЃРµР±Рµ:</td>
 				<td><textarea name="info" style="width:98%;" rows="5" class="f_textarea">{editinfo}</textarea></td>
 			</tr>
 			<tr>
-				<td class="label">Подпись:</td>
+				<td class="label">РџРѕРґРїРёСЃСЊ:</td>
 				<td><textarea name="signature" style="width:98%;" rows="5" class="f_textarea">{editsignature}</textarea></td>
 			</tr>
 			{xfields}
 		</table>
 		<div class="fieldsubmit">
-			<input class="fbutton" type="submit" name="submit" value="Отправить" />
+			<input class="fbutton" type="submit" name="submit" value="РћС‚РїСЂР°РІРёС‚СЊ" />
 			<input name="submit" type="hidden" id="submit" value="submit" />
 		</div>
 	</div>

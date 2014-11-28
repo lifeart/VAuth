@@ -56,6 +56,7 @@ if ($user['user_group'] != 1) die;
 			if (file_exists($func_path . '/mail_functions.php')) $selectlist = $selectlist.'<option  value="mail">mail</option>';
 			if (file_exists($func_path . '/microsoft_functions.php')) $selectlist = $selectlist.'<option  value="microsoft">microsoft</option>';
 			if (file_exists($func_path . '/steam_functions.php')) $selectlist = $selectlist.'<option  value="steam">steam</option>';
+			if (file_exists($func_path . '/teddyid_functions.php')) $selectlist = $selectlist.'<option  value="teddyid">teddyid</option>';
 			
 			
 			$vauth_search = '

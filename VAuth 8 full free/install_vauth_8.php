@@ -47,70 +47,129 @@ echo '
 echo '<h1>Вас приветствует мастер установки модуля VAuth</h1>';
 echo '<h2>Добавляю дополнительные поля..</h2>';
 
-$db->query("INSERT INTO " . USERPREFIX . "_admin_sections (name, title, descr, icon, allow_groups) VALUES ('vauth', 'VAuth DLE', 'Модуль авторизации и регистрации пользователей через социальные сети', 'vauth.png', '1') ");
+try {
+	$db->query("INSERT INTO " . USERPREFIX . "_admin_sections (name, title, descr, icon, allow_groups) VALUES ('vauth', 'VAuth DLE', 'Модуль авторизации и регистрации пользователей через социальные сети', 'vauth.png', '1') ");
+} catch (Exception $e) {
+    echo 'Модуль уже установлен...<br>';
+}
 
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	vk_user_id			VARCHAR(30)	NOT NULL");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	vk_connected		INT(1)		NOT NULL	DEFAULT  '0'");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	vk_registered		INT(1)		NOT NULL	DEFAULT  '0'");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	vk_hash_auth		TEXT		NOT NULL");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	vk_user_phone		VARCHAR(30)	NOT NULL");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	vk_user_friends		TEXT		NOT NULL");
+try {
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	vk_user_id			VARCHAR(30)	NOT NULL");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	vk_connected		INT(1)		NOT NULL	DEFAULT  '0'");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	vk_registered		INT(1)		NOT NULL	DEFAULT  '0'");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	vk_hash_auth		TEXT		NOT NULL");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	vk_user_phone		VARCHAR(30)	NOT NULL");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	vk_user_friends		TEXT		NOT NULL");
+} catch (Exception $e) {
+    echo 'Модуль vkontakte не установлен... (был установлен ранее или произошла ошибка) <br>';
+}
 
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	fb_user_id			VARCHAR(30)	NOT NULL");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	fb_connected		INT(1)		NOT NULL	DEFAULT  '0'");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	fb_registered		INT(1)		NOT NULL	DEFAULT  '0'");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	fb_hash_auth		TEXT		NOT NULL");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	fb_user_friends		TEXT		NOT NULL");
+try {
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	td_user_id			VARCHAR(30)	NOT NULL");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	td_connected		INT(1)		NOT NULL	DEFAULT  '0'");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	td_registered		INT(1)		NOT NULL	DEFAULT  '0'");
+} catch (Exception $e) {
+    echo 'Модуль teddyid не установлен... (был установлен ранее или произошла ошибка) <br>';
+}
 
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	tw_user_id			VARCHAR(40)	NOT NULL");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	tw_connected		INT(1)		NOT NULL	DEFAULT  '0'");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	tw_registered		INT(1)		NOT NULL	DEFAULT  '0'");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	tw_user_friends		TEXT		NOT NULL");
+try {
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	fb_user_id			VARCHAR(30)	NOT NULL");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	fb_connected		INT(1)		NOT NULL	DEFAULT  '0'");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	fb_registered		INT(1)		NOT NULL	DEFAULT  '0'");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	fb_hash_auth		TEXT		NOT NULL");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	fb_user_friends		TEXT		NOT NULL");
+} catch (Exception $e) {
+    echo 'Модуль facebook не установлен... (был установлен ранее или произошла ошибка) <br>';
+}
 
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	od_user_id			VARCHAR(30)	NOT NULL");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	od_connected		INT(1)		NOT NULL	DEFAULT  '0'");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	od_registered		INT(1)		NOT NULL	DEFAULT  '0'");
+try {
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	tw_user_id			VARCHAR(40)	NOT NULL");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	tw_connected		INT(1)		NOT NULL	DEFAULT  '0'");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	tw_registered		INT(1)		NOT NULL	DEFAULT  '0'");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	tw_user_friends		TEXT		NOT NULL");
+} catch (Exception $e) {
+    echo 'Модуль twitter не установлен... (был установлен ранее или произошла ошибка) <br>';
+}
 
+try {
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	od_user_id			VARCHAR(30)	NOT NULL");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	od_connected		INT(1)		NOT NULL	DEFAULT  '0'");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	od_registered		INT(1)		NOT NULL	DEFAULT  '0'");
+} catch (Exception $e) {
+    echo 'Модуль odnoklassniki не установлен... (был установлен ранее или произошла ошибка) <br>';
+}
+
+try {
 $db->query("ALTER TABLE " . USERPREFIX . "_users ADD	in_user_id			VARCHAR(30)	NOT NULL");
 $db->query("ALTER TABLE " . USERPREFIX . "_users ADD	in_username			VARCHAR(50)	NOT NULL");
 $db->query("ALTER TABLE " . USERPREFIX . "_users ADD	in_connected		INT(1)		NOT NULL	DEFAULT  '0'");
 $db->query("ALTER TABLE " . USERPREFIX . "_users ADD	in_registered		INT(1)		NOT NULL	DEFAULT  '0'");
+} catch (Exception $e) {
+    echo 'Модуль instagramm не установлен... (был установлен ранее или произошла ошибка) <br>';
+}
 
+try {
 $db->query("ALTER TABLE " . USERPREFIX . "_users ADD	gh_user_id			VARCHAR(30)	NOT NULL");
 $db->query("ALTER TABLE " . USERPREFIX . "_users ADD	gh_username			VARCHAR(50)	NOT NULL");
 $db->query("ALTER TABLE " . USERPREFIX . "_users ADD	gh_connected		INT(1)		NOT NULL	DEFAULT  '0'");
 $db->query("ALTER TABLE " . USERPREFIX . "_users ADD	gh_registered		INT(1)		NOT NULL	DEFAULT  '0'");
+} catch (Exception $e) {
+    echo 'Модуль github не установлен... (был установлен ранее или произошла ошибка) <br>';
+}
 
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	ms_user_id			VARCHAR(40)	NOT NULL");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	ms_link				VARCHAR(90)	NOT NULL");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	ms_connected		INT(1)		NOT NULL	DEFAULT  '0'");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	ms_registered		INT(1)		NOT NULL	DEFAULT  '0'");
+try {
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	ms_user_id			VARCHAR(40)	NOT NULL");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	ms_link				VARCHAR(90)	NOT NULL");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	ms_connected		INT(1)		NOT NULL	DEFAULT  '0'");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	ms_registered		INT(1)		NOT NULL	DEFAULT  '0'");
+} catch (Exception $e) {
+    echo 'Модуль microsoft не установлен... (был установлен ранее или произошла ошибка) <br>';
+}
 
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	ma_user_id			VARCHAR(40)	NOT NULL");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	ma_link				VARCHAR(90)	NOT NULL");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	ma_connected		INT(1)		NOT NULL	DEFAULT  '0'");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	ma_registered		INT(1)		NOT NULL	DEFAULT  '0'");
+try {
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	ma_user_id			VARCHAR(40)	NOT NULL");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	ma_link				VARCHAR(90)	NOT NULL");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	ma_connected		INT(1)		NOT NULL	DEFAULT  '0'");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	ma_registered		INT(1)		NOT NULL	DEFAULT  '0'");
+} catch (Exception $e) {
+    echo 'Модуль mail не установлен... (был установлен ранее или произошла ошибка) <br>';
+}
 
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	fs_user_id			VARCHAR(40)	NOT NULL");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	fs_connected		INT(1)		NOT NULL	DEFAULT  '0'");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	fs_registered		INT(1)		NOT NULL	DEFAULT  '0'");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	fs_hash_auth		TEXT		NOT NULL");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	fs_user_friends		TEXT		NOT NULL");
+try {
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	fs_user_id			VARCHAR(40)	NOT NULL");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	fs_connected		INT(1)		NOT NULL	DEFAULT  '0'");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	fs_registered		INT(1)		NOT NULL	DEFAULT  '0'");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	fs_hash_auth		TEXT		NOT NULL");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	fs_user_friends		TEXT		NOT NULL");
+} catch (Exception $e) {
+    echo 'Модуль forsquare не установлен... (был установлен ранее или произошла ошибка) <br>';
+}
 
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	go_user_id			VARCHAR(40)	NOT NULL");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	go_connected		INT(1)		NOT NULL	DEFAULT  '0'");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	go_registered		INT(1)		NOT NULL	DEFAULT  '0'");
+try {
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	go_user_id			VARCHAR(40)	NOT NULL");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	go_connected		INT(1)		NOT NULL	DEFAULT  '0'");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	go_registered		INT(1)		NOT NULL	DEFAULT  '0'");
+} catch (Exception $e) {
+    echo 'Модуль google не установлен... (был установлен ранее или произошла ошибка) <br>';
+}
 
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	st_user_id			VARCHAR(40)	NOT NULL");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	st_connected		INT(1)		NOT NULL	DEFAULT  '0'");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	st_registered		INT(1)		NOT NULL	DEFAULT  '0'");
+try {
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	st_user_id			VARCHAR(40)	NOT NULL");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	st_connected		INT(1)		NOT NULL	DEFAULT  '0'");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	st_registered		INT(1)		NOT NULL	DEFAULT  '0'");
+} catch (Exception $e) {
+    echo 'Модуль steam не установлен... (был установлен ранее или произошла ошибка) <br>';
+}
 
-
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	sex					VARCHAR(30)	NOT NULL");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	bdate				VARCHAR(30)	NOT NULL");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	updtime				VARCHAR(30)	NOT NULL");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	userfriends			TEXT		NOT NULL");
-$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	userpassword_hash	TEXT		NOT NULL");
+try {
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	sex					VARCHAR(30)	NOT NULL");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	bdate				VARCHAR(30)	NOT NULL");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	updtime				VARCHAR(30)	NOT NULL");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	userfriends			TEXT		NOT NULL");
+	$db->query("ALTER TABLE " . USERPREFIX . "_users ADD	userpassword_hash	TEXT		NOT NULL");
+} catch (Exception $e) {
+    echo 'Дополнительные поля не добавлены (были добавлены ранее или произошла ошибка) <br>';
+}
 
 echo '<h2>Если не вылезло ошибок базы данных, то поля успешно добавлены! Вы можете закрыть эту страницу и удалить её с сайта.</h2>';
 

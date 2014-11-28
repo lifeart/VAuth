@@ -206,6 +206,32 @@ if ($user['user_group'] != 1) die;
 						'.createSelectForSocial($vauth_config['twitter_user_group'],'twitter_user_group').'
 					</div>';
 
+
+				if (file_exists($func_path . '/steam_functions.php')) $settings = $settings.'
+				<div class="settings_list">
+					<div class="input_text">Steam APP_ID</div>
+					<input class="settings_input" name="save_con[steam_app_id]" value="'.$vauth_config['steam_app_id'].'">
+
+					<div class="input_text">steam_app_secret</div>
+					<input class="settings_input" name="save_con[steam_app_secret]" value="'.$vauth_config['steam_app_secret'].'">
+					
+					<div class="input_text">steam_usergroup</div>
+						'.createSelectForSocial($vauth_config['steam_user_group'],'steam_user_group').'
+					</div>';
+
+
+				if (file_exists($func_path . '/teddyid_functions.php')) $settings = $settings.'
+				<div class="settings_list">
+					<div class="input_text">teddyid APP_ID</div>
+					<input class="settings_input" name="save_con[teddyid_app_id]" value="'.$vauth_config['teddyid_app_id'].'">
+
+					<div class="input_text">teddyid_app_secret</div>
+					<input class="settings_input" name="save_con[teddyid_app_secret]" value="'.$vauth_config['teddyid_app_secret'].'">
+					
+					<div class="input_text">teddyid_usergroup</div>
+						'.createSelectForSocial($vauth_config['teddyid_user_group'],'teddyid_user_group').'
+					</div>';
+
 				if (file_exists($func_path . '/flickr_functions.php')) $settings = $settings.'
 					<div class="settings_list">
 						<div class="input_text">'.$vauth_text['flickr_app_id'].'</div>

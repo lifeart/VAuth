@@ -8,6 +8,7 @@
 		<div class="ac_connect">
 		<div id="ac_connect">
 			{vk_link}
+			{td_link}
 			{fb_link}
 			{tw_link}
 			{fs_link}

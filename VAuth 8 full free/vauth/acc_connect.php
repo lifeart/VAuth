@@ -2,7 +2,7 @@
 
 	session_start();
 	
-	include_once(dirname (__FILE__).'/settings/script_settings.php'); //Ïîëó÷àåì ñèñòåìíûå íàñòğîéêè
+	include_once(dirname (__FILE__).'/settings/script_settings.php'); //ĞŸĞ¾Ğ»ÑƒÑ‡Ğ°ĞµĞ¼ ÑĞ¸ÑÑ‚ĞµĞ¼Ğ½Ñ‹Ğµ Ğ½Ğ°ÑÑ‚Ñ€Ğ¾Ğ¹ĞºĞ¸
 	
 	define('DATALIFEENGINE', true);	
 	
@@ -25,11 +25,11 @@
 		$tpl->set( '{static}', '<a class="back_to_profile" href="'.$site_url.'/user/'.$member_id["name"].'">'.$vauth_text[34].'</a>');
 		$tpl->set( '{userinfo-hello}', '');
 	
-		$id				=	$member_id["user_id"]; //Áåğ¸ì ID ïîëüçîâàòåëÿ
-		$dle_photo		=	$member_id["foto"]; //Áåğ¸ì àâàòàğêó ïîëüçîâàòåëÿ
-		$dle_email		=	$member_id["email"]; //Áåğ¸ì e-mail ïîëüçîâàòåëÿ
-		$dle_banned		=	$member_id["banned"]; //Çàáàíåí ëè
-		$dle_user_group	=	$member_id["user_group"]; //Áåğ¸ì ãğóïïó ïîëüçîâàòåëÿ
+		$id				=	$member_id["user_id"]; //Ğ‘ĞµÑ€Ñ‘Ğ¼ ID Ğ¿Ğ¾Ğ»ÑŒĞ·Ğ¾Ğ²Ğ°Ñ‚ĞµĞ»Ñ
+		$dle_photo		=	$member_id["foto"]; //Ğ‘ĞµÑ€Ñ‘Ğ¼ Ğ°Ğ²Ğ°Ñ‚Ğ°Ñ€ĞºÑƒ Ğ¿Ğ¾Ğ»ÑŒĞ·Ğ¾Ğ²Ğ°Ñ‚ĞµĞ»Ñ
+		$dle_email		=	$member_id["email"]; //Ğ‘ĞµÑ€Ñ‘Ğ¼ e-mail Ğ¿Ğ¾Ğ»ÑŒĞ·Ğ¾Ğ²Ğ°Ñ‚ĞµĞ»Ñ
+		$dle_banned		=	$member_id["banned"]; //Ğ—Ğ°Ğ±Ğ°Ğ½ĞµĞ½ Ğ»Ğ¸
+		$dle_user_group	=	$member_id["user_group"]; //Ğ‘ĞµÑ€Ñ‘Ğ¼ Ğ³Ñ€ÑƒĞ¿Ğ¿Ñƒ Ğ¿Ğ¾Ğ»ÑŒĞ·Ğ¾Ğ²Ğ°Ñ‚ĞµĞ»Ñ
 		
 		$account_connect	=	$_POST['dle_connect'];
 		
@@ -37,90 +37,79 @@
 			
 			sleep(5);
 			
+			$postfix = '/engine/modules/vauth/auth.php?auth_site=';
+			$_SESSION['ac_connect'] = $account_connect;
+
 			switch($account_connect) {
 			
 				case 'vk' :
-					$_SESSION['ac_connect']	= $account_connect;
-					header('location: '.$site_url . '/engine/modules/vauth/auth.php?auth_site=vkontakte'); die();
+					header('location: '.$site_url . $postfix . 'vkontakte'); die();
 					break;
 				case 'vk_off' :
-					$_SESSION['ac_connect']	= $account_connect;
-					header('location: '.$site_url . '/engine/modules/vauth/auth.php?auth_site=vkontakte'); die();
+					header('location: '.$site_url .  $postfix . 'vkontakte'); die();
+					break;
+				case 'td' :
+					header('location: '.$site_url .  $postfix . 'teddyid'); die();
+					break;
+				case 'td_off' :
+					header('location: '.$site_url .  $postfix . 'teddyid'); die();
 					break;
 				case 'fb' :
-					$_SESSION['ac_connect']	= $account_connect;
-					header('location: '.$site_url . '/engine/modules/vauth/auth.php?auth_site=facebook'); die();
+					header('location: '.$site_url .  $postfix . 'facebook'); die();
 					break;
 				case 'fb_off' :
-					$_SESSION['ac_connect']	= $account_connect;
-					header('location: '.$site_url . '/engine/modules/vauth/auth.php?auth_site=facebook'); die();
+					header('location: '.$site_url .  $postfix . 'facebook'); die();
 					break;
 				case 'tw'	:
-					$_SESSION['ac_connect']	= $account_connect;
-					header('location: '.$site_url . '/engine/modules/vauth/auth.php?auth_site=twitter'); die();
+					header('location: '.$site_url .  $postfix . 'twitter'); die();
 					break;
 				case 'tw_off'	:
-					$_SESSION['ac_connect']	= $account_connect;
-					header('location: '.$site_url . '/engine/modules/vauth/auth.php?auth_site=twitter'); die();
+					header('location: '.$site_url .  $postfix . 'twitter'); die();
 					break;
 				case 'fs'	:
-					$_SESSION['ac_connect']	= $account_connect;
-					header('location: '.$site_url . '/engine/modules/vauth/auth.php?auth_site=foursquare'); die();
+					header('location: '.$site_url .  $postfix . 'foursquare'); die();
 					break;
 				case 'fs_off'	:
-					$_SESSION['ac_connect']	= $account_connect;
-					header('location: '.$site_url . '/engine/modules/vauth/auth.php?auth_site=foursquare'); die();
+					header('location: '.$site_url . $postfix . 'foursquare'); die();
 					break;
-					
 				case 'od'	:
-					$_SESSION['ac_connect']	= $account_connect;
-					header('location: '.$site_url . '/engine/modules/vauth/auth.php?auth_site=odnoklassniki'); die();
+					header('location: '.$site_url .  $postfix . 'odnoklassniki'); die();
 					break;
 				case 'od_off'	:
-					$_SESSION['ac_connect']	= $account_connect;
-					header('location: '.$site_url . '/engine/modules/vauth/auth.php?auth_site=odnoklassniki'); die();
+					header('location: '.$site_url .  $postfix . 'odnoklassniki'); die();
 					break;		
 				case 'in'	:
-					$_SESSION['ac_connect']	= $account_connect;
-					header('location: '.$site_url . '/engine/modules/vauth/auth.php?auth_site=instagram'); die();
+					header('location: '.$site_url .  $postfix . 'instagram'); die();
 					break;
 				case 'in_off'	:
-					$_SESSION['ac_connect']	= $account_connect;
-					header('location: '.$site_url . '/engine/modules/vauth/auth.php?auth_site=instagram'); die();
+					header('location: '.$site_url .  $postfix . 'instagram'); die();
 					break;
 				case 'go'	:
-					$_SESSION['ac_connect']	= $account_connect;
-					header('location: '.$site_url . '/engine/modules/vauth/auth.php?auth_site=google'); die();
+					header('location: '.$site_url .  $postfix . 'google'); die();
 					break;
 				case 'go_off'	:
-					$_SESSION['ac_connect']	= $account_connect;
-					header('location: '.$site_url . '/engine/modules/vauth/auth.php?auth_site=google'); die();
+					header('location: '.$site_url .  $postfix . 'google'); die();
 					break;						
 				case 'gh'	:
-					$_SESSION['ac_connect']	= $account_connect;
-					header('location: '.$site_url . '/engine/modules/vauth/auth.php?auth_site=github'); die();
+					header('location: '.$site_url .  $postfix . 'github'); die();
 					break;
 				case 'gh_off'	:
-					$_SESSION['ac_connect']	= $account_connect;
-					header('location: '.$site_url . '/engine/modules/vauth/auth.php?auth_site=github'); die();
+					header('location: '.$site_url .  $postfix . 'github'); die();
 					break;
 				case 'ms'	:
-					$_SESSION['ac_connect']	= $account_connect;
-					header('location: '.$site_url . '/engine/modules/vauth/auth.php?auth_site=microsoft'); die();
+					header('location: '.$site_url .  $postfix . 'microsoft'); die();
 					break;
 				case 'ms_off'	:
-					$_SESSION['ac_connect']	= $account_connect;
-					header('location: '.$site_url . '/engine/modules/vauth/auth.php?auth_site=microsoft'); die();
+					header('location: '.$site_url .  $postfix . 'microsoft'); die();
 					break;
 				case 'ma'	:
-					$_SESSION['ac_connect']	= $account_connect;
-					header('location: '.$site_url . '/engine/modules/vauth/auth.php?auth_site=mail'); die();
+					header('location: '.$site_url .  $postfix . 'mail'); die();
 					break;
 				case 'ma_off'	:
-					$_SESSION['ac_connect']	= $account_connect;
-					header('location: '.$site_url . '/engine/modules/vauth/auth.php?auth_site=mail'); die();
+					header('location: '.$site_url .  $postfix . 'mail'); die();
 					break;						
 				default:
+					unset($_SESSION['ac_connect']);
 					header('location: '.$site_url); die();
 					break;
 				
@@ -210,6 +199,14 @@
 			
 		} else $tpl->set( '{ma_link}', '');
 			
+		if (file_exists($func_path . '/teddyid_functions.php')) {
+		
+			if ($member_id["td_connected"] == 1 and $member_id["td_registered"] != 1) $tpl->set( '{td_link}', $txt_ma_off);
+				elseif ($member_id["td_connected"] == 0 and $member_id["td_registered"] != 1) $tpl->set( '{td_link}', $txt_ma_on);
+				elseif ($member_id["td_registered"] == 1) $tpl->set( '{td_link}', '');
+			
+		} else $tpl->set( '{td_link}', '');
+
 		$tpl->set( '{userinfo-connect}', '');
 		$tpl->set( '{vauth_info}', $vauth_text[35]);
 		
@@ -224,6 +221,7 @@
 		$tpl->set( '{fb_link}', '');
 		$tpl->set( '{in_link}', '');
 		$tpl->set( '{vk_link}', '');
+		$tpl->set( '{td_link}', '');
 		$tpl->set( '{tw_link}', '');
 		$tpl->set( '{go_link}', '');
 		$tpl->set( '{fs_link}', '');
